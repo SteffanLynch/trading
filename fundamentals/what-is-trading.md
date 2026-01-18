@@ -112,23 +112,6 @@ These include:
 
 These are the levels where you watch for setups, not random points on the chart.
 
----
-
-## What Trading is NOT
-
-Trading is **not** predicting the future.
-
-Beginners try to forecast exactly what price will do. They say "the market will hit this target" or "this stock will go to $X."
-
-Professionals think differently. They:
-- Measure who has control (buyers or sellers)
-- Follow the trend until it shows signs of ending
-- Manage their positions based on what the market is actually doing
-
-You're not a fortune teller. You're a probability manager.
-
----
-
 ## How Do You Make Money?
 
 The same principle as any business: buy low, sell high.
@@ -179,3 +162,21 @@ Useful for understanding when moves might be exhausted or when everyone is posit
 ---
 
 Most traders focus primarily on technical analysis, with awareness of fundamentals for major news events. You don't need to master all three - but you should understand what each one is.
+
+---
+
+## What Trading is NOT
+
+### Trading is **not** predicting the future.
+
+Beginners try to forecast exactly what price will do. They say "the market will hit this target" or "this stock will go to $X."
+
+Professionals think differently. They:
+- Measure who has control (buyers or sellers)
+- Follow the trend until it shows signs of ending
+- Manage their positions based on what the market is actually doing
+
+You're not a fortune teller. You're a probability manager.
+
+
+---
