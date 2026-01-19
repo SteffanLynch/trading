@@ -31,12 +31,21 @@ Choose your style based on how much time you have to watch charts and your perso
 
 Each timeframe gives you a different perspective of the same story.
 
+Lower timeframes multiply activity.
+Higher timeframes multiply clarity.
+
 ### Higher Timeframes (Daily, 4H, 1H)
 
 - Show the big picture and overall direction
 - Less noise - easier to see the real trend
 - Less detail - you miss the intraday moves
 - Key levels here are stronger and more respected
+
+Higher timeframe zones:
+- Absorb more orders
+- Survive volatility
+- Attract reactions weeks later
+- Create asymmetric R:R
 
 ### Lower Timeframes (15min, 5min, 1min)
 
@@ -45,9 +54,60 @@ Each timeframe gives you a different perspective of the same story.
 - More detail - you can find precise entries
 - Key levels here are weaker and break more easily
 
+Lower timeframe zones:
+- Break more easily
+- Fail more often
+- Need tighter stops
+- Are sensitive to spread/slippage
+- Are invalidated by one candle
+
 **Key insight:** Lower timeframes show you the same thing as higher timeframes, just with more detail. If you zoom out on a 15-minute chart, you're essentially looking at a higher timeframe.
 
 **Example:** Choppy, consolidating price action on the 15-minute chart is just a single indecision candle (doji) on the 4-hour chart. Same information, different level of detail.
+
+---
+
+## The Ocean Analogy
+
+Imagine waves in the ocean:
+
+- Big ocean waves (Daily / 4H)
+- Medium waves (1H / 15M)
+- Tiny ripples on top (5M / 1M)
+
+All are:
+- Real
+- Fractal
+- Following the same physics
+
+But only some waves can move a boat.
+
+---
+
+## More Setups ≠ More Opportunities
+
+On lower timeframes:
+- More candles
+- More swings
+- More pullbacks
+- More "patterns"
+- More noise
+
+So yes, there are more visible cycles and movements. Lower timeframe = more chances for something to look like a setup.
+
+But more setups ≠ more opportunities.
+
+It looks like opportunity... but a lot of it is random movement, not meaningful intent.
+
+Higher timeframes filter this out.
+
+The higher the timeframe, the more participants are involved.
+
+> Higher timeframe creates intent.
+> Lower timeframe reveals execution.
+> Lower timeframe alone has no authority.
+
+Lower timeframes multiply expressions of the same idea — not independent opportunities.
 
 ---
 

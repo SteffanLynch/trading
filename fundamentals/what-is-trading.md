@@ -1,64 +1,3 @@
-
-# What is the "Market"?
-
-The market is simply a place where buyers and sellers exchange assets. When you hear "the market went up" or "the market crashed," it means the prices of assets changed because of buying and selling activity.
-
----
-
-## What is Traded?
-
-### Stocks
-
-Shares of ownership in a company. When you buy a stock, you own a small piece of that company. Stock prices go up when more people want to buy than sell, and down when more people want to sell than buy.
-
-### Indices
-
-A collection of stocks grouped together to represent a market or sector. For example, the S&P 500 tracks 500 large US companies. You're not buying individual companies - you're trading the overall performance of the group.
-
-### Forex (Foreign Exchange)
-
-Currencies traded against each other in pairs (EUR/USD, GBP/JPY). You're betting one currency will strengthen or weaken against another. The largest and most liquid market in the world.
-
-### Commodities
-
-Physical goods like gold, oil, wheat, or coffee. Prices move based on supply and demand for these raw materials.
-
-### Crypto
-
-Digital currencies like Bitcoin and Ethereum. Highly volatile, trades 24/7, and moves based on speculation, adoption, and market sentiment.
-
-### Futures
-
-Contracts to buy or sell an asset at a specific price on a future date. Used for speculation and hedging. Allows you to trade with leverage.
-
----
-
-## Market Participants
-
-Not everyone in the market has the same power or purpose:
-
-1. **Central Banks** - Set interest rates and monetary policy. Their decisions move entire markets.
-2. **Commercial Banks** - Handle massive currency transactions for clients and themselves.
-3. **Hedge Funds** - Large pools of money using advanced strategies to profit.
-4. **Multinational Corporations** - Convert currencies for international business operations.
-5. **Retail Traders** - Individual traders like you and me. The smallest fish in the pond.
-
-As retail traders, we don't move the market. We read the market and position ourselves to profit from moves created by larger players.
-
----
-
-# Buyers and Sellers
-
-Trading is a battle between buyers and sellers.
-
-**Buyers** believe the price will go up. They want to buy now at a lower price and sell later at a higher price.
-
-**Sellers** believe the price will go down. They want to sell now at a higher price and buy back later at a lower price.
-
-At any moment, one side is winning. Your job is to figure out which side has control and join them.
-
----
-
 # What is Trading Then?
 
 Trading is a game of probability.
@@ -177,6 +116,5 @@ Professionals think differently. They:
 - Manage their positions based on what the market is actually doing
 
 You're not a fortune teller. You're a probability manager.
-
 
 ---
