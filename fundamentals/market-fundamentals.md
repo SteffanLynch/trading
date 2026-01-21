@@ -204,3 +204,112 @@ Those waiting orders:
 So now the real question becomes:
 
 If waiting orders "do nothing", how can they stop price later?
+
+---
+
+# Liquidity
+
+Liquidity = "Are there people available to trade with at this price?"
+
+That's it. Nothing more.
+
+**Example (real life):**
+- You want to sell your bike for £100
+- If 10 people are willing to buy at £100 → high liquidity
+- If 0 people are willing to buy at £100 → no liquidity
+
+Liquidity is just how easy it is to find someone to trade with at a given price.
+
+**In market terms (still plain English):**
+
+At price 1.1950:
+- If there are sellers willing to sell at 1.1950 → liquidity exists
+- If there are no sellers left at 1.1950 → liquidity is gone
+
+That's all liquidity means.
+
+When liquidity is gone, price must change. Price moves to find liquidity.
+
+---
+
+# Volume
+
+Volume = "How many trades happened"
+
+That's it.
+
+Volume does NOT mean:
+- Who won
+- Where price should go
+- That price must move
+
+It only means how much buying and selling took place.
+
+---
+
+# The Trade-Off: Market Orders vs Limit Orders
+
+## Market Order (Expanded)
+
+When you place a market order, you are choosing:
+
+- **Execution certainty**
+- Over price certainty
+
+You are saying:
+
+> "I want this trade NOW. I don't care what price I get."
+
+If the market is moving fast:
+- You will get filled
+- But possibly at a worse price than you expected (slippage)
+
+That is the trade-off you accepted.
+
+## Limit Order (Expanded)
+
+When you place a limit order, you are choosing:
+
+- **Price certainty**
+- Over execution certainty
+
+You are saying:
+
+> "I only want this trade if I can get THIS price."
+
+If the market says "no":
+- You don't get filled
+- You miss the exit
+- Price can reverse
+- You can give profits back
+
+That is the trade-off you accepted.
+
+**"What if there are no buyers or sellers willing to agree at that price? Then my limit order just hangs there?"**
+
+YES. EXACTLY.
+
+And that is the whole point. A trade only happens if someone on the other side agrees.
+
+A limit order is a preference, not a guarantee.
+
+---
+
+## The Ultimate Question Between Order Types
+
+What happens when the price you chose is reached?
+
+Do you demand to be executed immediately, or are you willing to wait?
+
+Would you rather:
+- Always exit at your exact price but sometimes not exit at all?
+- Or always exit but sometimes at a worse price?
+
+That's the fundamental trade-off.
+
+> Stops choose certainty of exit.
+> Targets choose certainty of price.
+
+You must choose which you value more in each situation.
+
+**Order type is determined by urgency.**

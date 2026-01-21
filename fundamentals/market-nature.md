@@ -72,3 +72,145 @@ The biggest moves come from:
 - **Key support/resistance levels** - Boundaries where price has reversed before. Breaks of these levels trigger big moves as stops get hit and new orders pile in
 
 These are the moments where the market shows its hand. Outside of these, price action is often just noise.
+
+---
+
+## How Stop Losses and Take Profits Impact the Market
+
+Price moves fastest when people are desperate, and slows when people are willing.
+
+### Stop Loss = Market Order
+
+Stop losses are market orders.
+
+A stop-loss says:
+
+> "If price reaches this level, I want OUT immediately. I do NOT care what price I get."
+
+Why? Because if price is falling fast, you don't care about price anymore — you care about getting out.
+
+That instruction cannot wait.
+
+It turns into:
+👉 "Sell/buy right now at whatever price is available"
+
+**Immediately** is the key word.
+
+Because of that, when the stop is triggered, it becomes:
+👉 "Execute at whatever price is available right now."
+
+That's why stops can cause **sharp moves** and slippage.
+
+So stops don't cause direction — they accelerate movement when liquidity is thin.
+
+When stops are hit:
+- They become market orders
+- They apply pressure
+- They can push price to the next area where people are willing to trade
+
+#### What Happens When Many Stops Are Hit
+
+Imagine this:
+- Many traders bought earlier
+- Their stop-losses are all around 1.1950
+
+When price reaches 1.1950:
+- All those stop-losses **trigger**
+- They all become **sell-now orders**
+- They all want out **immediately**
+
+So suddenly:
+- A flood of **sell-now** orders hits the market
+
+If:
+- Buyers are waiting → price pauses
+- Buyers are NOT waiting → price must drop fast
+
+That's why stops can cause **sharp moves**.
+
+They don't *decide* direction — they **add urgency**.
+
+---
+
+### Take Profit = Limit Order
+
+All take profit orders are limit orders.
+
+A take-profit says:
+
+> "If price reaches this level, I am happy to trade at THIS price. If not, I'm fine waiting."
+
+**Willing to wait** is the key word.
+
+Because of that, it must be:
+👉 "Execute ONLY at this price."
+
+They:
+- Sit and wait
+- Provide agreement
+- Can slow or stop price
+
+So take profits:
+- Often act like temporary resistance/support
+- Can cause pauses
+- Can cause wicks
+
+But:
+They do NOT reverse price on their own.
+
+#### What Happens When Many Take-Profits Are Hit
+
+Now imagine:
+- Many traders bought earlier
+- Their take-profits are at 1.2100
+
+When price reaches 1.2100:
+- Their orders are **already waiting**
+- They calmly say: "Sure, I'll sell here."
+
+So when buyers arrive:
+- Sellers are ready
+- Trades happen
+- Price can **pause**
+- Price can form **wicks**
+- Price can consolidate
+
+Take-profits **do not chase price**.
+
+They **wait to be chosen**.
+
+So they **slow** price instead of accelerating it.
+
+A trade only happens if someone on the other side agrees.
+
+---
+
+## The Core Difference (Memorise This)
+
+> Stop-losses remove liquidity.
+> Take-profits provide liquidity.
+
+### Why Do Stops Accelerate Price But Take-Profits Don't?
+
+Not because of buy vs sell.
+Not because of long vs short.
+Because of **urgency**.
+
+#### Stops = Urgency
+
+When many stops trigger:
+- Many people suddenly say "NOW"
+- They accept whatever price exists
+- If no one is available at the old price → price jumps
+
+That's acceleration.
+
+#### Take-Profits = Patience
+
+When many take-profits are waiting:
+- They are already sitting at a price
+- They provide people to trade with
+- They allow agreement to happen
+- Price can pause or slow
+
+That's why they *don't* accelerate price.

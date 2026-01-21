@@ -142,6 +142,22 @@ How you protect your capital. Includes position sizing, stop losses, and only ri
 The ratio between how much you're risking versus how much you could gain. A 1:3 risk to reward means you're risking $1 to potentially make $3.
 *Also called: reward to risk, R multiple*
 
+**Leverage**
+Borrowing money from your broker to control a larger position than your account balance allows. For example, 10:1 leverage means $1,000 in your account controls $10,000 worth of assets. Amplifies both profits AND losses.
+*Related: margin, buying power*
+
+**Drawdown**
+The drop in your account from its highest point to its lowest point during a period. If your account went from $10,000 to $8,000, that's a 20% drawdown. Measures how much pain you've experienced.
+*Related: max drawdown, recovery*
+
+**Win-Loss Ratio (Win Rate)**
+The percentage of your trades that are winners. If you win 6 out of 10 trades, your win rate is 60%. Important, but not the only factor - you can be profitable with a low win rate if your winners are bigger than your losers.
+*Also called: win rate, batting average*
+
+**Expectancy (Positive Expectancy)**
+The average amount you expect to make (or lose) per trade over time. Calculated using your win rate and your average win size vs average loss size. Positive expectancy means your system makes money over many trades. Negative expectancy means it loses money.
+*Related: edge, profitability*
+
 ---
 
 ## Analysis

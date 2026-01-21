@@ -117,4 +117,67 @@ Professionals think differently. They:
 
 You're not a fortune teller. You're a probability manager.
 
+### Trading is **not** gambling.
+
+The majority of traders see it as gambling or a luck-based game. It's not.
+
+Successful trading is not random efforts. It is a repetitive, systematic, and consistent system to give you an edge over random luck.
+
+---
+
+## Positive Expectancy
+
+This is the key to profitability.
+
+**Expectancy** is the average amount you expect to make (or lose) per trade over time. It's calculated using your win rate and your average win size vs average loss size.
+
+- **Positive expectancy** = Your system makes money over many trades
+- **Negative expectancy** = Your system loses money over many trades
+
+You can have a low win rate (e.g., only winning 40% of trades) and still be profitable - as long as your winners are bigger than your losers.
+
+**Example:**
+- You win 4 out of 10 trades (40% win rate)
+- Your average win is $300
+- Your average loss is $100
+- Expectancy = (0.4 × $300) - (0.6 × $100) = $120 - $60 = **+$60 per trade**
+
+That's a profitable system, even though you lose more often than you win.
+
+This is why risk to reward matters. This is why you cut losers fast and let winners run.
+
+---
+
+## Personal Risk Management Rules
+
+**DO NOT TRADE REAL MONEY UNTIL YOU HAVE DISPLAYED CONSISTENT PROFITS!**
+
+No need to lose money unnecessarily. Paper trading is a great option. And even when you are ready for real money, start off only with a very small account.
+
+---
+
+## A Note on Trading Strategies
+
+There are many trading strategies out there. Here are some of the most common and popular ones:
+
+- Price Action / Support & Resistance
+- Supply and Demand
+- Smart Money Concepts (SMC)
+- ICT (Inner Circle Trader)
+- Trend Following
+- Breakout Trading
+- Scalping
+- Swing Trading
+- Harmonic Patterns
+- Elliott Wave
+- Indicator-based strategies (Moving Averages, RSI, MACD, etc.)
+
+**Here's the truth:** You just have to pick one.
+
+You have to learn to be decisive. Just choose one and stick with it - even when it doesn't feel like it, even when you're unsure. You have to stick with it till the end.
+
+**My recommendation:** Briefly research all the different strategies and choose the one that you understand the most, or that makes the most sense to you. Then stick with it to the end. Stick with it for a consistent amount of time and execute it consistently. If it doesn't play out after giving it a fair chance, then you move on to the next one.
+
+Don't keep jumping between strategies. That's how you stay confused and never become profitable.
+
 ---
