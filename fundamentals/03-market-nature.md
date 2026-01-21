@@ -214,3 +214,9 @@ When many take-profits are waiting:
 - Price can pause or slow
 
 That's why they *don't* accelerate price.
+
+---
+
+**Next:** [Market Structure](04-market-structure.md)
+
+*Now that you understand the beast's nature, let's learn how to map its footprints on a chart.*

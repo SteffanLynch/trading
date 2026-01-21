@@ -481,3 +481,9 @@ Instead, they:
 Why? Because they know:
 
 > Execution is never guaranteed at one price.
+
+---
+
+**Next:** [Market Nature](03-market-nature.md)
+
+*Now that you know how the "engine" works, let's look at the "personality" of the crowd that drives it.*

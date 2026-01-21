@@ -18,22 +18,51 @@ I'll be updating this as I grow.
 
 ---
 
-## Contents
+## The Curriculum
 
-### Fundamentals
+### Phase 1: The Game (The "Why")
 
-The core concepts you need to understand before trading.
+Before touching a chart, you must understand the nature of the environment.
 
-- [What is Trading?](fundamentals/what-is-trading.md) - The basics: markets, buyers, sellers, and how money is made
-- [Market Structure](fundamentals/market-structure.md) - Trends, consolidation, breaks of structure
-- [Market Nature](fundamentals/market-nature.md) - How the market behaves: fractal, cyclical, rebalancing
-- [Support and Resistance](fundamentals/support-and-resistance.md) - Key levels where price reacts
-- [Candlesticks](fundamentals/candlesticks.md) - Reading candles and patterns
-- [Timeframes](fundamentals/timeframes.md) - Different perspectives of the same story
-- [Risk Management](fundamentals/risk-management.md) - Protecting your account
-- [Trading Psychology](fundamentals/trading-psychology.md) - The mental game (why most traders fail)
+| # | File | Core Lesson |
+|---|------|-------------|
+| 1 | [What is Trading?](fundamentals/01-what-is-trading.md) | Trading is a game of probability and positive expectancy, not prediction. |
+| 2 | [Market Fundamentals](fundamentals/02-market-fundamentals.md) | Price moves because of the matching engine, order book priority, and the interaction between Market and Limit orders. |
+| 3 | [Market Nature](fundamentals/03-market-nature.md) | Markets are fractal and cyclical; they move between expansion and contraction while hunting for liquidity. |
 
-### Strategy
+**Goal:** Stop treating the market like a "Wizard" and start treating it like a system.
+
+---
+
+### Phase 2: The Map (The "Where")
+
+This is the "Reading the Game" phase where you learn to identify context.
+
+| # | File | Core Lesson |
+|---|------|-------------|
+| 4 | [Market Structure](fundamentals/04-market-structure.md) | Identifying the trend through Higher Highs/Lows and recognizing the difference between a Break of Structure (BOS) and a Change of Character (ChoCh). |
+| 5 | [Timeframes](fundamentals/05-timeframes.md) | The "Ocean Analogy" - understanding that higher timeframes provide clarity while lower timeframes provide noise. |
+| 6 | [Support and Resistance](fundamentals/06-support-and-resistance.md) | Identifying "floors" and "ceilings" where previous imbalances occurred, prioritizing higher timeframe levels. |
+
+**Goal:** Stop looking for "signals" and start looking for "locations."
+
+---
+
+### Phase 3: The Execution (The "How")
+
+The final technical layer and the rules for survival.
+
+| # | File | Core Lesson |
+|---|------|-------------|
+| 7 | [Candlesticks](fundamentals/07-candlesticks.md) | Anatomy of agreement vs. rejection. Using Pinbars, Dojis, and Engulfing patterns to confirm a story already told by structure and levels. |
+| 8 | [Risk Management](fundamentals/08-risk-management.md) | The 1-2% risk rule, position sizing, and the non-negotiable nature of stop losses. |
+| 9 | [Trading Psychology](fundamentals/09-trading-psychology.md) | Managing the "Big Four" emotions (Fear, Greed, Hope, Frustration) and prioritizing process over outcome. |
+
+**Goal:** Execute with precision, protect the capital, and master the mind.
+
+---
+
+## Strategy
 
 How I approach trading.
 
@@ -41,7 +70,9 @@ How I approach trading.
 - [My Rules](strategy/rules.md) - Non-negotiable rules I follow
 - [Supply and Demand Strategy](strategy/supply-and-demand/supply-and-demand.md) - My personal trading strategy
 
-### Reference
+---
+
+## Reference
 
 - [Glossary](glossary.md) - Trading terms and definitions
 
@@ -49,18 +80,9 @@ How I approach trading.
 
 ## How to Use This
 
-Start with the fundamentals. Don't skip ahead.
+**Follow the phases in order. Don't skip ahead.**
 
-Read them in this order:
-1. What is Trading?
-2. Market Structure
-3. Support and Resistance
-4. Candlesticks
-5. Timeframes
-6. Risk Management
-7. Trading Psychology
-
-Then move to strategy when you're ready.
+Each file builds on the previous one. The "Bridge Logic" at the end of each file will guide you to the next.
 
 Don't try to memorise everything. Understand the concepts, then come back and reference as needed.
 

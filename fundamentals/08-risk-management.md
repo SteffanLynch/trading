@@ -144,3 +144,9 @@ If your stop loss gets hit, you lose exactly $100 (1% of your account). No more,
 | Calculate position size based on stop loss | Ensures consistent risk across all trades |
 
 Risk management isn't exciting, but it's what separates traders who survive from those who blow up their accounts.
+
+---
+
+**Next:** [Trading Psychology](09-trading-psychology.md)
+
+*You have the math and the method; the only thing left that can break this system is you.*

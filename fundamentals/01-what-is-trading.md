@@ -181,3 +181,7 @@ You have to learn to be decisive. Just choose one and stick with it - even when 
 Don't keep jumping between strategies. That's how you stay confused and never become profitable.
 
 ---
+
+**Next:** [Market Fundamentals](02-market-fundamentals.md)
+
+*Now that you understand that trading is about managing probability, let's look at the mechanical engine that creates those probabilities.*

@@ -136,3 +136,9 @@ Don't let a pullback scare you out of a trend trade. Pullbacks are normal and ex
 | Consolidation | Price stuck between support/resistance | Avoid (or trade range extremes) |
 | Break of Structure | Previous high/low broken | Confirms trend continuation |
 | Change of Character | Key level broken against trend | Warning sign - trend weakening |
+
+---
+
+**Next:** [Timeframes](05-timeframes.md)
+
+*Structure gives you direction, but "Perspective" tells you which direction matters most right now.*

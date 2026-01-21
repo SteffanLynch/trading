@@ -152,3 +152,9 @@ I can figure out what the 4H would look like while on the 15-minute chart by men
 But I can't see the 15-minute detail when I'm on the 4H chart - that information is hidden inside each candle.
 
 **The logic:** Zooming out gives you the higher timeframe view. Zooming in (or switching to lower timeframes) gives you more detail. But you can't add detail that isn't there - you have to go to a lower timeframe to see it.
+
+---
+
+**Next:** [Support and Resistance](06-support-and-resistance.md)
+
+*With direction and perspective set, let's find the specific battlegrounds where buyers and sellers are most likely to fight.*

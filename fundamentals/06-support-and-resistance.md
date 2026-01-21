@@ -131,3 +131,9 @@ When confused, zoom out. Find the larger structure. Everything is just a smaller
 | Role Flip | Broken level retested from opposite side | Trade the retest in direction of break |
 | Strong Level | 2-3 touches, sharp rejections, wicks | High confidence trades |
 | Weakening Level | 4+ touches, price grinding at level | Be cautious, may break soon |
+
+---
+
+**Next:** [Candlesticks](07-candlesticks.md)
+
+*You have the battleground; now let's look at the "hand-to-hand combat" happening at these levels.*

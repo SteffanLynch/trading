@@ -173,3 +173,11 @@ Pay attention to:
 - What situations cause you to break your rules?
 
 Self-awareness is a trading edge. Know your weaknesses so you can protect yourself from them.
+
+---
+
+**Fundamentals complete.**
+
+You now have the foundation. Next step: build your strategy.
+
+**Continue to:** [What is a Trading Plan?](../strategy/what-is-a-trading-plan.md)

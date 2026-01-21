@@ -109,33 +109,6 @@ One side tried to move price but hit a wall of orders so large they were pushed 
 
 ---
 
-### Why Momentum Candles Look "Strong"
-
-A momentum candle has:
-- Large body
-- Small or no opposite wick
-
-This means:
-- One side pushed
-- The other side did not meaningfully resist
-- Agreement shifted smoothly
-
-Nothing mystical. Just low opposition.
-
----
-
-### Why Reversal Candles Have Long Wicks + Small Bodies
-
-This means:
-- One side tried hard
-- The other side absorbed it
-- Agreement snapped back
-- Control changed hands
-
-That's a fight - not a trend.
-
----
-
 ## Types of Candles
 
 There are three main candle types to understand. Each one tells you something different about who's in control.
@@ -148,6 +121,14 @@ There are three main candle types to understand. Each one tells you something di
 
 - Long lower wick (hammer) = Sellers pushed down but buyers said "no" and pushed it back up
 - Long upper wick (shooting star) = Buyers pushed up but sellers said "no" and pushed it back down
+
+**Why reversal candles have long wicks + small bodies:**
+- One side tried hard
+- The other side absorbed it
+- Agreement snapped back
+- Control changed hands
+
+That's a fight - not a trend.
 
 **Key point:** The rejection wick should be at least 2x the size of the body to be meaningful.
 
@@ -167,6 +148,13 @@ There are three main candle types to understand. Each one tells you something di
 
 - Big green candle with tiny wicks = Buyers in full control
 - Big red candle with tiny wicks = Sellers in full control
+
+**Why momentum candles look "strong":**
+- One side pushed
+- The other side did not meaningfully resist
+- Agreement shifted smoothly
+
+Nothing mystical. Just low opposition.
 
 **Key point:** The lack of wicks is what makes it powerful. No rejection means no resistance to that move.
 
@@ -248,3 +236,9 @@ Price hits support twice, fails to break through both times, then rises.
 **How to trade it:** Wait for the "neckline" to break (the swing between the two tops/bottoms). That confirms the reversal.
 
 **Key point:** Triple tops/bottoms are stronger signals than double - three failed attempts shows even more conviction that the level will hold.
+
+---
+
+**Next:** [Risk Management](08-risk-management.md)
+
+*You can read the story, but reading isn't enough - you need a math-based plan to ensure you don't go bust while learning.*
