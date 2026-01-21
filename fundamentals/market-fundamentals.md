@@ -4,6 +4,82 @@ The market is simply a place where buyers and sellers exchange assets. When you 
 
 ---
 
+## How the Market Actually Works
+
+### The Technical Reality
+
+At its core, the market is a **Matching Engine** - specialized software running on servers owned by an Exchange (like NYSE, NASDAQ, or CME).
+
+**What it's made of:** A giant database called an **Order Book**. On one side is a list of people wanting to buy (Bids), on the other is a list of people wanting to sell (Asks).
+
+**How it operates:** The engine follows a strict rule called **Price-Time Priority**:
+- **Price:** The best price (highest buyer / lowest seller) always goes first
+- **Time:** If two people want the same price, whoever got there first goes first
+
+**What drives it:** Imbalance. If there are 1,000 buyers at $10 and only 10 sellers at $10, the engine "eats" those 10 sellers instantly. Since there are still 990 buyers left and no more sellers at $10, the engine must move to $10.01 to find the next seller.
+
+Price only moves because one side runs out of people at a certain level.
+
+The engine:
+- Does not think
+- Does not predict
+- Does not "know" trends
+- Does not care who you are
+
+It just matches compatible orders.
+
+> At the technical level, the market is a queue + a referee.
+
+### The Practical Reality
+
+The market is also the collective result of millions of independent participants interacting through that engine.
+
+All *intent* comes from **participants** - banks, funds, corporations, traders, algorithms. They decide where to bid, where to offer, when to cancel, when to chase, when to refuse.
+
+The engine merely enforces the consequences of those decisions.
+
+So when we say "the market decided" or "the market rejected a level," that's shorthand for:
+
+> Participants collectively stopped agreeing at one price and only agreed at another.
+
+There is no wizard. There is no mind. Just emergent behaviour.
+
+### Why You Need Both Views
+
+If you only understand the **engine**:
+- You think trading is purely mechanical
+- You over-focus on order book tricks
+- You miss intent and context
+
+If you only understand the **people**:
+- You think the market has emotions
+- You invent narratives that don't exist
+- You miss the mechanical reality
+
+Real understanding combines both:
+
+> People create intent →
+> Orders encode intent →
+> The engine enforces rules →
+> Price changes expose consequences.
+
+### Who Runs It?
+
+Depends on the market:
+- **Stocks** → centralized exchanges (NYSE, NASDAQ)
+- **Futures** → centralized exchanges (CME)
+- **Forex** → decentralized network of banks and liquidity providers
+
+In Forex especially, there is no single "market." Price is an aggregate of many venues. Your broker routes orders to liquidity providers. Prices are constantly synchronized across the network.
+
+**Simple analogy:**
+- The Market = The Stadium (The Exchange)
+- The Players = The Crowd (Banks, Traders)
+- The Matching Engine = The Referee/Rulebook
+- The Candlestick = The Scoreboard
+
+---
+
 ## What is Traded?
 
 ### Stocks
@@ -313,3 +389,95 @@ That's the fundamental trade-off.
 You must choose which you value more in each situation.
 
 **Order type is determined by urgency.**
+
+---
+
+## Why Limit Orders Don't Always Fill
+
+**"What if price touches my limit order, doesn't fill me, then reverses and never comes back?"**
+
+This can and does happen. There are three common reasons:
+
+### 1. Thin Liquidity
+
+Price briefly traded at that level with very few participants. Not enough trades happened to reach your order in the queue.
+
+### 2. Large Competing Orders
+
+Other traders had their limit orders at that price before you. They were ahead of you in the queue (Price-Time Priority), so they got filled first. You didn't.
+
+### 3. Fast Rejection
+
+Buyers and sellers met briefly at that price, then agreement broke instantly. Price left before your order could be matched.
+
+On the chart, this shows up as:
+- A wick
+- A spike
+- A rejection
+
+Your order simply wasn't chosen.
+
+---
+
+## This is Why Wicks Exist
+
+Think of the market not as a single "price," but as a physical queue of people waiting to trade.
+
+### The Queue System (Price-Time Priority)
+
+When you place a limit order, you're not just setting a price - you're taking a spot in a queue.
+
+**Price Rule:** All orders at $10.00 are filled before anyone at $10.01.
+
+**Time Rule:** If 500 people have limit orders at $10.00, whoever placed their order first gets filled first.
+
+**The Scenario:** Imagine there are 1,000 buy orders sitting at $10.00. You're at the back of the queue with your order. If sellers come in and only sell 500 shares total, the first 500 people in line get filled. Then price bounces back up to $10.05.
+
+**Result:** The chart shows price "touched" $10.00. But because the selling ran out before reaching your spot in the queue, you never got filled.
+
+### What a Wick Actually Means
+
+A wick means:
+
+> Price traded there, but agreement was brief and selective.
+
+Not everyone who wanted to trade there got to trade there.
+
+When the chart shows price touching your level, it only means:
+- Some trades happened at that price
+
+It does NOT mean:
+- All orders there were filled
+- Your order was chosen
+- The queue was emptied
+
+A wick is:
+1. Price reached a level
+2. Some trades happened
+3. The queue was NOT emptied
+4. Agreement collapsed
+5. Price left
+
+So some people traded. Some didn't. Some were left behind.
+
+### Will My Order Ever Be Filled?
+
+It depends on your **Time in Force** setting:
+
+- **Day Order:** If price doesn't reach your spot in the queue by market close, the order is deleted. It will never be filled.
+- **GTC (Good 'Til Canceled):** The order stays in the queue for days or weeks. If price comes back to that level and it's finally your turn, it will fill.
+
+### Why Institutions Scale Out
+
+The fact that limit orders aren't always filled is also why institutions rarely use:
+- One single take-profit
+- One single exit price
+
+Instead, they:
+- Exit in pieces
+- At multiple prices
+- Over time
+
+Why? Because they know:
+
+> Execution is never guaranteed at one price.

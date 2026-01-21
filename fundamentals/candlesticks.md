@@ -1,4 +1,10 @@
 
+## What is a Candle?
+
+A candle is a summary of everything that happened in a time window. It records where buyers and sellers were willing to agree, where they refused, and who still had control when time ended.
+
+---
+
 ## Anatomy of a Candle
 
 Every candlestick has four key parts:
@@ -11,13 +17,56 @@ Every candlestick has four key parts:
 
 **Low** - The lowest price reached during that time period
 
-### Body
+---
+
+### The Open - "Where agreement began"
+
+The open is the price where the first trade of that time window happened. It has no special power - it's just the starting point.
+
+### The Close - "Where agreement ended"
+
+The close is the last price where buyers and sellers agreed when time ran out.
+
+This matters because:
+- It shows who had control at the end
+- It reflects who was still willing to trade
+
+That's why closes matter more than highs and lows.
+
+---
+
+### The Body - The Most Important Part
 
 The body is the thick part of the candle between the open and close. It shows you who won that battle:
 - **Green/White body** = Buyers won (price closed higher than it opened)
 - **Red/Black body** = Sellers won (price closed lower than it opened)
 
 The size of the body tells you how decisive the victory was.
+
+**What the body really means:**
+
+> The body shows where agreement was sustained.
+
+**Large bullish body (close much higher than open):**
+1. Buyers were willing to pay higher prices
+2. Sellers who wanted cheaper prices disappeared
+3. Trades kept happening at progressively higher prices
+4. Buyers accepted those prices anyway
+5. Agreement kept moving upward until time ran out
+
+**Large bearish body (close much lower than open):**
+The exact mirror - sellers controlled the terms, buyers stepped back, agreement kept moving downward.
+
+**Small body (doji-like):**
+- Buyers tried
+- Sellers tried
+- Neither side could sustain progress
+- Agreement oscillated
+- Ended near where it started
+
+Lots of activity. Little resolution.
+
+---
 
 ### Wicks (Shadows)
 
@@ -27,6 +76,63 @@ The thin lines above and below the body. These are important because they show *
 - **Lower wick** = Sellers pushed price down, but buyers rejected it and pushed it back up
 
 The longer the wick, the stronger the rejection.
+
+**What the wick really means:**
+
+> The wick shows where agreement failed.
+
+Price went there. Trades happened. But agreement collapsed and price couldn't stay.
+
+---
+
+### Body vs Wick - The Clean Distinction
+
+This is crucial to understand:
+
+> The body shows where agreement was sustained.
+> The wick shows where agreement failed.
+
+- Body = accepted prices
+- Wick = rejected prices
+
+---
+
+### The Body-Wick Ratio
+
+To understand the market, look at the ratio between body and wick:
+
+**Long body / Short wick = One-sided control**
+One side dominated. The engine moved price in one direction with almost no resistance.
+
+**Short body / Long wick = Rejection**
+One side tried to move price but hit a wall of orders so large they were pushed all the way back.
+
+---
+
+### Why Momentum Candles Look "Strong"
+
+A momentum candle has:
+- Large body
+- Small or no opposite wick
+
+This means:
+- One side pushed
+- The other side did not meaningfully resist
+- Agreement shifted smoothly
+
+Nothing mystical. Just low opposition.
+
+---
+
+### Why Reversal Candles Have Long Wicks + Small Bodies
+
+This means:
+- One side tried hard
+- The other side absorbed it
+- Agreement snapped back
+- Control changed hands
+
+That's a fight - not a trend.
 
 ---
 
