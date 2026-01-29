@@ -117,6 +117,70 @@ Professionals think differently. They:
 
 You're not a fortune teller. You're a probability manager.
 
+---
+
+## Understanding Probability: The Core Truth of Trading
+
+Trading is not about being right or wrong. It is purely about probability. The more you understand probability, the better trader you'll become. Trading is purely about the odds and the edge.
+
+### The Weighted Coin Analogy
+
+Imagine you have a coin that is weighted to land on heads 55% of the time. You know that over a series of flips, on average, it will land on heads more than tails. But here's the crucial part: knowing that the coin is weighted 55% towards heads does not tell you which specific flip will be heads or tails. It just tells you that over a series of flips, there's an edge - a higher probability and likelihood for it to land on heads.
+
+Trading works exactly the same way.
+
+### Why This Matters: The Emotional Trap
+
+Here's where most traders go wrong. We attach an emotional response to what we see in the market and to our trades. We try to figure out which trade will be successful and which won't. We go so far as to say - and to act - that we only take trades we believe will be successful. And if we don't believe a particular trade will be successful, we won't take the trade at all.
+
+But that's fundamentally flawed thinking. Would you refuse to flip the weighted coin because you thought this particular flip might land on tails?
+
+Think about it in the context of the coin. You don't try to guess which flip will be heads or tails. You don't get frustrated or feel betrayed or disappointed when the coin lands on tails. Because you know over time, it's weighted to favour heads. There's no need for an emotional response to each individual flip.
+
+The same applies to trading.
+
+### Process Over Outcome
+
+You're not supposed to think. You're not supposed to assess each trade as if you can predict its outcome. You're supposed to carry out the process from start to finish with complete indifference to the result.
+
+We have to learn how to appreciate the journey besides the outcome. Besides the destination. We have to carry out the process irrespective of the result. That's what we have to learn as traders.
+
+We get disappointed and feel betrayed when we assign some sort of certainty to our trades. We only take trades that we believe will be successful. But it's not our job to believe in any one individual trade. It's our responsibility to believe in a series of trades, over probability, over a long time horizon.
+
+**It's not about taking the next trade. It's about taking the next 20 trades.**
+
+We have to learn how to zoom out our horizon. Less focus on each individual trade. More focus on trades overall. That is our responsibility.
+
+### Expecting to Lose
+
+This understanding has a direct correlation to our expectations. Because now we actually expect to lose - on some trades.
+
+Once you understand that your trading strategy is not a prediction but an edge, you lose that emotional response to events in the market. You stop feeling betrayed. You stop getting disappointed. You stop getting excited. And you just get on with your day, following the process through and through.
+
+It's not a prediction. It's an edge. It's "if I roll the dice enough times, I will end up with heads more times than tails." You could get tails six times in a row, but that doesn't mean anything inherently. It doesn't change the fact that over time, probability determines you'll get heads more often than tails.
+
+So it's not your responsibility to guess, to figure out, or to analyse which trades will be successful. It's your responsibility to follow the process from start to finish, irrespective of the outcome.
+
+### Each Trade is 50/50
+
+Here's a liberating truth: each individual trade has roughly a 50% chance of winning or losing. But on a wider scale, that's where the edge comes into play.
+
+We also get into trouble when we start assigning relationships between trades. It's dangerous territory to say "because the last three coin flips were tails, the next one should be heads." That's not how probability works.
+
+Likewise, when we create relationships between trades, that's where we start getting disappointed. "The last trade worked. The last trade was successful. So therefore this one must also be successful."
+
+We place too much importance on each individual trade.
+
+### Every Trade is Unique
+
+The exact same setup, the exact same price action, can have two very different results. When one setup gives us a successful trade, and then the exact same setup appears again, we create a pattern in our heads. We assume that because it worked last time, it must work this time.
+
+And that's where disappointment comes. That's where the feeling of betrayal comes. But it's all false. It's all fabricated.
+
+**Every trade is a completely unique circumstance. We cannot create relationships or patterns between individual trades.**
+
+---
+
 ### Trading is **not** gambling.
 
 The majority of traders see it as gambling or a luck-based game. It's not.

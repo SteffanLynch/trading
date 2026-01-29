@@ -11,6 +11,18 @@ Notice that "bad strategy" isn't on the list. Most traders don't fail because th
 
 ---
 
+## The Emotional Trap
+
+Here's where most traders go wrong. We attach an emotional response to what we see in the market and to our trades. We try to figure out which trade will be successful and which won't. We go so far as to say - and to act - that we only take trades we believe will be successful. And if we don't believe a particular trade will be successful, we won't take the trade at all.
+
+But that's fundamentally flawed thinking. Your job isn't to predict individual trades. Your job is to execute a system that has an edge over many trades.
+
+We get disappointed and feel betrayed when we assign some sort of certainty to our trades. We only take trades that we believe will be successful. But it's not our job to believe in any one individual trade. It's our responsibility to believe in a series of trades, over probability, over a long time horizon.
+
+> This concept is explored in depth in [Understanding Probability: The Core Truth of Trading](01-what-is-trading.md#understanding-probability-the-core-truth-of-trading).
+
+---
+
 ## Emotional Trading
 
 Most people can't get a handle on their emotions when money is on the line. It takes a lot of being exposed to those emotions to be able to conquer them and keep them in check.
@@ -36,6 +48,11 @@ Most people can't get a handle on their emotions when money is on the line. It t
 - Frustration after losses leads to revenge trading
 - Anger makes you abandon your plan and take stupid trades
 - One emotional trade can undo a week of good work
+
+**Disappointment/Betrayal**
+- We feel disappointed when a trade doesn't go our way
+- We feel betrayed when we did "everything right" but still lost
+- These feelings come from assigning certainty to individual trades - expecting them to work out because we believed in them
 
 ### Rules to Follow
 
@@ -82,6 +99,22 @@ You can't make a fair evaluation of something if the conditions keep changing ev
 
 ---
 
+## The Danger of Creating Patterns
+
+We get into trouble when we start assigning relationships between trades. It's dangerous territory to say "because the last three trades were losers, the next one should be a winner." That's not how probability works.
+
+When we create relationships between trades, that's where we start getting disappointed. "The last trade worked. The last trade was successful. So therefore this one must also be successful."
+
+The exact same setup, the exact same price action, can have two very different results. When one setup gives us a successful trade, and then the exact same setup appears again, we create a pattern in our heads. We assume that because it worked last time, it must work this time.
+
+And that's where disappointment comes. That's where the feeling of betrayal comes. But it's all false. It's all fabricated.
+
+**Every trade is a completely unique circumstance. We cannot create relationships or patterns between individual trades.**
+
+We place too much importance on each individual trade. It's not our job to believe in any one individual trade. It's our responsibility to believe in a series of trades, over probability, over a long time horizon.
+
+---
+
 ## Things to Remember
 
 ### Right Idea, Wrong Time
@@ -93,6 +126,12 @@ That's okay. Don't take it personally. It's not a reflection of your strategy.
 The market doesn't owe you anything. Even the best setups fail sometimes. What matters is whether your setup wins more often than it loses over many trades.
 
 Just keep it stepping. Not every trade will be a winner.
+
+### Your Strategy is an Edge, Not a Prediction
+
+Once you understand that your trading strategy is not a prediction but an edge, you lose that emotional response to events in the market. You stop feeling betrayed. You stop getting disappointed. You stop getting excited. And you just get on with your day, following the process through and through.
+
+Each individual trade has roughly a 50% chance of winning or losing. But on a wider scale, that's where the edge comes into play. It's not your responsibility to guess or analyse which trades will be successful. It's your responsibility to follow the process from start to finish, irrespective of the outcome.
 
 ### Manage Your Expectations
 
@@ -111,6 +150,16 @@ It takes education and practice to become successful, and most people skip out o
 No patience. People want to get rich overnight. After a couple of months when they realise they can't get rich overnight from trading, they just quit.
 
 Don't be that person. Don't rush.
+
+### Expect to Lose
+
+Understanding probability has a direct impact on your expectations. Because now you actually expect to lose - on some trades.
+
+This is liberating. When you expect losses as part of the process, they stop hurting. You stop assigning meaning to individual outcomes. A loss is just one data point in a long series of trades.
+
+**It's not about taking the next trade. It's about taking the next 20 trades.**
+
+We have to learn how to zoom out our horizon. Less focus on each individual trade. More focus on trades overall. That is our responsibility as traders.
 
 ### Trust Your System, Not Yourself
 
