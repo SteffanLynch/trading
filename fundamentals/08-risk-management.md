@@ -3,6 +3,10 @@
 
 Risk management is how you protect your trading account from losing too much money. It's the most important skill in trading.
 
+Position sizing controls how much you can lose.
+Margin and leverage control whether you’re allowed to place the trade at all.
+They exist between you and the broker, not between you and the market.
+
 **Why traders fail:**
 1. Poor psychology (emotions, discipline)
 2. Poor risk management
@@ -118,6 +122,149 @@ Example (GBPUSD on most brokers):
 
 This is the **constant**.
 
+## Notional Value
+
+Imagine you "control" an apartment building worth £100,000. You don't own it. You just have a contract that says: "Any change in the building's value belongs to me."
+
+- If the building value goes to £105,000, you just made £5,000 in "real" cash, even though you never actually had £100,000.
+- If the value goes to £95,000, you owe £5,000.
+
+**The £100,000 is the "weight" of your trade.** It's the reason why a tiny 1-pip move—which is a microscopic change in price—actually results in a £10 change in your account.
+
+**Your Profit and Loss is calculated ONLY on the Notional Value (£100,000).**
+
+So when people say:
+
+>“You are controlling £100,000”
+
+They mean this **and only this**:
+
+> **Your profit and loss is calculated *as if* the position were £100,000 in size.**
+
+The "£100,000" is just a notional value. It’s the size of the bet.
+
+The market simply tracks the change in value of that £100,000. If the value goes up 1%, the broker credits your account with £1,000. If it goes down 1%, they take £1,000 from you.
+
+This is why the word *“control”* is misleading.
+
+You are **not controlling money**.
+
+You are **exposed to price movement**.
+
+You are trading **real P/L**, calculated from a **reference size**.
+
+It is not "fake" money; it is **Market Exposure.**
+
+Think of it this way (very literally):
+
+- The market moves in price units
+- Your account moves in money units
+- The notional value is the **exchange rate between the two**
+
+```
+Notional value = Margin × Leverage
+```
+
+**Example:**
+
+1. You buy 1.00 Lot (Notional Value: **£100,000**).
+2. The price of the Pound goes up by **1%**.
+3. **Calculation:** 1% of £100,000 = **£1,000 Profit.**
+
+**Look at what that means for your "real" money:**
+
+- You used **£3,333** to make **£1,000**.
+- That is a **30% return** on your deposited money, even though the market only moved **1%**.
+
+If notional value were meaningless:
+
+- Pip values wouldn’t scale
+- Lot size wouldn’t matter
+- Risk control wouldn’t work
+
+But in reality:
+
+- Change lot size → P/L speed changes
+- Change stop → loss amount changes
+- Change leverage → margin requirement changes
+
+## Leverage
+
+Leverage is a rule the broker sets that answers this question: “How much of the contract’s notional value must you post as collateral?”
+
+In other words: “How much of my own money do I need to put down to open this trade?” or more simply “How much notional exposure am I allowed per £1 of margin?”
+
+**1:30 leverage** is the typical leverage on major FX pairs
+
+This means:
+
+> To control £30 of contract value, you must provide £1 of margin
+
+Or flipped:
+
+> You must post **~3.33%** of the contract value as margin.
+
+Similar to to lot sizes, it is purely a multiplier.
+
+- Leverage does not increase risk by itself.
+- Leverage affects capital efficiency, not loss magnitude.
+- Leverage does NOT increase your ability to trade — it increases the broker’s risk that you cannot pay.
+
+Leverage determines:
+- Maximum position size you’re allowed to open
+- How much free margin you retain
+- How much exposure you’re allowed to take for a given amount of your own money.
+- Whether you get a **margin call / stop-out** before your stop is hit
+
+This is how people blow accounts (and it's not because of leverage):
+
+They:
+- use big lot sizes
+- lock too much margin
+- leave no breathing room
+
+Then:
+- price moves a little
+- losses eat their free money
+- broker closes the trade early
+
+> Leverage has absolutely nothing to do with your £1,000 risk. The 1:30 leverage does not connect Risk to Margin; it connects Margin to Notional Value.
+
+> Leverage connects margin to notional value.
+> Risk connects lot size to stop distance.
+
+If you understand that Profit and Loss is calculated on the £100,000 Notional Value, then you realize that leverage is simply the "permission" to control a massive amount of money with a tiny amount of your own.
+
+Leverage doesn't change how much you *profit* (that’s determined by your lot size), but it changes how much **Free Margin** you have left to survive price fluctuations.
+
+## Margin 
+
+Money the broker locks as a deposit while a trade is open. You don’t lose it when you open the trade. It’s just “held” so you can’t use it for other trades
+
+“How much money is locked while the trade is open?”
+“How much of my money must be locked to hold this notional exposure?”
+
+> **The amount of your account balance the broker temporarily locks as collateral while the trade is open.**
+
+Important:
+
+- It is **not a cost**
+- It is **not money you lose**
+- It is **released when the trade is closed**
+- It has **nothing to do with your stop loss**
+
+Margin is derived only from notional value and leverage.
+
+It is the maximum pool your losses are taken from while the trade is open.
+
+> Risk tells you how much you lose if you’re wrong.
+> Margin tells you how much pain you can survive before you’re forced out.
+
+### Free Margin
+
+Money still available to absorb losses / open new trades
+Free Margin = Equity − Margin
+
 ## Position Sizes
 
 This is important psychologically.
@@ -197,6 +344,8 @@ A “full contract size” is the definition of the instrument.
 A “lot” is how much of that contract you choose to trade.
 
 > Lot size controls how expensive each pip is.
+> Lot size decides how sensitive your P/L is to price movement.
+> Lot size directly determines notional value.
 
 **“Full contract” and “1.00 lot” are the same thing**
 
@@ -293,13 +442,67 @@ If your stop loss gets hit, you lose exactly $100 (1% of your account). No more,
 | Minimum 1:2 risk to reward | Allows profitability even with lower win rates |
 | Calculate position size based on stop loss | Ensures consistent risk across all trades |
 
-## Think of it like this (no trading terms)
+## Putting it all together: The Complete Mechanical Chain
 
 - The **lot** = size of the engine
 - The **pip** = how far the wheel turns
 - The **pip value** = how fast your fuel burns
 
 Bigger engine + same movement = more fuel burned.
+
+Lot size sets exposure.
+Exposure sets margin (through leverage).
+Lot size also sets risk (through stop distance).
+Risk and margin are related only indirectly, via lot size.
+
+Notional value is a measuring stick, not a pile of money.
+Margin is a deposit, not a cost.
+Risk is a rule, not a mechanism.
+Profit and loss are real and come from price movement × notional size.
+
+You are not trading money.
+You are trading price movement, and money is calculated from it.
+
+To keep this crystal clear, we are going to use your **£1,000 Risk** and a **20 Pip Stop Loss**. We will follow the money through the four specific "gears" of the machine.
+
+1. YOUR GOAL (The Risk Management)
+
+You want to lose exactly **£1,000** if the market moves **20 pips**.
+
+- **The Math:** £1,000 ÷ 20 pips = **£50.00 per pip.**
+- *This is the "Pay Rate" you need your trade to have.*
+
+2. THE CALCULATION (The Lot Size)
+
+On GBP/USD, 1.00 Lot pays roughly **£8.33 per pip** (based on $10/pip divided by a 1.20 exchange rate).
+
+- **The Math:** £50.00 (Needed) ÷ £8.33 (Standard Rate) = **6.00 Lots.**
+- *This is the "Knob" you turn in MT5.*
+
+3. THE NOTIONAL VALUE (The Market Exposure)
+
+The market doesn't see your £1,000 risk; it only sees the weight of your 6.00 Lots.
+
+- **The Math:** 6.00 Lots × £100,000 (Standard Contract) = **£600,000.**
+- *This is the "Notional Value." It is the total value of the "asset" you are now controlling.*
+
+4. THE LEVERAGE & MARGIN (The Broker's Permission)
+
+The broker sees you are controlling **£600,000**. Because Vantage UK uses **1:30 leverage**, they require you to post **1/30th** of that value as a security deposit.
+
+- **The Math:** £600,000 ÷ 30 = **£20,000.**
+- *This is the "Margin." This is the money locked in your account.*
+
+**The Relationship Table:**
+| **Component** | **Value** | **The Mathematical Mechanic** |
+| --- | --- | --- |
+| **Risk** | **£1,000** | Your chosen "Exit Penalty." |
+| **Stop Loss** | **20 Pips** | The distance to your exit. |
+| **Lot Size** | **6.00 Lots** | The multiplier needed to make 20 pips = £1,000. |
+| **Notional Value** | **£600,000** | The actual weight of 6.00 Lots ($6.00 \times 100k$). |
+| **Leverage** | **1:30** | The "Divider" the broker uses for your deposit. |
+| **Margin** | **£20,000** | The **1/30th** of the Notional Value. |
+
 
 Risk management isn't exciting, but it's what separates traders who survive from those who blow up their accounts.
 
