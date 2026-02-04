@@ -122,6 +122,86 @@ Example (GBPUSD on most brokers):
 
 This is the **constant**.
 
+## Contracts
+
+Before we move to lots, we have to understand contract sizes.
+
+**Contract size** answers this question:
+
+> “If I trade **1.00 lot**, how many units does that represent?”
+
+This is defined by:
+
+- The market
+- The broker (e.g. **Vantage**)
+- Enforced by the platform (e.g. **MetaTrader 5**)
+
+You do **not** choose this.
+
+You do **not** change this.
+
+The contract size never changes per instrument, per broker.
+
+It is part of the instrument’s DNA.
+
+In physics, you'd call it a physical constant.
+
+## Lots
+
+**What is a lot?**
+
+A lot is a multiplier. That's all.
+It’s a multiplier applied to a fixed contract size.
+
+A lot is a ratio you adjust and scale to match your account size and risk according to a fixed quantity - contract sizes.
+
+When thinking about lots in relation to pips, you have to say: “I am NOT calculating risk-per-pip from lot size. I am SCALING a known price-per-pip down to match my risk-per-pip”
+
+A “full contract size” is the definition of the instrument.
+A “lot” is how much of that contract you choose to trade.
+
+> Lot size controls how expensive each pip is.
+> Lot size decides how sensitive your P/L is to price movement.
+> Lot size directly determines notional value.
+
+**“Full contract” and “1.00 lot” are the same thing**
+
+> Fundamentally, a lot (size), answers the question:
+> *“How many multiples (or fractions) of the contract size am I trading?”*
+> “If price moves by 1 pip on my trade, how much money changes?”
+> “What lot size scales the reference money-per-pip at 1.00 lot down to £X per pip for my trade?”
+
+For example, let's say we know:
+- Risk = £100
+- Stop loss = 50 pips
+
+Target £/pip = Risk Amount ÷ Stop (pips)
+
+Now we ask a different question:
+
+> “What lot size gives me £2 per pip?”
+
+That’s all lot size does.
+
+It **sets risk value amount pip of movement** for our trade.
+
+> **FUNDAMENTALLY, THIS IS WHAT WE MEAN BY "RISK PER TRADE"**
+> CALCULATING OUR LOT SIZE IS WHAT IT ALL BOILS DOWN TO. 
+
+You **never** decide lot size first.
+
+You decide **risk (amount) first**, and lot size is just the *result*.
+
+**Standard lot sizes in forex:**
+| Lot Type | Size | Value per Pip (approx) |
+|----------|------|------------------------|
+| Standard | 100,000 units | $10 per pip |
+| Mini | 10,000 units | $1 per pip |
+| Micro | 1,000 units | $0.10 per pip |
+
+The larger your lot size, the more money you make or lose for each pip of movement.
+
+
 ## Notional Value
 
 Imagine you "control" an apartment building worth £100,000. You don't own it. You just have a contract that says: "Any change in the building's value belongs to me."
@@ -304,85 +384,6 @@ It goes like this:
 4. I set the knob of my trade that sets **£ per pip**
 
 And the question of "how big must my trade be" or "the knob" is our core, underlying main mission...
-
-## Contracts
-
-Before we move to lots, we have to understand contract sizes.
-
-**Contract size** answers this question:
-
-> “If I trade **1.00 lot**, how many units does that represent?”
-
-This is defined by:
-
-- The market
-- The broker (e.g. **Vantage**)
-- Enforced by the platform (e.g. **MetaTrader 5**)
-
-You do **not** choose this.
-
-You do **not** change this.
-
-The contract size never changes per instrument, per broker.
-
-It is part of the instrument’s DNA.
-
-In physics, you'd call it a physical constant.
-
-## Lots
-
-**What is a lot?**
-
-A lot is a multiplier. That's all.
-It’s a multiplier applied to a fixed contract size.
-
-A lot is a ratio you adjust and scale to match your account size and risk according to a fixed quantity - contract sizes.
-
-When thinking about lots in relation to pips, you have to say: “I am NOT calculating risk-per-pip from lot size. I am SCALING a known price-per-pip down to match my risk-per-pip”
-
-A “full contract size” is the definition of the instrument.
-A “lot” is how much of that contract you choose to trade.
-
-> Lot size controls how expensive each pip is.
-> Lot size decides how sensitive your P/L is to price movement.
-> Lot size directly determines notional value.
-
-**“Full contract” and “1.00 lot” are the same thing**
-
-> Fundamentally, a lot (size), answers the question:
-> *“How many multiples (or fractions) of the contract size am I trading?”*
-> “If price moves by 1 pip on my trade, how much money changes?”
-> “What lot size scales the reference money-per-pip at 1.00 lot down to £X per pip for my trade?”
-
-For example, let's say we know:
-- Risk = £100
-- Stop loss = 50 pips
-
-Target £/pip = Risk Amount ÷ Stop (pips)
-
-Now we ask a different question:
-
-> “What lot size gives me £2 per pip?”
-
-That’s all lot size does.
-
-It **sets risk value amount pip of movement** for our trade.
-
-> **FUNDAMENTALLY, THIS IS WHAT WE MEAN BY "RISK PER TRADE"**
-> CALCULATING OUR LOT SIZE IS WHAT IT ALL BOILS DOWN TO. 
-
-You **never** decide lot size first.
-
-You decide **risk (amount) first**, and lot size is just the *result*.
-
-**Standard lot sizes in forex:**
-| Lot Type | Size | Value per Pip (approx) |
-|----------|------|------------------------|
-| Standard | 100,000 units | $10 per pip |
-| Mini | 10,000 units | $1 per pip |
-| Micro | 1,000 units | $0.10 per pip |
-
-The larger your lot size, the more money you make or lose for each pip of movement.
 
 ## Risk Per Trade
 
