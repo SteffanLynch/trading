@@ -188,7 +188,7 @@ It **sets risk value amount pip of movement** for our trade.
 > **FUNDAMENTALLY, THIS IS WHAT WE MEAN BY "RISK PER TRADE"**
 > CALCULATING OUR LOT SIZE IS WHAT IT ALL BOILS DOWN TO. 
 
-You **never** decide lot size first.
+You **never** decide lot size first
 
 You decide **risk (amount) first**, and lot size is just the *result*.
 
