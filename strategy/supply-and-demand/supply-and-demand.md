@@ -31,37 +31,17 @@ So it's always in the context of some level of support and resistance.
 
 ### Step 1: Mark Support and Resistance
 
+**Identify market structure with breaks of structure.**
+
 First I zoom out into a high-level overview of the 15-minute chart. I mark the support and resistance lines, but only mark the lines relative to where price action is at currently. If there are more, mark them.
-
-### Step 2: Find Supply/Demand Zones
-
-I find the indecision (supply and demand) within the bounds of support and resistance.
-
-### Step 3: Trade the Zone
-
-I trade that supply/demand zone and target the respective support or resistance, depending which direction the move is in.
-
----
-
-## My Timeframe Approach
-
-One key note: I don't change timeframes.
-
-Rather than doing the standard method of top-down analysis (e.g., 4-hour down to 1-hour down to 15-minute), I just stick on the 15-minute.
 
 If I want to see the higher timeframe, I just zoom out so it's more small scale, but I can see the bigger moves within the 15-minute. At that scale, you can't see the detail of the individual candles, but that's alright - you can still see the general move.
 
 I just find that easier for myself.
 
----
+### Step 2: Find Supply/Demand Zones
 
-## The Setup
-
-### 1. Identify Market Structure
-
-Identify market structure with breaks of structure.
-
-### 2. Identify Imbalanced Supply or Demand Zones
+I find the indecision (supply and demand) within the bounds of support and resistance.
 
 We're looking for:
 - Demand or supply zones
@@ -69,11 +49,27 @@ We're looking for:
 - Followed by imbalance (momentum candle)
 - Unmitigated
 
-### 3. Set Your Orders
 
-- Set a limit order at the zone
-- Take profit: the opposite level of structure
-- Stop loss: at the edge of the indecision zone (or the most key level if it is close enough)
+### Step 3: Trade the Zone
+
+I trade that supply/demand zone and target the respective support or resistance, depending which direction the move is in.
+
+---
+
+## The Setup
+
+### The Entry
+
+Set a limit order at the zone
+
+### The Stop Loss
+
+At the edge of the indecision zone (or the most key level if it is close enough)
+
+
+### The Take Profit
+
+The opposite level of structure
 
 ---
 

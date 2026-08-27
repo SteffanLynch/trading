@@ -48,6 +48,21 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Break & retest',
+          items: [
+            'strategy/break-and-retest/break-and-retest',
+            {
+              type: 'category',
+              label: 'Chart studies',
+              items: [
+                'strategy/break-and-retest/examples/break-of-structure-example',
+                'strategy/break-and-retest/examples/double-top-trend-reversal-example',
+              ],
+            },
+          ],
+        },
       ],
     },
     {
