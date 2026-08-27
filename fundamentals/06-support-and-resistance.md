@@ -1,3 +1,4 @@
+# Support and Resistance
 
 ## Support and Resistance are the Fundamentals
 

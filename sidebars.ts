@@ -6,6 +6,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Orientation',
       collapsible: false,
+      className: 'sidebar-hidden-item',
       items: ['README', 'manifesto'],
     },
     {

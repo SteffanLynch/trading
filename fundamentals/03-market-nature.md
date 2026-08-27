@@ -1,3 +1,4 @@
+# The Nature of the Market
 
 ## The Market is Fractal
 

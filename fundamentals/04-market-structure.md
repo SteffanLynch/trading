@@ -1,3 +1,4 @@
+# Market Structure
 
 The market is always doing one of two things: **trending** or **consolidating**. Understanding which state the market is in determines how you trade it.
 

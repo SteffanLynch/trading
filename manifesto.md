@@ -1,3 +1,7 @@
+---
+sidebar_class_name: sidebar-hidden-item
+---
+
 # My Trading Manifesto
 
 *Read this before every trading session.*
