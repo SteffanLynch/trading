@@ -21,6 +21,22 @@ describe('sanitizeValue', () => {
   });
 });
 
+describe('list fields', () => {
+  const listSpecs: FieldSpecs<'rows'> = {rows: {default: '10:100,12:200', list: true, maxLength: 200}};
+
+  it('keep their commas and accept longer values', () => {
+    expect(buildQuery(listSpecs, {rows: '10:100,12:200,14:50'})).toBe('rows=10%3A100%2C12%3A200%2C14%3A50');
+    expect(buildQuery(listSpecs, {rows: '10:100,12:200'})).toBe('');
+    const long = Array.from({length: 12}, (_, i) => `${i + 1}:10`).join(',');
+    expect(readParams(listSpecs, `?rows=${encodeURIComponent(long)}`)).toEqual({rows: long});
+  });
+
+  it('still refuse anything unsafe or too long', () => {
+    expect(readParams(listSpecs, '?rows=%3Cscript%3E')).toEqual({});
+    expect(readParams(listSpecs, `?rows=${'1'.repeat(201)}`)).toEqual({});
+  });
+});
+
 describe('buildQuery / readParams', () => {
   it('omits fields that match their defaults', () => {
     expect(buildQuery(specs, defaultValues(specs))).toBe('');

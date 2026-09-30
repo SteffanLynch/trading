@@ -27,9 +27,9 @@ export default function Page(): ReactNode {
         </p>
       }
       faqs={[
-        {q: 'How do I calculate margin?', a: 'Divide the full value of the position by your leverage. A $50,000 position at 30:1 needs about $1,667 of margin.'},
+        {q: 'How is margin calculated?', a: 'Divide the full value of the position by your leverage. A $50,000 position at 30:1 needs about $1,667 of margin.'},
         {q: 'Does higher leverage mean more risk?', a: 'Leverage on its own only changes how much margin you must post. Your risk comes from position size and stop distance. But high leverage makes it easy to open a position that is large relative to your account, and effective leverage is what determines how much a price move hurts.'},
-        {q: 'What leverage can I use?', a: 'It depends on your broker and jurisdiction. Retail traders in the UK and EU are typically limited to 30:1 on major currency pairs, with lower limits on other instruments. Check your broker’s terms.'},
+        {q: 'What leverage is available?', a: 'It depends on your broker and jurisdiction. Retail traders in the UK and EU are typically limited to 30:1 on major currency pairs, with lower limits on other instruments. Check your broker’s terms.'},
         {q: 'What is a margin call?', a: 'A warning from your broker when your equity falls too close to the margin your positions require, often followed by automatic closing of positions (a stop-out). The exact levels are set by the broker and are not modelled here.'},
       ]}
       learn={[

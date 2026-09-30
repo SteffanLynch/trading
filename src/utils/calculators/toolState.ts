@@ -10,22 +10,28 @@ export interface FieldSpec {
   options?: readonly string[];
   /** Remember this field between visits and across calculators (browser localStorage only). */
   pref?: boolean;
+  /** Longest value accepted from a link. Defaults to 24, enough for a number; list fields need more. */
+  maxLength?: number;
+  /** Keep commas as separators (list fields such as "10:100,12:200") instead of treating them as thousands separators. */
+  list?: boolean;
 }
 
 export type FieldSpecs<K extends string> = Record<K, FieldSpec>;
 export type FieldValues<K extends string> = Record<K, string>;
 
-const SAFE_VALUE = /^[\w.,+\-%: ]{0,24}$/;
+const SAFE_VALUE = /^[\w.,+\-%: ]*$/;
+const DEFAULT_MAX_LENGTH = 24;
 
 /** Returns the value if it is acceptable for the field, otherwise `null`. */
 export function sanitizeValue(spec: FieldSpec, raw: string): string | null {
   if (spec.options) return spec.options.includes(raw) ? raw : null;
-  return SAFE_VALUE.test(raw) ? raw : null;
+  return raw.length <= (spec.maxLength ?? DEFAULT_MAX_LENGTH) && SAFE_VALUE.test(raw) ? raw : null;
 }
 
 function normalise(spec: FieldSpec, value: string): string {
   // Thousands separators are only ever formatting, so links stay clean (balance=10000, not 10,000).
-  return spec.options ? value : value.replace(/,/g, '').trim();
+  if (spec.options) return value;
+  return spec.list ? value.trim() : value.replace(/,/g, '').trim();
 }
 
 export function defaultValues<K extends string>(specs: FieldSpecs<K>): FieldValues<K> {

@@ -36,7 +36,7 @@ export default function Page(): ReactNode {
         },
       ]}
       faqs={[
-        {q: 'How do I calculate the gain needed to recover from a loss?', a: 'Divide 1 by the fraction of your balance you have left, then subtract 1. If you have 80% left, 1 ÷ 0.8 − 1 = 25%.'},
+        {q: 'How is the gain needed to recover from a loss calculated?', a: 'Divide 1 by the fraction of your balance you have left, then subtract 1. If you have 80% left, 1 ÷ 0.8 − 1 = 25%.'},
         {q: 'Why is recovery bigger than the loss?', a: 'Because the percentage gain is applied to a smaller balance. A 50% loss leaves half your money, so you need to double what is left.'},
         {q: 'Is a 100% loss recoverable?', a: 'No. If the balance reaches zero there is nothing left to grow, which is why the calculator stops at 90%.'},
       ]}

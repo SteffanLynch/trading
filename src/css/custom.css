@@ -205,7 +205,11 @@ kbd {
   font-size: clamp(3.5rem, 15vw, 12rem); line-height: 0.85; color: transparent;
   -webkit-text-stroke: 1.5px rgba(244, 241, 234, 0.22); user-select: none;
 }
-.footer-fine { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; }
+.footer-legal { max-width: 52rem; margin-top: 1rem; }
+.footer-legal p { margin: 0 0 0.45rem; color: #8a93ad; font-size: 0.78rem; line-height: 1.65; }
+.footer-legal .footer-company { color: #d6dbee; font-size: 0.92rem; }
+.footer-legal strong { color: #c8ff4d; font-weight: 700; }
+.footer-fine { margin-top: 0.9rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; }
 
 /* ---------- library / docs ---------- */
 .theme-doc-sidebar-container { border-right-color: var(--line) !important; }

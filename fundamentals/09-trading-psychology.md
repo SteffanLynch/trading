@@ -13,11 +13,11 @@ Notice that "bad strategy" isn't on the list. Most traders don't fail because th
 
 ## The Emotional Trap
 
-Here's where most traders go wrong. We attach an emotional response to what we see in the market and to our trades. We try to figure out which trade will be successful and which won't. We go so far as to say - and to act - that we only take trades we believe will be successful. And if we don't believe a particular trade will be successful, we won't take the trade at all.
+Here's where most traders go wrong. They attach an emotional response to what they see in the market and to their trades. They try to figure out which trade will be successful and which won't. They go so far as to say - and to act - that they only take trades they believe will be successful. And if they don't believe a particular trade will be successful, they won't take the trade at all.
 
 But that's fundamentally flawed thinking. Your job isn't to predict individual trades. Your job is to execute a system that has an edge over many trades.
 
-We get disappointed and feel betrayed when we assign some sort of certainty to our trades. We only take trades that we believe will be successful. But it's not our job to believe in any one individual trade. It's our responsibility to believe in a series of trades, over probability, over a long time horizon.
+Traders get disappointed and feel betrayed when they assign some sort of certainty to their trades. They only take trades they believe will be successful. But it's not the job of a trader to believe in any one individual trade. The responsibility is to believe in a series of trades, over probability, over a long time horizon.
 
 > This concept is explored in depth in [Understanding Probability: The Core Truth of Trading](01-what-is-trading.mdx#understanding-probability-the-core-truth-of-trading).
 
@@ -50,9 +50,9 @@ Most people can't get a handle on their emotions when money is on the line. It t
 - One emotional trade can undo a week of good work
 
 **Disappointment/Betrayal**
-- We feel disappointed when a trade doesn't go our way
-- We feel betrayed when we did "everything right" but still lost
-- These feelings come from assigning certainty to individual trades - expecting them to work out because we believed in them
+- Disappointment follows when a trade doesn't go the way it was expected to
+- Betrayal is felt when "everything was done right" but the trade still lost
+- These feelings come from assigning certainty to individual trades - expecting them to work out because they were believed in
 
 ### Rules to Follow
 
@@ -64,9 +64,9 @@ Most people can't get a handle on their emotions when money is on the line. It t
 
 ### The Hard Truth
 
-Good trading practices are very much counter to our natural instincts.
+Good trading practices are very much counter to natural instincts.
 
-When things are going well, we are afraid they will stop going well. When things are going bad, we hope they will turn around.
+When things are going well, there is fear that they will stop going well. When things are going badly, there is hope that they will turn around.
 
 This leads to traders:
 - Taking very small gains the moment they're up on a position
@@ -101,17 +101,17 @@ You can't make a fair evaluation of something if the conditions keep changing ev
 
 ## The Danger of Creating Patterns
 
-We get into trouble when we start assigning relationships between trades. It's dangerous territory to say "because the last three trades were losers, the next one should be a winner." That's not how probability works.
+Trouble starts when relationships are assigned between trades. It's dangerous territory to say "because the last three trades were losers, the next one should be a winner." That's not how probability works.
 
-When we create relationships between trades, that's where we start getting disappointed. "The last trade worked. The last trade was successful. So therefore this one must also be successful."
+Creating relationships between trades is where disappointment starts. "The last trade worked. The last trade was successful. So therefore this one must also be successful."
 
-The exact same setup, the exact same price action, can have two very different results. When one setup gives us a successful trade, and then the exact same setup appears again, we create a pattern in our heads. We assume that because it worked last time, it must work this time.
+The exact same setup, the exact same price action, can have two very different results. When one setup gives a successful trade, and then the exact same setup appears again, a pattern is created in the mind. The assumption is that because it worked last time, it must work this time.
 
 And that's where disappointment comes. That's where the feeling of betrayal comes. But it's all false. It's all fabricated.
 
-**Every trade is a completely unique circumstance. We cannot create relationships or patterns between individual trades.**
+**Every trade is a completely unique circumstance. Relationships or patterns cannot be created between individual trades.**
 
-We place too much importance on each individual trade. It's not our job to believe in any one individual trade. It's our responsibility to believe in a series of trades, over probability, over a long time horizon.
+Too much importance gets placed on each individual trade. It's not the job of a trader to believe in any one individual trade. The responsibility is to believe in a series of trades, over probability, over a long time horizon.
 
 ---
 
@@ -159,7 +159,7 @@ This is liberating. When you expect losses as part of the process, they stop hur
 
 **It's not about taking the next trade. It's about taking the next 20 trades.**
 
-We have to learn how to zoom out our horizon. Less focus on each individual trade. More focus on trades overall. That is our responsibility as traders.
+The horizon has to be zoomed out. Less focus on each individual trade. More focus on trades overall. That is the responsibility of a trader.
 
 ### Trust Your System, Not Yourself
 

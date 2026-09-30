@@ -1,3 +1,9 @@
+import StopTargetVisualiser from '@site/src/components/calculators/StopTargetVisualiser';
+import PartialProfitCalculator from '@site/src/components/calculators/PartialProfitCalculator';
+import SpreadVisualiser from '@site/src/components/calculators/SpreadVisualiser';
+import LeverageSandbox from '@site/src/components/calculators/LeverageSandbox';
+import AverageEntryCalculator from '@site/src/components/calculators/AverageEntryCalculator';
+
 import RiskRewardCalculator from '@site/src/components/calculators/RiskRewardCalculator';
 import BreakEvenWinRateCalculator from '@site/src/components/calculators/BreakEvenWinRateCalculator';
 import PipValueCalculator from '@site/src/components/calculators/PipValueCalculator';
@@ -89,6 +95,14 @@ A take profit is an order that automatically closes your trade at a set price to
 
 **Why use one:** It removes emotion from the exit. Without a take profit, you might hold too long and watch your profit disappear, or exit too early out of fear.
 
+The entry, the stop loss and the take profit define the whole trade. Drag them and watch how the risk, the reward and the risk-to-reward ratio respond:
+
+<StopTargetVisualiser embedded />
+
+**Scaling out:** A trade does not have to close at a single target. Closing it in stages turns several targets into one blended result:
+
+<PartialProfitCalculator embedded />
+
 ---
 
 # The Maths of Trading
@@ -111,10 +125,10 @@ Pips are how you measure:
 ### Fixed Value-Per-Pip
 There is a fixed reference money-per-pip at 1.00 lot, defined per instrument × broker. 
 
-This is not optional — it’s how the market converts price movement into money. We do not need to calculate this manually, but we must conceptually know that it exists and where it comes from.
+This is not optional — it’s how the market converts price movement into money. It doesn't need to be calculated manually, but it has to be understood conceptually: that it exists and where it comes from.
 
 > It answers the question:
-> “If price moves by 1 pip and I am trading 1.00 lot, how much money changes?”
+> “If price moves by 1 pip on a 1.00 lot position, how much money changes?”
 > “How much money is gained or lost when price moves by 1 pip on this contract size for this broker and instrument”
 
 - A lot tells you HOW BIG the contract is
@@ -133,13 +147,17 @@ This is the **constant**.
 
 <PipValueCalculator embedded />
 
+Every trade also pays the **spread**: the gap between the price buyers pay and the price sellers receive. Widen it and watch what it costs at this position size:
+
+<SpreadVisualiser embedded />
+
 ## Contracts
 
-Before we move to lots, we have to understand contract sizes.
+Before moving to lots, contract sizes have to be understood.
 
 **Contract size** answers this question:
 
-> “If I trade **1.00 lot**, how many units does that represent?”
+> “If **1.00 lot** is traded, how many units does that represent?”
 
 This is defined by:
 
@@ -166,7 +184,7 @@ It’s a multiplier applied to a fixed contract size.
 
 A lot is a ratio you adjust and scale to match your account size and risk according to a fixed quantity - contract sizes.
 
-When thinking about lots in relation to pips, you have to say: “I am NOT calculating risk-per-pip from lot size. I am SCALING a known price-per-pip down to match my risk-per-pip”
+When thinking about lots in relation to pips, the point to remember is: risk-per-pip is NOT calculated from lot size. A known price-per-pip is SCALED down to match the risk-per-pip.
 
 A “full contract size” is the definition of the instrument.
 A “lot” is how much of that contract you choose to trade.
@@ -178,26 +196,26 @@ A “lot” is how much of that contract you choose to trade.
 **“Full contract” and “1.00 lot” are the same thing**
 
 > Fundamentally, a lot (size), answers the question:
-> *“How many multiples (or fractions) of the contract size am I trading?”*
-> “If price moves by 1 pip on my trade, how much money changes?”
-> “What lot size scales the reference money-per-pip at 1.00 lot down to £X per pip for my trade?”
+> *“How many multiples (or fractions) of the contract size are being traded?”*
+> “If price moves by 1 pip on this trade, how much money changes?”
+> “What lot size scales the reference money-per-pip at 1.00 lot down to £X per pip for this trade?”
 
-For example, let's say we know:
+For example, say the following is known:
 - Risk = £100
 - Stop loss = 50 pips
 
 Target £/pip = Risk Amount ÷ Stop (pips)
 
-Now we ask a different question:
+Now a different question is asked:
 
-> “What lot size gives me £2 per pip?”
+> “What lot size gives £2 per pip?”
 
 That’s all lot size does.
 
-It **sets risk value amount pip of movement** for our trade.
+It **sets the risk value amount per pip of movement** for the trade.
 
-> **FUNDAMENTALLY, THIS IS WHAT WE MEAN BY "RISK PER TRADE"**
-> CALCULATING OUR LOT SIZE IS WHAT IT ALL BOILS DOWN TO. 
+> **FUNDAMENTALLY, THIS IS WHAT "RISK PER TRADE" MEANS**
+> CALCULATING THE LOT SIZE IS WHAT IT ALL BOILS DOWN TO. 
 
 You **never** decide lot size first
 
@@ -215,7 +233,7 @@ The larger your lot size, the more money you make or lose for each pip of moveme
 
 ## Notional Value
 
-Imagine you "control" an apartment building worth £100,000. You don't own it. You just have a contract that says: "Any change in the building's value belongs to me."
+Imagine you "control" an apartment building worth £100,000. You don't own it. You just have a contract that says: "Any change in the building's value belongs to the contract holder."
 
 - If the building value goes to £105,000, you just made £5,000 in "real" cash, even though you never actually had £100,000.
 - If the value goes to £95,000, you owe £5,000.
@@ -283,7 +301,7 @@ But in reality:
 
 Leverage is a rule the broker sets that answers this question: “How much of the contract’s notional value must you post as collateral?”
 
-In other words: “How much of my own money do I need to put down to open this trade?” or more simply “How much notional exposure am I allowed per £1 of margin?”
+In other words: “How much of the trader's own money has to be put down to open this trade?” or more simply “How much notional exposure is allowed per £1 of margin?”
 
 **1:30 leverage** is the typical leverage on major FX pairs
 
@@ -328,12 +346,16 @@ If you understand that Profit and Loss is calculated on the £100,000 Notional V
 
 Leverage doesn't change how much you *profit* (that’s determined by your lot size), but it changes how much **Free Margin** you have left to survive price fluctuations.
 
+Try leverage safely. This practice account lets leverage go from 1× to 30×. Move the market and watch what happens to the balance, in both directions:
+
+<LeverageSandbox embedded />
+
 ## Margin 
 
 Money the broker locks as a deposit while a trade is open. You don’t lose it when you open the trade. It’s just “held” so you can’t use it for other trades
 
 “How much money is locked while the trade is open?”
-“How much of my money must be locked to hold this notional exposure?”
+“How much money must be locked to hold this notional exposure?”
 
 > **The amount of your account balance the broker temporarily locks as collateral while the trade is open.**
 
@@ -374,29 +396,29 @@ So you must:
 2. Decide stop distance
 3. Choose the contract size (lot) that converts price movement into that risk value amount
 
-> Fundamentally, we are not trading money. We are trading price movement (on a contract).
+> Fundamentally, money is not what is being traded. Price movement (on a contract) is.
 
-Position sizing in trading is purely the calculation of "how much" we are trading, according to predefined risk. 
+Position sizing in trading is purely the calculation of "how much" is traded, according to predefined risk. 
 
-So if we want to risk only 1% of our total account balance, how much money is that? What value of money are we risking?
+So if only 1% of the total account balance is to be risked, how much money is that? What value of money is at risk?
 
 ```
 Risk Value Amount = Account Balance x (risk % / 100)
 ```
 
-So if my account balance is £1000, and I only want to risk 1%, I'm only willing to lose £10 value.
+So if an account balance is £1000, and only 1% is to be risked, only £10 of value is at risk.
 
 > So then the ultimate question becomes:
-> “If price moves against me from entry to stop, how "big" must my trade be so that the total money lost is only £100?”
+> “If price moves against the trade from entry to stop, how "big" must the trade be so that the total money lost is only £100?”
 
 It goes like this:
 
-1. I choose **how much I’m willing to lose**
-2. I choose **where I’m proven wrong (stop loss)**
-3. That tells me **£ per pip**
-4. I set the knob of my trade that sets **£ per pip**
+1. Choose **how much is acceptable to lose**
+2. Choose **where the trade is proven wrong (stop loss)**
+3. That gives the **£ per pip**
+4. Set the knob of the trade that sets **£ per pip**
 
-And the question of "how big must my trade be" or "the knob" is our core, underlying main mission...
+And the question of "how big must the trade be" or "the knob" is the core, underlying main mission...
 
 ## Risk Per Trade
 
@@ -438,14 +460,18 @@ Risk Amount
 ```
 ```
 Contract Size Multiplier =
-Money I am willing to lose
+Money willing to be lost
 ÷
-(Number of pips price can move against me × Money lost per pip on 1 full contract)
+(Number of pips price can move against the trade × Money lost per pip on 1 full contract)
 ```
 
 If your stop loss gets hit, you lose exactly $100 (1% of your account). No more, no less.
 
 <PositionSizeCalculator embedded />
+
+When a position is built in several parts, the average entry is not simply the middle of the prices. Each part is weighted by its size:
+
+<AverageEntryCalculator embedded />
 
 ---
 
@@ -479,7 +505,7 @@ Profit and loss are real and come from price movement × notional size.
 You are not trading money.
 You are trading price movement, and money is calculated from it.
 
-To keep this crystal clear, we are going to use your **£1,000 Risk** and a **20 Pip Stop Loss**. We will follow the money through the four specific "gears" of the machine.
+To keep this crystal clear, this example uses a **£1,000 Risk** and a **20 Pip Stop Loss**. The money is followed through the four specific "gears" of the machine.
 
 1. YOUR GOAL (The Risk Management)
 

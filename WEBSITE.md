@@ -54,17 +54,19 @@ Railway can host this as a static site without Docker, but the included `Dockerf
 5. Under **Networking**, select **Generate Domain**.
 6. Set `DOCUSAURUS_SITE_URL` to the generated public URL, including `https://`, then redeploy. Keep `DOCUSAURUS_BASE_URL` as `/` unless the site is hosted below a URL subpath.
 
-Each push to the connected branch triggers a new Railway deployment. A custom domain can be added under **Settings → Networking**.
+Each push to the connected branch (`main`) triggers a new Railway deployment. A custom domain can be added under **Settings → Networking**.
+
+> **Railway is the live host.** The site is built by the `Dockerfile` (`npm ci` then `npm run build`) and served by `server.mjs`.
 
 > **Privacy:** This site has no authentication. A Railway public domain or GitHub Pages deployment makes the rendered collection accessible to anyone who has the URL. Keep the service private or place it behind an access-control proxy if the collection should remain private.
 
-## Deploy on GitHub Pages
+## Deploy on GitHub Pages (not used)
 
-The workflow in `.github/workflows/deploy.yml` builds and publishes the site when `main` is pushed. In the repository settings, choose **Pages → Source → GitHub Actions**. The expected project URL is `https://steffanlynch.github.io/trading/`.
+The workflow in `.github/workflows/deploy.yml` can publish to GitHub Pages, but this site is **not** deployed that way; Railway is the live host. The workflow is kept only as an option and can be deleted.
 
 ## Free tools
 
-Twelve free calculators live under `/tools` (hub at `/tools`). The site's principle: never make a visitor calculate something the website could calculate for them, and never put a sign-up in the way.
+Twenty-two free calculators, simulators and visualisers live under `/tools` (hub at `/tools`): the twelve calculators from the first release plus ten interactive tools (Order Type Simulator, Candlestick Builder, Leverage Sandbox, Stop/Target Visualiser, Spread Visualiser, Partial-Profit, Average-Entry, Strategy Statistics, Fibonacci and Pivot Point calculators). Interactive tools carry `interactive: true` in the registry and an "Interactive" tag on the hub. The site's principle: never make a visitor calculate something the website could calculate for them, and never put a sign-up in the way.
 
 ### How it is organised
 
@@ -72,7 +74,7 @@ Twelve free calculators live under `/tools` (hub at `/tools`). The site's princi
 | --- | --- | --- |
 | Calculation engine | `src/utils/calculators/` | Pure TypeScript, no React, fully unit tested. Every function returns a `Calc` (`incomplete` / `invalid` / `needs-rate` / `ok`). |
 | State hooks | `src/components/calculators/hooks/` | `useToolState` (inputs as strings so an empty box is never `0`; shareable URL; remembered preferences), `useTrackCalculation` (analytics). |
-| Design system | `src/components/calculators/ui/` | Shared fields, results, charts and the card. Uses the site's own colour tokens. |
+| Design system | `src/components/calculators/ui/` | Shared fields, results, charts (`LevelChart`), repeatable rows (`RowList`) and the card. Uses the site's own colour tokens. Embedded cards get `tone-violet`. |
 | Calculators | `src/components/calculators/<Name>/` | One component per tool. Each accepts `embedded`. |
 | Pages | `src/pages/tools/*.tsx` | A thin wrapper around `ToolPage` (teaching content, FAQs, JSON-LD). |
 | Registry | `src/data/tools.ts` | One entry per tool: drives the hub, navigation, search, related links and SEO metadata. |
@@ -111,4 +113,21 @@ Every full-page calculator writes its inputs to the address bar (only values tha
 ### Analytics
 
 Calculators send a debounced `calculator_calculated` event to `window.posthog` **only after the visitor has changed an input and the result is valid**, containing every input and every computed output (plus `calculator_name` and `placement`: `page` or `embedded`). A `calculator_link_copied` event is sent when a link is copied. If PostHog is not installed the calls do nothing. PostHog itself is not installed by this repository: add its snippet (and a consent banner if your audience needs one), and note that the event payload includes the account balance a visitor typed.
+
+### Interactive tools
+
+The simulators and visualisers reuse the same engine pattern and add a few pieces:
+
+- **Draggable charts** use `hooks/useVerticalDrag.ts` (pointer capture, a frozen price scale while dragging, arrow-key support for keyboard users). Used by the Stop/Target Visualiser, the Candlestick Builder and the Trade Planner ladder.
+- **Order Type Simulator** is a pure reducer (`orderSim.ts`) over `advanceOrder` in `orders.ts`; the chart component only renders state and dispatches moves. Prices are snapped to one decimal place beyond the pair's precision so float drift cannot cause a missed fill.
+- **Lists of rows** (Average-Entry and Partial-Profit) are stored in the URL with `encodeRows`/`decodeRows` (`rows.ts`, at most 20 rows).
+- **Diagrams in lessons** are generated, not photographed. `src/utils/diagrams.ts` builds seeded candlestick series whose swing highs and lows land exactly on the wick tips, and `src/components/diagrams/` renders them with labels, zones and arrows. Every chart carries an "illustrative chart, not real market data" tag. To use a real screenshot instead, drop the image into `static/img/` and reference it from the lesson.
+
+## Legal, company details and funding pages
+
+- **Operator:** the site is a trading name of **Misppelled Ltd** (England and Wales, company number 17447906). All company details live in one place, `src/data/legal.ts`, and feed the footer, the disclaimer, the funding page and the Organization JSON-LD in `docusaurus.config.ts`.
+- **Disclaimer:** `/disclaimer` (`src/pages/disclaimer.tsx`, layout in `src/components/legal/`). Covers not-financial-advice, risk warning, hypothetical/illustrative material, calculator accuracy, limitation of liability, affiliate links and advertising, regulatory status, data and cookies, and governing law (England and Wales).
+- **How this site is funded:** `/how-this-site-is-funded` (`src/pages/how-this-site-is-funded.tsx`). States that everything is free, that no feature ever asks for an email address or payment, and that affiliate commissions and advertising pay for the site. Linked from the footer and from the homepage "Free. Really." section.
+- **Voice:** lessons, tools and pages speak impersonally. The first person ("I", "my") is not used; "we/us" appears only as the company voice on the legal and funding pages.
+- **Needs an owner's decision before relying on it:** set `LEGAL_CONTACT_EMAIL` in `src/data/legal.ts` (it is `null` on purpose so no address is invented), have the legal text reviewed by a solicitor, and add a privacy policy and cookie consent before installing analytics, advertising or affiliate tracking.
 

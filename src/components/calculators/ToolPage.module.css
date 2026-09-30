@@ -355,7 +355,7 @@
 .relatedItem strong {
   display: block;
   margin-bottom: 0.35rem;
-  font: 750 1.25rem var(--font-display);
+  font: 700 1.25rem var(--font-display);
   letter-spacing: -0.035em;
   transition: color 0.18s ease;
 }

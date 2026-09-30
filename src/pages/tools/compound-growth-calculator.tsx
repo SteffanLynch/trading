@@ -26,8 +26,8 @@ export default function Page(): ReactNode {
         </p>
       }
       faqs={[
-        {q: 'How do I calculate compound growth?', a: 'Multiply your starting balance by (1 + the return per period) raised to the number of periods. This calculator does that and also plots each period so you can see the curve.'},
-        {q: 'Is this a prediction of my trading returns?', a: 'No. It shows what a constant return would produce mathematically. Actual results vary from period to period, can be negative, and are never guaranteed.'},
+        {q: 'How is compound growth calculated?', a: 'Multiply your starting balance by (1 + the return per period) raised to the number of periods. This calculator does that and also plots each period so you can see the curve.'},
+        {q: 'Is this a prediction of trading returns?', a: 'No. It shows what a constant return would produce mathematically. Actual results vary from period to period, can be negative, and are never guaranteed.'},
         {q: 'What does “per trade” mean?', a: 'If you risk a fixed percentage and average a certain return per trade, you can treat each trade as a period. Be conservative: a small average return per trade compounds over many trades, but so does a small average loss.'},
       ]}
       learn={[

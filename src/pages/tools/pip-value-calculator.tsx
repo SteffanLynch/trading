@@ -35,10 +35,10 @@ export default function Page(): ReactNode {
         </>
       }
       faqs={[
-        {q: 'How do I calculate pip value?', a: 'Multiply your position size in units by the pip size of the pair (0.0001 for most pairs, 0.01 for JPY pairs). That gives the pip value in the pair’s quote currency. Convert it to your account currency if the two differ.'},
+        {q: 'How is pip value calculated?', a: 'Multiply your position size in units by the pip size of the pair (0.0001 for most pairs, 0.01 for JPY pairs). That gives the pip value in the pair’s quote currency. Convert it to your account currency if the two differ.'},
         {q: 'How much is one pip worth on a standard lot?', a: 'For any pair whose quote currency is your account currency, a standard lot of 100,000 units is worth 10 units of that currency per pip: $10 on a USD account trading EUR/USD. Mini lots are worth a tenth of that and micro lots a hundredth.'},
         {q: 'Why does pip value change on some pairs?', a: 'When the quote currency is not your account currency, pip value is converted at the current exchange rate, so it drifts as that rate moves. That is why USD/JPY on a USD account is worth about $6–7 per pip per lot rather than exactly $10.'},
-        {q: 'Does my broker use the same pip value?', a: 'Usually, but not always. Some brokers use a different contract size for certain instruments. Check your platform’s contract specification and use the Contract size option here if it differs.'},
+        {q: 'Does every broker use the same pip value?', a: 'Usually, but not always. Some brokers use a different contract size for certain instruments. Check your platform’s contract specification and use the Contract size option here if it differs.'},
       ]}
       learn={[
         {label: 'Pips explained', to: '/library/fundamentals/risk-management#pips'},

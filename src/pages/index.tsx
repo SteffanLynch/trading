@@ -20,7 +20,7 @@ const TONES: Record<Tone, {fill: string; text: string; on: string}> = {
 const toneVars = (tone: Tone) => style({'--c': TONES[tone].fill, '--ct': TONES[tone].text, '--on': TONES[tone].on});
 
 const BAND_A = ['Risk 1%', 'Stop set, not moved', 'R:R 1 : 2', 'Process over outcome', 'Break-even 33.3%', 'Size the trade', 'The next 20 trades', 'If there is no setup, there is no trade'];
-const BAND_B = ['Enough is better than everything', '0.20 lots', 'The market owes me nothing', 'Execute, don’t predict', '+2R', '−1R', 'Keep it simple', 'Free tools · no sign-up'];
+const BAND_B = ['Enough is better than everything', '0.20 lots', 'The market owes nothing to anyone', 'Execute, don’t predict', '+2R', '−1R', 'Keep it simple', 'Free for everyone · no email · no payment'];
 
 function Band({items, className}: {items: string[]; className: string}) {
   const track = (hidden: boolean) => (
@@ -67,12 +67,12 @@ function LadderIllustration() {
 }
 
 const MANTRAS: {text: string; tone: Tone; size: 's' | 'm' | 'l'}[] = [
-  {text: 'The market owes me nothing.', tone: 'lime', size: 'l'},
-  {text: 'My stop loss is set. I do not move it.', tone: 'coral', size: 'm'},
-  {text: 'I am here to be profitable over many trades.', tone: 'cyan', size: 'm'},
+  {text: 'The market owes nothing to anyone.', tone: 'lime', size: 'l'},
+  {text: 'The stop loss is set. It is not moved.', tone: 'coral', size: 'm'},
+  {text: 'The goal is to be profitable over many trades.', tone: 'cyan', size: 'm'},
   {text: 'If there is no clear setup, there is no trade.', tone: 'amber', size: 'l'},
-  {text: 'I trust the system I built.', tone: 'violet', size: 's'},
-  {text: 'My job is not to predict. My job is to execute.', tone: 'lime', size: 'm'},
+  {text: 'Trust the system that was built.', tone: 'violet', size: 's'},
+  {text: 'The job is not to predict. The job is to execute.', tone: 'lime', size: 'm'},
   {text: 'Enough is better than everything.', tone: 'coral', size: 's'},
 ];
 
@@ -81,14 +81,14 @@ const PATH_TONES: Tone[] = ['violet', 'cyan', 'lime', 'amber', 'coral'];
 export default function Home(): ReactNode {
   const [active, setActive] = useState<string | null>(null);
   const fundamentals = library.filter((item) => item.section === 'Fundamentals');
-  const strategy = ['What is a Trading Plan?', 'Trading Rules', 'My Supply and Demand Strategy', 'My Break and Retest Strategy']
+  const strategy = ['What is a Trading Plan?', 'Trading Rules', 'Supply and Demand Strategy', 'Break and Retest Strategy']
     .map((title) => library.find((item) => item.title === title))
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
   const activeTool = tools.find((tool) => tool.slug === active);
-  const sizes = ['xl', 'm', 'l', 's', 'm', 'xl', 's', 'l', 'm', 's', 'l', 'm'];
+  const sizes = ['xl', 'm', 'l', 's', 'm', 'xl', 's', 'l', 'm', 's', 'l', 'm', 'l', 's', 'm', 'xl', 's', 'm', 'l', 's', 'm', 'l'];
 
   return (
-    <Layout title="Trading Notes" description="A personal trading field guide: plain-English lessons, the rules I don’t break, and twelve free calculators that do the maths for you.">
+    <Layout title="Trading Notes" description={`A free trading field guide: plain-English lessons, strict rules and ${tools.length} calculators and simulators that do the maths. No email, no payment, no paywalls.`}>
       <main className={styles.home}>
         {/* ---------------------------------------------------------------- hero */}
         <section className={styles.hero}>
@@ -97,7 +97,7 @@ export default function Home(): ReactNode {
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <p className={styles.chip}>
-                <i aria-hidden="true" /> Twelve free tools inside · no sign-up
+                <i aria-hidden="true" /> Everything free · no email · no payment
               </p>
               <h1 className={styles.title}>
                 <span className={styles.line}>Learn the market.</span>
@@ -107,7 +107,7 @@ export default function Home(): ReactNode {
                 <span className={`${styles.line} ${styles.outline}`}>Keep the discipline.</span>
               </h1>
               <p className={styles.lede}>
-                My personal trading field guide: plain-English lessons, the rules I <strong>don’t</strong> break, and calculators that do the maths so I can do the thinking. Not a course. Not advice. Just what I’ve learned, kept simple.
+                A plain-English trading field guide: clear lessons, strict rules, and {tools.length} calculators and simulators that do the maths so the thinking can stay on the trade. Not a course. Not advice. <strong>Free for everyone, always.</strong>
               </p>
               <div className={styles.actions}>
                 <Link className="button button--primary" to="/tools/trade-planner">
@@ -120,14 +120,14 @@ export default function Home(): ReactNode {
               <dl className={styles.stats}>
                 <div>
                   <dt>Free tools</dt>
-                  <dd style={style({'--c': 'var(--lime-t)'})}>12</dd>
+                  <dd style={style({'--c': 'var(--lime-t)'})}>{tools.length}</dd>
                 </div>
                 <div>
                   <dt>Core lessons</dt>
                   <dd style={style({'--c': 'var(--violet-t)'})}>9</dd>
                 </div>
                 <div>
-                  <dt>Sign-ups</dt>
+                  <dt>Emails asked for</dt>
                   <dd style={style({'--c': 'var(--coral-t)'})}>0</dd>
                 </div>
               </dl>
@@ -157,9 +157,9 @@ export default function Home(): ReactNode {
           <div className={styles.wrap}>
             <p className={styles.eyebrow}>The toolbox</p>
             <h2 className={styles.h2}>
-              Twelve calculators. <span className={styles.strike}>Zero</span> sign-ups.
+              {tools.length} tools. <span className={styles.strike}>Zero</span> sign-ups.
             </h2>
-            <p className={styles.sectionLede}>Never do a calculation the website could do for you. Every result updates as you type and shows its working.</p>
+            <p className={styles.sectionLede}>Never do a calculation the website could do for you. Every result updates as you type and shows its working. Tools marked ✦ are interactive: move things and watch what happens.</p>
 
             <div className={styles.spot}>
               <div className={styles.spotBlob} aria-hidden="true" />
@@ -195,6 +195,7 @@ export default function Home(): ReactNode {
                   onFocus={() => setActive(tool.slug)}
                   onBlur={() => setActive(null)}>
                   {tool.name}
+                  {tool.interactive && <em className={styles.spark} title="Interactive" aria-label="interactive">✦</em>}
                   <span aria-hidden="true">↗</span>
                 </Link>
               ))}
@@ -213,6 +214,39 @@ export default function Home(): ReactNode {
                 See all the tools <span>→</span>
               </Link>
             </p>
+          </div>
+        </section>
+
+        {/* --------------------------------------------------------------- free */}
+        <section className={styles.free}>
+          <div className={styles.freeInner}>
+            <div className={styles.freeTag} aria-hidden="true">
+              <span>£0</span>
+              <small>forever</small>
+            </div>
+            <div className={styles.freeCopy}>
+              <p className={styles.eyebrowDark}>The deal</p>
+              <h2>
+                Free. <span>Really.</span>
+              </h2>
+              <p className={styles.freeLede}>
+                Every lesson and every tool on this site is free, for everyone. There is no account, no paywall and no catch. <strong>Trading Notes will never ask for an email address or a payment for any feature.</strong>
+              </p>
+              <ul className={styles.nevers}>
+                <li><s>Email address</s></li>
+                <li><s>Payment</s></li>
+                <li><s>Paywall</s></li>
+                <li><s>Sign-up</s></li>
+                <li><s>Free trial</s></li>
+                <li><s>Premium tier</s></li>
+              </ul>
+              <p className={styles.freeHow}>
+                How is that possible? The site is funded by <strong>affiliate commissions</strong> and <strong>advertising</strong>, nothing else. Both are labelled, and neither changes a calculation or a lesson.
+              </p>
+              <Link className={styles.freeButton} to="/how-this-site-is-funded">
+                See exactly how it is funded <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -271,8 +305,8 @@ export default function Home(): ReactNode {
             <div className={styles.duo}>
               <div className={styles.panelStrategy}>
                 <p className={styles.panelTag}>Strategy</p>
-                <h2>What I actually do</h2>
-                <p className={styles.panelLede}>The plan, the rules, and the two setups I trade. Written so future me can’t argue with them.</p>
+                <h2>The strategy, written down</h2>
+                <p className={styles.panelLede}>The plan, the rules and the two setups. Written down so nothing has to be argued in the middle of a trade.</p>
                 <ul>
                   {strategy.map((item) => (
                     <li key={item.href}>

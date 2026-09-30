@@ -1,3 +1,6 @@
+import {CandleAnatomyDiagram, HammerDiagram, ShootingStarDiagram, DojiDiagram, MomentumDiagram, EngulfingDiagram, ThreeBarReversalDiagram, HeadAndShouldersDiagram, DoubleTopDiagram} from '@site/src/components/diagrams/Diagrams';
+import CandlestickBuilder from '@site/src/components/calculators/CandlestickBuilder';
+
 # Candlesticks
 
 ## What is a Candle?
@@ -17,6 +20,8 @@ Every candlestick has four key parts:
 **High** - The highest price reached during that time period
 
 **Low** - The lowest price reached during that time period
+
+<CandleAnatomyDiagram />
 
 ---
 
@@ -110,6 +115,12 @@ One side tried to move price but hit a wall of orders so large they were pushed 
 
 ---
 
+Build a candle yourself. Drag the open, high, low and close, or pick a shape, and watch what the candle says:
+
+<CandlestickBuilder embedded />
+
+---
+
 ## Types of Candles
 
 There are three main candle types to understand. Each one tells you something different about who's in control.
@@ -133,6 +144,10 @@ That's a fight - not a trend.
 
 **Key point:** The rejection wick should be at least 2x the size of the body to be meaningful.
 
+<HammerDiagram />
+
+<ShootingStarDiagram />
+
 ### Doji
 
 **What it looks like:** Very small or no body, with wicks on both sides
@@ -140,6 +155,8 @@ That's a fight - not a trend.
 **What it means:** Indecision - no one is in clear control. Buyers and sellers are fighting and neither side can win.
 
 **Key point:** A doji after a strong move can signal that the move is running out of steam. It's not a reversal signal on its own, but a warning sign.
+
+<DojiDiagram />
 
 ### Momentum Candle
 
@@ -159,6 +176,8 @@ Nothing mystical. Just low opposition.
 
 **Key point:** The lack of wicks is what makes it powerful. No rejection means no resistance to that move.
 
+<MomentumDiagram />
+
 ---
 
 ## Candlestick Patterns
@@ -176,6 +195,10 @@ Candlesticks and their patterns tell a story. A single candle gives you informat
 
 **Where to look for it:** Most meaningful at support (bullish engulfing) or resistance (bearish engulfing) levels.
 
+<EngulfingDiagram />
+
+<EngulfingDiagram bearish />
+
 ### 3 Bar Reversal Pattern
 
 **What it looks like:** Three candles where:
@@ -187,21 +210,13 @@ Candlesticks and their patterns tell a story. A single candle gives you informat
 
 **Key point:** The third candle should be a strong momentum candle in the new direction. If it's weak, the pattern is less reliable.
 
+<ThreeBarReversalDiagram />
+
 ### Head and Shoulders
 
 **What it looks like:** Three peaks where the middle peak (head) is higher than the two side peaks (shoulders).
 
-```
-        Head
-         /\
-        /  \
-       /    \
-  L Shoulder  R Shoulder
-    /\        /\
-   /  \      /  \
-  /    \    /    \
----------Neckline---------
-```
+<HeadAndShouldersDiagram />
 
 - **Head and Shoulders (top):** Forms at the top of an uptrend. Signals potential reversal down.
 - **Inverse Head and Shoulders (bottom):** Forms at the bottom of a downtrend. Signals potential reversal up.
@@ -215,21 +230,13 @@ Candlesticks and their patterns tell a story. A single candle gives you informat
 **What it looks like:** Price reaches the same level two (or three) times and gets rejected each time.
 
 **Double Top:**
-```
-    /\    /\
-   /  \  /  \
-  /    \/    \
-       Support
-```
+
+<DoubleTopDiagram />
 Price hits resistance twice, fails to break through both times, then drops.
 
 **Double Bottom:**
-```
-       Resistance
-  \    /\    /
-   \  /  \  /
-    \/    \/
-```
+
+<DoubleTopDiagram bottom />
 Price hits support twice, fails to break through both times, then rises.
 
 **What it means:** The level is holding strong. After two (or three) failed attempts to break through, the market often reverses.

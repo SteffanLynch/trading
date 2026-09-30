@@ -11,7 +11,7 @@ export default function Page(): ReactNode {
         <>
           <p>
             Traders describe distance in pips but experience it in money. If you know what one pip is worth for your position, converting between the two is simple multiplication or division, and it answers questions like{' '}
-            <em>“how many pips can I afford to lose?”</em> or <em>“what is 35 pips worth to me?”</em>.
+            <em>“how many pips can be afforded as a loss?”</em> or <em>“what is 35 pips worth?”</em>.
           </p>
           <p>
             The converter needs your pip value. If you do not know it, the Pip Value calculator works it out from your pair, size and account currency.
@@ -26,9 +26,9 @@ export default function Page(): ReactNode {
         </p>
       }
       faqs={[
-        {q: 'How do I convert pips to money?', a: 'Multiply the number of pips by the value of one pip for your position size. With a $10 pip value, 30 pips is $300.'},
-        {q: 'How do I convert money to pips?', a: 'Divide the amount of money by your pip value. $150 at $5 per pip is 30 pips.'},
-        {q: 'Can I enter a negative number?', a: 'Yes. Use a minus sign for a loss and the converter will show the equivalent pips or money as a negative.'},
+        {q: 'How are pips converted to money?', a: 'Multiply the number of pips by the value of one pip for your position size. With a $10 pip value, 30 pips is $300.'},
+        {q: 'How is money converted to pips?', a: 'Divide the amount of money by your pip value. $150 at $5 per pip is 30 pips.'},
+        {q: 'Can a negative number be entered?', a: 'Yes. Use a minus sign for a loss and the converter will show the equivalent pips or money as a negative.'},
       ]}
       learn={[
         {label: 'Pips explained', to: '/library/fundamentals/risk-management#pips'},

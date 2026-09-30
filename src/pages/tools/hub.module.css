@@ -254,3 +254,22 @@
     transition: none;
   }
 }
+
+.tag {
+  display: inline-block;
+  margin-left: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--c);
+  color: var(--on);
+  font: 500 0.54rem 'DM Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: 0.5em;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.row:hover .tag {
+  background: var(--on);
+  color: var(--c);
+}

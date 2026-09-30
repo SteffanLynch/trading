@@ -10,8 +10,8 @@ export default function Page(): ReactNode {
       meaning={
         <>
           <p>
-            A trade plan turns an idea into numbers before any money is at risk. The planner answers the questions every trade should answer first: <strong>how much am I risking, how big should the position be, what do I stand to
-            make, and is the reward worth the risk?</strong>
+            A trade plan turns an idea into numbers before any money is at risk. The planner answers the questions every trade should answer first: <strong>how much is at risk, how big should the position be, what could be
+            made, and is the reward worth the risk?</strong>
           </p>
           <p>
             Instead of opening several separate calculators, everything is calculated together from a single set of inputs, so changing your stop immediately changes the position size, the profit at target and the risk-to-reward.
@@ -42,7 +42,7 @@ export default function Page(): ReactNode {
           a: 'At minimum: the direction, the entry, where you are wrong (the stop), where you will take profit (the target), and how much you are risking. The planner covers all of these and adds the position size and the risk-to-reward that follow from them.',
         },
         {
-          q: 'Can I drag the stop and target on the chart?',
+          q: 'Can the stop and target be dragged on the chart?',
           a: 'Yes. Drag either line with a mouse or finger, or focus it and use the arrow keys (hold Shift to move ten pips at a time). The input boxes update as you move, and everything recalculates.',
         },
         {
@@ -50,7 +50,7 @@ export default function Page(): ReactNode {
           a: 'Yes. Choose Short and the stop must sit above your entry and the target below it. Switching direction mirrors your stop and target around the entry so the trade stays valid.',
         },
         {
-          q: 'Can I share a plan?',
+          q: 'Can a plan be shared?',
           a: 'Use Copy link. The link recreates your exact inputs, so you can send a trade idea to a friend, a mentor or a forum.',
         },
       ]}

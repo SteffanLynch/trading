@@ -1,3 +1,7 @@
+import {SupportResistanceDiagram, RoleFlipDiagram} from '@site/src/components/diagrams/Diagrams';
+import PivotPointCalculator from '@site/src/components/calculators/PivotPointCalculator';
+import FibonacciCalculator from '@site/src/components/calculators/FibonacciCalculator';
+
 # Support and Resistance
 
 ## Support and Resistance are the Fundamentals
@@ -27,6 +31,8 @@ Resistance is like a phantom ceiling - a level where price struggles to rise abo
 **Why it works:** At resistance, sellers step in. They see price as overvalued, or they remember that price reversed here before. Supply exceeds demand.
 
 **How to trade it:** You sell from resistance. Wait for price to approach the level, watch for signs of rejection, then enter short.
+
+<SupportResistanceDiagram />
 
 ---
 
@@ -66,6 +72,16 @@ Price levels ending in 00 or 50 (like 1.3000, 150.00, $50,000). Traders place or
 
 Institutional traders and algorithms watch these levels. The high and low of the previous session often act as key levels for the current session.
 
+**Pivot points** are one popular way of turning the previous session's high, low and close into reference levels. Enter a previous high, low and close to see them:
+
+<PivotPointCalculator embedded />
+
+### Fibonacci Levels
+
+Fibonacci retracement and extension levels divide a swing into ratios such as 38.2%, 50% and 61.8%. Some traders watch them as places where a pullback may pause. They are reference levels that many traders happen to watch, not predictions:
+
+<FibonacciCalculator embedded />
+
 ---
 
 ## The Role Flip: Support Becomes Resistance (and Vice Versa)
@@ -81,6 +97,8 @@ When a support level breaks, it often becomes resistance. When resistance breaks
 4. Enter in the direction of the break
 
 This is one of the highest-probability setups in trading.
+
+<RoleFlipDiagram />
 
 ---
 
@@ -135,6 +153,6 @@ When confused, zoom out. Find the larger structure. Everything is just a smaller
 
 ---
 
-**Next:** [Candlesticks](07-candlesticks.md)
+**Next:** [Candlesticks](07-candlesticks.mdx)
 
 *You have the battleground; now let's look at the "hand-to-hand combat" happening at these levels.*

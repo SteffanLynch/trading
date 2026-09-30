@@ -29,7 +29,7 @@ A trading plan is a written set of rules that covers:
 
 It's your personal rulebook. Every decision you make should be covered by your plan. If a situation isn't in your plan, you don't take the trade.
 
-**Why write it down?** When you're in a trade and price is moving against you, your brain will try to convince you to break your rules. A written plan holds you accountable. You can look at it and ask: "Am I following my rules or not?"
+**Why write it down?** When you're in a trade and price is moving against you, your brain will try to convince you to break your rules. A written plan holds you accountable. You can look at it and ask: "Are the rules being followed or not?"
 
 ---
 
@@ -62,7 +62,7 @@ If your plan is too complicated, you won't follow it. You should be able to expl
 
 ### 2. Comprehensive
 
-Your plan should cover everything from start to finish. No gaps, no "I'll figure it out in the moment."
+Your plan should cover everything from start to finish. No gaps, no "figure it out in the moment."
 
 ---
 
@@ -76,7 +76,7 @@ Be specific. Not "when price looks good at support" but:
 - Price reaches a key support level identified on the 4H chart
 - A bullish engulfing candle forms on the 15-minute chart
 - The candle closes above the previous candle's high
-- I enter on the next candle
+- Enter on the next candle
 
 The more specific, the less room for emotional decisions.
 
@@ -152,10 +152,10 @@ Review your journal weekly. Look for patterns. Your biggest improvements will co
 
 | Component | Question It Answers |
 |-----------|---------------------|
-| Entry Rules | When exactly do I enter? |
-| Analysis Method | How do I find opportunities? |
-| Risk Management | How do I protect my account? |
-| Trading Rules | What are my boundaries? |
-| Trading Journal | What did I actually do? |
+| Entry Rules | When exactly is the entry? |
+| Analysis Method | How are opportunities found? |
+| Risk Management | How is the account protected? |
+| Trading Rules | What are the boundaries? |
+| Trading Journal | What was actually done? |
 
 Write your plan down. Follow it. Review it. Improve it. That's how you become consistent.

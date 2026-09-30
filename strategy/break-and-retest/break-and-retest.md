@@ -1,5 +1,5 @@
 
-# My Break and Retest Strategy
+# Break and Retest Strategy
 
 ## The Core Concept
 
@@ -17,19 +17,19 @@ But at points where there is such a quick, massive move, in the momentum, so tra
 
 ---
 
-## My Process
+## The Process
 
 ### Step 1: Look for that big push
 
-We're looking for markets have no dominant buyer or seller strength, and then out of nowhere there is a massive push in either direction that is contradiction to the prior choppy market conditions.
+Look for markets with no dominant buyer or seller strength, and then, out of nowhere, a massive push in either direction that contradicts the prior choppy market conditions.
 
 But it must be unmitigated. Price must not have returned to last point at which price was tested - even on the inverse side of the momentum move.
 
-The the momentum move must break structure, either a break of structure or (the preferred) change of character. And if we see price move back into the zone, it must be a slow trickle with less momentum and inertia than he momentum move in question.
+The the momentum move must break structure, either a break of structure or (the preferred) change of character. And if price moves back into the zone, it must be a slow trickle with less momentum and inertia than the momentum move in question.
 
 ### Step 2: Mark it All Out
 
-Mark out and highlight any and everything you can see. This is so we can build a story of what has happened and may happen for us to trade alongside.
+Mark out and highlight any and everything you can see. This builds a story of what has happened and what may happen, to trade alongside.
 
 - The ineffecient price range of the momentum move where there are trades unfulfilled
 - Any key levels of support or resistance such as double/triple tops or bottoms or any swing highs/lows.
@@ -38,11 +38,11 @@ Mark out and highlight any and everything you can see. This is so we can build a
 
 ### Step 3: Understand the Story
 
-Now using our annotations, we paint the full picture and understand the story the market is telling us.
+Using the annotations, paint the full picture and understand the story the market is telling.
 
 - Who is in control? Buyers or sellers?
 - Are they still in control? How much longer?
-- Are we looking at trend continuation or reversal?
+- Is this trend continuation or reversal?
 - Where was price last tested and efficient?
 
 ---
@@ -55,16 +55,16 @@ The previous swing on the inverse side of the monentum move. ie. the change of c
 
 ### The Stop Loss
 
-Just beyond the boundary of the inefficiency level of the momentum move, maybe extending to the wick at discretion. This is because we are trading the retest and rebalancing. So we wouldn't expect price to go back to before the momentum move.
+Just beyond the boundary of the inefficiency level of the momentum move, maybe extending to the wick at discretion. This is because the trade is the retest and rebalancing, so price isn't expected to go back to before the momentum move.
 
 ### The Take Profit
 
-We are targeting a price magnet on the other end. This can be a
+The target is a price magnet on the other end. This can be a
 
 - swing high or low
 - key support or resistance level
 
-But the point is there is a definitive, and conservateive level at which we have reason to believe that price "should" return back there for whatever reason.
+But the point is there is a definitive and conservative level at which there is reason to believe that price "should" return there, for whatever reason.
 
 ---
 

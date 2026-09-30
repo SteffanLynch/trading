@@ -55,7 +55,7 @@ export default function BreakEvenWinRateCalculator({embedded = false}: Calculato
   const inputs = (
     <>
       <Segmented
-        label="I know my…"
+        label="Start from"
         value={values.mode}
         onChange={(v) => set('mode', v)}
         options={[

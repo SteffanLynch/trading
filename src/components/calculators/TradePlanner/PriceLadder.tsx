@@ -20,9 +20,11 @@ interface Props {
   targetLabel: LineLabel | null;
   onStopChange: (price: number) => void;
   onTargetChange: (price: number) => void;
+  /** When provided the entry line can be dragged too. */
+  onEntryChange?: (price: number) => void;
 }
 
-type Which = 'stop' | 'target';
+type Which = 'stop' | 'target' | 'entry';
 
 const HEIGHT = 300;
 const PAD_Y = 34;
@@ -40,7 +42,7 @@ interface Scale {
  * A vertical price ladder. Stop and target are draggable (mouse, touch) and keyboard adjustable;
  * the parent turns every change back into the calculator's input fields, so everything stays in sync.
  */
-export function PriceLadder({instrument, direction, entry, stop, target, decimals, stopLabel, targetLabel, onStopChange, onTargetChange}: Props) {
+export function PriceLadder({instrument, direction, entry, stop, target, decimals, stopLabel, targetLabel, onStopChange, onTargetChange, onEntryChange}: Props) {
   const id = useId();
   const {ref, width} = useElementWidth<HTMLDivElement>();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -62,14 +64,22 @@ export function PriceLadder({instrument, direction, entry, stop, target, decimal
   const right = width - RIGHT_PAD;
 
   function clamp(which: Which, price: number): number {
-    const lower = which === 'stop' ? !long : long; // stop sits below entry for longs; target sits below for shorts
-    const bounded = lower ? Math.max(price, entry + snap) : Math.min(price, entry - snap);
+    let bounded: number;
+    if (which === 'entry') {
+      // The entry stays strictly between the stop and the target.
+      const lowerBound = long ? stop + snap : target !== null ? target + snap : -Infinity;
+      const upperBound = long ? (target !== null ? target - snap : Infinity) : stop - snap;
+      bounded = Math.min(Math.max(price, lowerBound), upperBound);
+    } else {
+      const lower = which === 'stop' ? !long : long; // stop sits below entry for longs; target sits below for shorts
+      bounded = lower ? Math.max(price, entry + snap) : Math.min(price, entry - snap);
+    }
     return Number(Math.max(snap, bounded).toFixed(decimals));
   }
 
   function emit(which: Which, price: number) {
     const next = clamp(which, price);
-    (which === 'stop' ? onStopChange : onTargetChange)(next);
+    (which === 'stop' ? onStopChange : which === 'target' ? onTargetChange : onEntryChange)?.(next);
   }
 
   function startDrag(which: Which, event: PointerEvent<SVGGElement>) {
@@ -108,7 +118,7 @@ export function PriceLadder({instrument, direction, entry, stop, target, decimal
 
   const handle = (which: Which, price: number, color: string, label: LineLabel, name: string) => {
     const lineY = y(price);
-    const below = price < entry;
+    const below = which === 'entry' ? long : price < entry;
     const textY = below ? lineY + 17 : lineY - 8;
     return (
       <g
@@ -120,7 +130,7 @@ export function PriceLadder({instrument, direction, entry, stop, target, decimal
         aria-valuemin={Number((entry - 1000 * snap).toFixed(decimals))}
         aria-valuemax={Number((entry + 1000 * snap).toFixed(decimals))}
         aria-valuenow={price}
-        aria-valuetext={`${fmt(price)}, ${label.distance}, ${label.money}`}
+        aria-valuetext={[fmt(price), label.distance, label.money].filter(Boolean).join(', ')}
         style={{cursor: 'ns-resize', touchAction: 'none', outline: 'none'}}
         onPointerDown={(event) => startDrag(which, event)}
         onPointerMove={moveDrag}
@@ -134,9 +144,11 @@ export function PriceLadder({instrument, direction, entry, stop, target, decimal
         <text x={LINE_X} y={textY} fontSize="11" fontWeight="700" fill={color} fontFamily="'DM Mono', monospace" letterSpacing="0.06em">
           {name.toUpperCase()} {fmt(price)}
         </text>
-        <text x={right} y={textY} fontSize="12" fontWeight="700" fill={color} textAnchor="end">
-          {label.money}
-        </text>
+        {label.money && (
+          <text x={right} y={textY} fontSize="12" fontWeight="700" fill={color} textAnchor="end">
+            {label.money}
+          </text>
+        )}
       </g>
     );
   };
@@ -162,11 +174,17 @@ export function PriceLadder({instrument, direction, entry, stop, target, decimal
           </text>
         )}
 
-        <line x1={LINE_X} x2={right} y1={entryY} y2={entryY} stroke="var(--ink)" strokeWidth="1.5" strokeDasharray="5 4" opacity="0.75" />
-        <circle cx={HANDLE_X} cy={entryY} r="5" fill="var(--ink)" opacity="0.75" />
-        <text x={LINE_X} y={entryY + (long ? 15 : -7)} fontSize="11" fontWeight="700" fill="var(--ink)" fontFamily="'DM Mono', monospace" letterSpacing="0.06em">
-          ENTRY {fmt(entry)}
-        </text>
+        {onEntryChange ? (
+          handle('entry', entry, 'var(--ink)', {money: '', distance: ''}, 'Entry')
+        ) : (
+          <>
+            <line x1={LINE_X} x2={right} y1={entryY} y2={entryY} stroke="var(--ink)" strokeWidth="1.5" strokeDasharray="5 4" opacity="0.75" />
+            <circle cx={HANDLE_X} cy={entryY} r="5" fill="var(--ink)" opacity="0.75" />
+            <text x={LINE_X} y={entryY + (long ? 15 : -7)} fontSize="11" fontWeight="700" fill="var(--ink)" fontFamily="'DM Mono', monospace" letterSpacing="0.06em">
+              ENTRY {fmt(entry)}
+            </text>
+          </>
+        )}
 
         {target !== null && targetLabel && handle('target', target, 'var(--pos)', targetLabel, 'Target')}
         {handle('stop', stop, 'var(--neg)', stopLabel, 'Stop')}

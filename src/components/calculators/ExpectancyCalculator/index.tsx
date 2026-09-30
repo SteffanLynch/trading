@@ -49,7 +49,7 @@ export default function ExpectancyCalculator({embedded = false}: CalculatorProps
   const inputs = (
     <>
       <Segmented
-        label="Measure my trades in"
+        label="Measure trades in"
         value={values.mode}
         onChange={(v) => setMany(v === 'r' ? {mode: v, avgWin: '2', avgLoss: '1'} : {mode: v, avgWin: '300', avgLoss: '100'})}
         options={[

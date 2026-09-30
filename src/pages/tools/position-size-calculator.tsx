@@ -41,19 +41,19 @@ export default function Page(): ReactNode {
       }
       faqs={[
         {
-          q: 'How do I calculate position size in forex?',
+          q: 'How is position size calculated in forex?',
           a: 'Multiply your account balance by the percentage you are willing to risk to get the money at risk, divide that by the stop-loss distance measured in money per unit, and you have the number of units. Divide by 100,000 for standard lots. This calculator does all three steps and shows the working.',
         },
         {
-          q: 'What percentage of my account should I risk per trade?',
+          q: 'What percentage of an account should be risked per trade?',
           a: 'Many traders risk between 0.5% and 2% of their account on a single trade so that a losing streak does not do lasting damage. There is no universally correct number: it depends on your strategy, your experience and how much drawdown you can tolerate.',
         },
         {
-          q: 'Why is my lot size rounded down?',
+          q: 'Why is the lot size rounded down?',
           a: 'Brokers only accept lot sizes in fixed steps, usually 0.01. Rounding down guarantees the position never risks more than the amount you chose. The calculator shows the exact figure and the money you actually risk at the rounded size.',
         },
         {
-          q: 'What if my account currency is different from the pair’s quote currency?',
+          q: 'What if the account currency is different from the pair’s quote currency?',
           a: 'Profit and loss are earned in the quote currency, so the calculator needs an exchange rate to express them in your account currency. It works this out automatically when your account currency is one of the two currencies in the pair, and asks you for the rate otherwise. No live prices are used.',
         },
       ]}

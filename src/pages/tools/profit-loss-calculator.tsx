@@ -27,7 +27,7 @@ export default function Page(): ReactNode {
         </>
       }
       faqs={[
-        {q: 'How do I calculate profit and loss on a forex trade?', a: 'Take the difference between exit and entry (reversed for a short), multiply by the position size in units, and convert the result to your account currency if it differs from the pair’s quote currency. Then subtract costs.'},
+        {q: 'How is profit and loss calculated on a forex trade?', a: 'Take the difference between exit and entry (reversed for a short), multiply by the position size in units, and convert the result to your account currency if it differs from the pair’s quote currency. Then subtract costs.'},
         {q: 'Does this work for stocks and crypto?', a: 'Yes. Choose “Stocks, crypto & other”, enter the number of shares or coins as units, and the maths is the same. For futures, set the contract multiplier under Advanced options.'},
         {q: 'What are units and lots?', a: 'A unit is one unit of the base currency. A standard forex lot is 100,000 units, so 0.5 lots is 50,000 units.'},
       ]}

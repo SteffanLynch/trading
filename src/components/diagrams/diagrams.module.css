@@ -1,0 +1,42 @@
+.figure {
+  margin: 2rem 0;
+  padding: 1.1rem 1rem 0.85rem;
+  border: 1.5px solid var(--line);
+  border-radius: 1.4rem;
+  background:
+    radial-gradient(30rem 12rem at 100% 0%, color-mix(in srgb, var(--violet) 10%, transparent), transparent 70%),
+    var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.chart {
+  width: 100%;
+}
+
+.chart svg {
+  display: block;
+  overflow: visible;
+}
+
+.caption {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font: 500 0.72rem/1.5 'Manrope', sans-serif;
+}
+
+.caption strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: 500 0.56rem 'DM Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: 0.1em;
+}

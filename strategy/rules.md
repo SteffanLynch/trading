@@ -9,7 +9,7 @@ These are the non-negotiable rules. Follow them every time, no exceptions.
 
 ### Minimum Risk to Reward: 1:3
 
-The lowest risk to reward we trade is 1:3. No exceptions.
+The lowest risk to reward taken is 1:3. No exceptions.
 
 If you can't find a setup with at least 1:3, don't take the trade. Wait for a better opportunity.
 
@@ -44,7 +44,7 @@ Make sure there's no reason to drive price beyond your stop loss, even if your o
 
 **Example:** Your bias might be bullish and ultimately correct, but if there's liquidity sitting just below your stop loss, price might sweep that liquidity first before going in your direction. You'd be right about direction but still get stopped out.
 
-**Before every trade, ask:** What's between my entry and my stop? Is there anything that could pull price through my stop before it goes my way?
+**Before every trade, ask:** What's between the entry and the stop? Is there anything that could pull price through the stop before it moves in the trade's favour?
 
 ---
 
@@ -68,7 +68,7 @@ If you can't explain why you're taking a trade in simple terms, you shouldn't be
 
 ### Journal Everything
 
-Log and journal your trading journey. That's what it is - a journey.
+Log and journal every trade. Trading is a long process, and a record of it is how it improves.
 
 Record:
 - Every trade you take
@@ -85,9 +85,9 @@ Your journal is how you improve. Without it, you're just guessing at what's work
 Before every trade, run through these questions:
 
 1. Is the risk to reward at least 1:3?
-2. Am I already in a trade with any of these currencies?
+2. Is there already a trade open in any of these currencies?
 3. Are there any conflicting factors (inducement, liquidity, stronger zones)?
-4. Is my stop loss in a safe location?
-5. Can I explain why I'm taking this trade?
+4. Is the stop loss in a safe location?
+5. Can the reason for taking this trade be explained?
 
 If any answer is wrong, don't take the trade.

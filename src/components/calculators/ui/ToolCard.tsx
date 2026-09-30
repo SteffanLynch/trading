@@ -39,7 +39,7 @@ export function ToolCard({title, name, inputs, results, embedded = false, href, 
   }
 
   return (
-    <div className={styles.card}>
+    <div className={embedded ? `${styles.card} tone-violet` : styles.card}>
       <div className={styles.cardHead}>
         <p className={styles.cardTitle}>{embedded ? `Try it · ${title}` : title}</p>
         <div className={styles.cardActions}>

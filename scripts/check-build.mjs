@@ -23,7 +23,12 @@ if (slugs.length === 0) fail('src/data/tools.ts', 'no tools found in the registr
 const sitemap = existsSync(resolve(build, 'sitemap.xml')) ? readFileSync(resolve(build, 'sitemap.xml'), 'utf8') : '';
 if (!sitemap) fail('sitemap.xml', 'missing');
 
-const pages = [{name: 'tools', file: 'tools.html', path: '/tools', tool: false}, ...slugs.map((slug) => ({name: slug, file: `tools/${slug}.html`, path: `/tools/${slug}`, tool: true}))];
+const pages = [
+  {name: 'tools', file: 'tools.html', path: '/tools', tool: false},
+  {name: 'disclaimer', file: 'disclaimer.html', path: '/disclaimer', tool: false, mustMention: ['Misppelled Ltd', 'not financial advice']},
+  {name: 'how-this-site-is-funded', file: 'how-this-site-is-funded.html', path: '/how-this-site-is-funded', tool: false, mustMention: ['Misppelled Ltd', 'affiliate']},
+  ...slugs.map((slug) => ({name: slug, file: `tools/${slug}.html`, path: `/tools/${slug}`, tool: true})),
+];
 
 for (const page of pages) {
   const file = resolve(build, page.file);
@@ -46,16 +51,20 @@ for (const page of pages) {
 
   const ld = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([^<]*)<\/script>/g)].map((match) => match[1]);
   if (ld.length === 0) fail(page.name, 'missing JSON-LD');
+  // Every page carries the site-wide Organization/WebSite blocks, so the per-tool types only need to appear in *some* block.
+  let allLd = '';
   for (const block of ld) {
     try {
-      const data = JSON.parse(block.replace(/&quot;/g, '"').replace(/&amp;/g, '&'));
-      const text = JSON.stringify(data);
-      if (page.tool && !text.includes('WebApplication')) fail(page.name, 'JSON-LD has no WebApplication');
-      if (page.tool && !text.includes('BreadcrumbList')) fail(page.name, 'JSON-LD has no BreadcrumbList');
+      allLd += JSON.stringify(JSON.parse(block.replace(/&quot;/g, '"').replace(/&amp;/g, '&')));
     } catch {
       fail(page.name, 'JSON-LD is not valid JSON');
     }
   }
+  if (!allLd.includes('"Organization"')) fail(page.name, 'JSON-LD has no Organization (site-wide block)');
+  if (page.tool && !allLd.includes('WebApplication')) fail(page.name, 'JSON-LD has no WebApplication');
+  if (page.tool && !allLd.includes('BreadcrumbList')) fail(page.name, 'JSON-LD has no BreadcrumbList');
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
+  for (const phrase of page.mustMention ?? []) if (!text.toLowerCase().includes(phrase.toLowerCase())) fail(page.name, `page does not mention "${phrase}"`);
   if (page.tool && !/How was this calculated|What does this mean/.test(html)) fail(page.name, 'teaching content is missing from the prerendered HTML');
 }
 
@@ -64,4 +73,4 @@ if (problems.length) {
   for (const problem of problems) console.error(`  - ${problem}`);
   process.exit(1);
 }
-console.log(`✔ ${pages.length} tools pages verified (${slugs.length} tools + hub): titles, descriptions, canonicals, H1, JSON-LD, sitemap.`);
+console.log(`✔ ${pages.length} pages verified (${slugs.length} tools, hub, disclaimer, funding page): titles, descriptions, canonicals, H1, JSON-LD, sitemap.`);

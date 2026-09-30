@@ -1,3 +1,5 @@
+import {UptrendDiagram, DowntrendDiagram, BosDiagram, ChochDiagram, RangeDiagram, NestedTrendDiagram} from '@site/src/components/diagrams/Diagrams';
+
 # Market Structure
 
 The market is always doing one of two things: **trending** or **consolidating**. Understanding which state the market is in determines how you trade it.
@@ -26,16 +28,7 @@ The pause or counter-move against the trend. After an impulse, the market "breat
 
 Each swing high is higher than the previous swing high. Each swing low is higher than the previous swing low.
 
-```
-        HH
-       /  \
-      /    \
-    HL      \  HH
-   /  \      \/  \
-  /    \    HL    \
- /      \  /       \
-/        \/
-```
+<UptrendDiagram />
 
 **Key insight:** In an uptrend, the pullbacks (higher lows) are your opportunity. Wait for the pullback, then enter in the direction of the trend.
 
@@ -47,18 +40,7 @@ Each swing high is higher than the previous swing high. Each swing low is higher
 
 Each swing high is lower than the previous swing high. Each swing low is lower than the previous swing low.
 
-```
-\
- \        /\
-  \      /  \
-   \    /    LH
-    \  /LH     \
-     \/  \      \
-     LL   \      \
-           \      \
-            \     LL
-             \
-```
+<DowntrendDiagram />
 
 **Key insight:** In a downtrend, the rallies (lower highs) are your opportunity. Wait for the rally, then enter in the direction of the trend.
 
@@ -72,6 +54,8 @@ A break of structure confirms trend continuation. It happens when price breaks b
 - **Downtrend BOS:** Price breaks below the previous low → trend continues
 
 This is your confirmation that the trend is still alive.
+
+<BosDiagram />
 
 ---
 
@@ -93,6 +77,8 @@ The market consolidates **85-90% of the time**. Price bounces between a ceiling 
 
 **Key insight:** Consolidation is the market building energy. The longer and tighter the consolidation, the more explosive the eventual breakout tends to be.
 
+<RangeDiagram />
+
 ---
 
 ## Important Concepts
@@ -107,6 +93,8 @@ Smaller trends exist within larger ones - don't be confused by this.
 
 **Rule:** Always check the higher timeframe to understand the bigger picture. Trade in the direction of the higher timeframe trend when possible.
 
+<NestedTrendDiagram />
+
 ### Change of Character (ChoCh)
 
 A change of character is the first warning sign that a trend may be reversing. It's when price breaks a key level that it "shouldn't" break if the trend were still healthy.
@@ -115,6 +103,8 @@ A change of character is the first warning sign that a trend may be reversing. I
 - **In a downtrend:** A ChoCh happens when price breaks above a recent lower high
 
 **Important:** A ChoCh is a warning, not a confirmation. It means the trend is weakening, but it doesn't guarantee a reversal. Wait for further confirmation before trading against the original trend.
+
+<ChochDiagram />
 
 ### The Trend is Intact Until It Isn't
 
@@ -140,6 +130,6 @@ Don't let a pullback scare you out of a trend trade. Pullbacks are normal and ex
 
 ---
 
-**Next:** [Timeframes](05-timeframes.md)
+**Next:** [Timeframes](05-timeframes.mdx)
 
 *Structure gives you direction, but "Perspective" tells you which direction matters most right now.*

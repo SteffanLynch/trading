@@ -25,7 +25,7 @@ export default function Page(): ReactNode {
         </p>
       }
       faqs={[
-        {q: 'What win rate do I need to be profitable?', a: 'It depends on your risk-to-reward. At 1 : 1 you need to win more than 50% of trades. At 1 : 2 you need more than 33.3%, and at 1 : 3 more than 25%. Costs raise each of these figures.'},
+        {q: 'What win rate is needed to be profitable?', a: 'It depends on your risk-to-reward. At 1 : 1 you need to win more than 50% of trades. At 1 : 2 you need more than 33.3%, and at 1 : 3 more than 25%. Costs raise each of these figures.'},
         {q: 'Is a high win rate always better?', a: 'No. Win rate and reward-to-risk trade off against each other. Judging a strategy on win rate alone can hide a losing system, which is why expectancy looks at both together.'},
         {q: 'Does this include commissions and spreads?', a: 'No. It is the pure break-even point. In practice your break-even win rate is a little higher once costs are included.'},
       ]}

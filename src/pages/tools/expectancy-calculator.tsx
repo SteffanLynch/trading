@@ -35,7 +35,7 @@ export default function Page(): ReactNode {
       faqs={[
         {q: 'What is trading expectancy?', a: 'The average amount you expect to make or lose per trade, calculated from your win rate and the average size of your winners and losers. It can be expressed in money or in R multiples.'},
         {q: 'What is a good expectancy?', a: 'Any positive number means the sample made money on average, but how good it is depends on sample size, costs and consistency. Larger samples give more reliable numbers.'},
-        {q: 'Should I enter the average loss as a negative number?', a: 'No. Enter it as a positive number: the calculator subtracts it for you.'},
+        {q: 'Should the average loss be entered as a negative number?', a: 'No. Enter it as a positive number: the calculator subtracts it for you.'},
         {q: 'What is the difference between expectancy and profit factor?', a: 'Expectancy is the average result per trade. Profit factor is total winnings divided by total losses. A profit factor above 1 means the winners outweigh the losers.'},
       ]}
       learn={[

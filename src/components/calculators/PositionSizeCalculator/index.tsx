@@ -106,7 +106,7 @@ export default function PositionSizeCalculator({embedded = false}: CalculatorPro
         <CurrencySelect value={values.currency} onChange={(v) => set('currency', v)} />
       </FieldRow>
       <Segmented
-        label="Set my stop by"
+        label="Set the stop by"
         value={values.mode}
         onChange={(v) => set('mode', v)}
         options={[

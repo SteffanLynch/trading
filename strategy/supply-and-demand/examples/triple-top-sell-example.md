@@ -8,7 +8,7 @@ This is one of the strongest setups for this strategy.
 
 ## Reading the Market
 
-We can see that there are clear support and resistance levels. But what stands out most is the resistance level.
+There are clear support and resistance levels. But what stands out most is the resistance level.
 
 Why? Because it's the triple top pattern.
 
@@ -16,15 +16,15 @@ Why? Because it's the triple top pattern.
 
 It shows that buyers are trying to take price higher but there are too many sellers at that price point. This indicates that the sellers are more in control - which in turn is indicative of a trend reversal.
 
-At which point, we want to enter and set our take profit all the way to the other side - which in our case here is the opposite support level.
+At that point, the trade is to enter and set the take profit all the way to the other side - which in this case is the opposite support level.
 
 ---
 
 ## The Entry
 
-On that last rejection of and push back against the level of resistance, we see our entry - a doji candle which indicates indecision. Very wicky candles. And then followed by a push continuing down.
+On that last rejection of, and push back against, the level of resistance comes the entry - a doji candle which indicates indecision. Very wicky candles. Then a push continuing down.
 
-Albeit, it's not the strongest push but it's enough momentum and clear enough direction for us to go off of.
+Albeit, it's not the strongest push but it's enough momentum and clear enough direction to go off.
 
 ---
 
@@ -34,25 +34,25 @@ Albeit, it's not the strongest push but it's enough momentum and clear enough di
 - **Stop loss:** Barely above the top of the same zone
 - **Take profit:** Targeting the support level
 
-**Why the stop loss placement?** Because at this point, if price gets above that supply zone, it almost proves that we were wrong about our short bias. At which point, we cut our losses.
+**Why the stop loss placement?** Because at this point, if price gets above that supply zone, it almost proves that the short bias was wrong. At that point, the loss is cut.
 
 ---
 
 ## The Result
 
-Price wicks into our indecision/supply zone before violently being pushed back down to hit our take profit.
+Price wicks into the indecision/supply zone before violently being pushed back down to hit the take profit.
 
-The fact that price did not stay long in our entry zone is very good news and acts as more confluence for our trade. The longer price stays in our entry, the more likely it is to fail.
+The fact that price did not stay long in the entry zone is very good news and acts as more confluence for the trade. The longer price stays in an entry, the more likely it is to fail.
 
 ---
 
 ## Why This Setup is Strong
 
-The triple top gives us extra confluence:
+The triple top gives extra confluence:
 
 1. **Clear resistance level** - Price has been rejected here multiple times
 2. **Evidence of exhaustion** - Buyers tried three times and couldn't break through
 3. **Seller control** - Each failed attempt strengthens the case that sellers dominate this level
 4. **High probability reversal** - Three failures is a strong signal that direction is about to change
 
-When you combine the triple top pattern with a clean supply zone entry, you have a high-confidence trade.
+Combining the triple top pattern with a clean supply zone entry makes for a high-confidence trade.

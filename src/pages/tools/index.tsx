@@ -67,7 +67,10 @@ export default function ToolsHub(): ReactNode {
                     <Link to={tool.path} className={styles.row}>
                       <span className={styles.rowNum}>{String(tools.indexOf(tool) + 1).padStart(2, '0')}</span>
                       <span className={styles.rowBody}>
-                        <strong>{tool.name}</strong>
+                        <strong>
+                          {tool.name}
+                          {tool.interactive && <b className={styles.tag}>Interactive</b>}
+                        </strong>
                         <em>{tool.summary}</em>
                       </span>
                       <i aria-hidden="true">↗</i>

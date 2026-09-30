@@ -26,7 +26,7 @@ export default function Page(): ReactNode {
       }
       faqs={[
         {q: 'What is a good risk-to-reward ratio?', a: 'There is no single answer, because it works together with your win rate. Many traders look for at least 1 : 1.5 or 1 : 2 so that they can be wrong more often than they are right and still come out ahead. A higher ratio usually means a lower win rate.'},
-        {q: 'How do I calculate risk-to-reward for a short trade?', a: 'The same way, using absolute distances: risk is the distance from entry up to your stop, and reward is the distance from entry down to your target. The calculator detects the direction from where your stop and target sit.'},
+        {q: 'How is risk-to-reward calculated for a short trade?', a: 'The same way, using absolute distances: risk is the distance from entry up to your stop, and reward is the distance from entry down to your target. The calculator detects the direction from where your stop and target sit.'},
         {q: 'Does risk-to-reward include the spread?', a: 'No. It uses the prices you enter. Spreads and commissions make your real risk slightly larger and your real reward slightly smaller, so leave a margin.'},
       ]}
       learn={[

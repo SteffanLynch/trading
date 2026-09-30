@@ -1,3 +1,6 @@
+import OrderTypeSimulator from '@site/src/components/calculators/OrderTypeSimulator';
+import SpreadVisualiser from '@site/src/components/calculators/SpreadVisualiser';
+
 # What is the "Market"?
 
 The market is simply a place where buyers and sellers exchange assets. When you hear "the market went up" or "the market crashed," it means the prices of assets changed because of buying and selling activity.
@@ -30,6 +33,10 @@ It just matches compatible orders.
 
 > At the technical level, the market is a queue + a referee.
 
+The gap between the best bid and the best ask is called the **spread**. It is the basic cost of trading, and it is why a new position starts slightly behind. Change the spread below and watch what it costs:
+
+<SpreadVisualiser embedded />
+
 ### The Practical Reality
 
 The market is also the collective result of millions of independent participants interacting through that engine.
@@ -38,7 +45,7 @@ All *intent* comes from **participants** - banks, funds, corporations, traders, 
 
 The engine merely enforces the consequences of those decisions.
 
-So when we say "the market decided" or "the market rejected a level," that's shorthand for:
+So when traders say "the market decided" or "the market rejected a level," that's shorthand for:
 
 > Participants collectively stopped agreeing at one price and only agreed at another.
 
@@ -116,9 +123,9 @@ Not everyone in the market has the same power or purpose:
 2. **Commercial Banks** - Handle massive currency transactions for clients and themselves.
 3. **Hedge Funds** - Large pools of money using advanced strategies to profit.
 4. **Multinational Corporations** - Convert currencies for international business operations.
-5. **Retail Traders** - Individual traders like you and me. The smallest fish in the pond.
+5. **Retail Traders** - Individual traders. The smallest fish in the pond.
 
-As retail traders, we don't move the market. We read the market and position ourselves to profit from moves created by larger players.
+Retail traders don't move the market. They read the market and position to profit from moves created by larger players.
 
 ### Banks and Large Players
 
@@ -158,10 +165,10 @@ An order is just a request to buy or sell. An order is just an instruction.
 
 That's it.
 
-If you go to a shop and say, "I want to buy apples", that's an order.
+If you go to a shop and ask for apples, that's an order.
 
-"I want to buy"
-"I want to sell"
+"Buy"
+"Sell"
 
 In trading, it's the same thing but you don't buy apples — you buy or sell price.
 
@@ -188,7 +195,7 @@ This is what most beginners use.
 
 You are saying:
 
-"I don't care about price. Just give it to me immediately."
+"Price doesn't matter. Fill it immediately."
 
 ### Limit Order = "Buy/Sell ONLY at this price"
 
@@ -196,11 +203,17 @@ This is the opposite.
 
 You are saying:
 
-"I will only buy IF price comes to me."
+"Buy ONLY IF price comes to this level."
 
 So it just sits there, waiting for price to come to the agreed price, and then the order is executed.
 
 The order has been placed but not entered yet. As far as price is concerned, nothing has happened.
+
+Two other order types are combinations of these two. A **stop** order waits for price to reach a level and then becomes a market order. A **stop-limit** order waits for a level and then becomes a limit order.
+
+The practice market below shows how every order type behaves. Place one, move the price, and watch exactly when it fills:
+
+<OrderTypeSimulator embedded />
 
 ---
 
@@ -334,7 +347,7 @@ When you place a market order, you are choosing:
 
 You are saying:
 
-> "I want this trade NOW. I don't care what price I get."
+> "Fill this trade NOW. The price doesn't matter."
 
 If the market is moving fast:
 - You will get filled
@@ -351,7 +364,7 @@ When you place a limit order, you are choosing:
 
 You are saying:
 
-> "I only want this trade if I can get THIS price."
+> "Fill this trade only at THIS price."
 
 If the market says "no":
 - You don't get filled
@@ -361,7 +374,7 @@ If the market says "no":
 
 That is the trade-off you accepted.
 
-**"What if there are no buyers or sellers willing to agree at that price? Then my limit order just hangs there?"**
+**"What if there are no buyers or sellers willing to agree at that price? Then the limit order just hangs there?"**
 
 YES. EXACTLY.
 
@@ -394,7 +407,7 @@ You must choose which you value more in each situation.
 
 ## Why Limit Orders Don't Always Fill
 
-**"What if price touches my limit order, doesn't fill me, then reverses and never comes back?"**
+**"What if price touches a limit order, doesn't fill it, then reverses and never comes back?"**
 
 This can and does happen. There are three common reasons:
 
@@ -460,7 +473,7 @@ A wick is:
 
 So some people traded. Some didn't. Some were left behind.
 
-### Will My Order Ever Be Filled?
+### Will an Order Ever Be Filled?
 
 It depends on your **Time in Force** setting:
 
@@ -484,6 +497,6 @@ Why? Because they know:
 
 ---
 
-**Next:** [Market Nature](03-market-nature.md)
+**Next:** [Market Nature](03-market-nature.mdx)
 
 *Now that you know how the "engine" works, let's look at the "personality" of the crowd that drives it.*
