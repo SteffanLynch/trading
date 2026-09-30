@@ -31,9 +31,11 @@ export default function Page(): ReactNode {
           November), that overlap is an hour longer, because New York opens at 12:00 GMT.
         </p>
       }
-      extra={
+      extra={[
+        {
+          title: 'Session hours in UTC',
+          content: (
         <>
-          <h2>Session hours in UTC</h2>
           <p>The same hours expressed in UTC, in winter and in summer. They shift because each country changes its clocks on different dates.</p>
           <table className={toolPageStyles.dataTable}>
             <thead>
@@ -66,7 +68,9 @@ export default function Page(): ReactNode {
             </tbody>
           </table>
         </>
-      }
+          ),
+        },
+      ]}
       faqs={[
         {q: 'What are the forex trading sessions?', a: 'The four main sessions are Sydney, Tokyo, London and New York. Together they keep the market open 24 hours a day from Sunday evening to Friday evening New York time.'},
         {q: 'What is the best time to trade forex?', a: 'There is no single best time. Many traders favour the London and New York overlap for its higher liquidity and tighter spreads, while others prefer the quieter Asian session for ranging conditions. It depends on your pair and your strategy.'},

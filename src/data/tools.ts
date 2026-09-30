@@ -165,3 +165,23 @@ export function getTool(slug: string): ToolMeta {
 }
 
 export const toolGroups: ToolGroup[] = ['Plan a trade', 'Pips & money', 'Leverage & growth', 'Edge & statistics', 'Markets'];
+
+export type Tone = 'violet' | 'amber' | 'coral' | 'cyan' | 'lime';
+
+/** Each group has its own colour; the page, hub and homepage all use it so a tool always "feels" like its group. */
+export const groupTone: Record<ToolGroup, Tone> = {
+  'Plan a trade': 'violet',
+  'Pips & money': 'amber',
+  'Leverage & growth': 'coral',
+  'Edge & statistics': 'cyan',
+  Markets: 'lime',
+};
+
+export const groupBlurb: Record<ToolGroup, string> = {
+  'Plan a trade': 'Size it, set the stop, check the reward. Before any money is at risk.',
+  'Pips & money': 'Turn distance into money and money back into distance.',
+  'Leverage & growth': 'What margin locks up, what losses cost, and what compounding really does.',
+  'Edge & statistics': 'How often you need to win, and what a typical trade is worth.',
+  Markets: 'Which sessions are open right now, wherever you are.',
+};
+

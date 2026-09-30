@@ -1,9 +1,10 @@
-import type {ReactNode} from 'react';
+import type {CSSProperties, ReactNode} from 'react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
-import {getTool} from '../../data/tools';
+import {getTool, groupTone, type Tone} from '../../data/tools';
+import Accordion from './Accordion';
 import styles from './ToolPage.module.css';
 
 interface Faq {
@@ -23,8 +24,8 @@ interface Props {
   example: ReactNode;
   faqs: Faq[];
   learn: {label: string; to: string}[];
-  /** Extra sections after the example, e.g. a reference table. */
-  extra?: ReactNode;
+  /** Extra collapsible sections after the example, e.g. a reference table. */
+  extra?: {title: string; content: ReactNode}[];
 }
 
 /** The disclaimer every tool carries. */
@@ -75,80 +76,93 @@ export default function ToolPage({slug, lead, children, meaning, formula, exampl
   };
 
   const related = tool.related.map(getTool);
+  const tone = groupTone[tool.group];
+  const relatedVars = (entryTone: Tone) =>
+    ({'--c': `var(--${entryTone})`, '--ct': `var(--${entryTone}-t)`}) as CSSProperties;
 
   return (
     <Layout title={tool.metaTitle} description={tool.description}>
       <Head>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Head>
-      <main className={styles.page}>
-        <nav className={styles.crumbs} aria-label="Breadcrumb">
-          <Link to="/tools">Tools</Link>
-          <span aria-hidden="true">/</span>
-          <span aria-current="page">{tool.name}</span>
-        </nav>
-        <header className={styles.header}>
-          <h1>{tool.heading}</h1>
-          <p className={styles.lead}>{lead}</p>
-        </header>
+      <main className={`${styles.shell} tone-${tone}`}>
+        <div className={styles.glowA} aria-hidden="true" />
+        <div className={styles.glowB} aria-hidden="true" />
+        <div className={styles.page}>
+          <nav className={styles.crumbs} aria-label="Breadcrumb">
+            <Link to="/tools">Tools</Link>
+            <span aria-hidden="true">/</span>
+            <span className={styles.groupChip} aria-current="page">
+              <i aria-hidden="true" />
+              {tool.group}
+            </span>
+          </nav>
+          <header className={styles.header}>
+            <h1>{tool.heading}</h1>
+            <p className={styles.lead}>{lead}</p>
+          </header>
 
-        {children}
+          {children}
 
-        <div className={styles.article}>
-          <h2>What does this mean?</h2>
-          {meaning}
-
-          <h2>The formula</h2>
-          <div className={styles.formula}>
-            {formula.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-          </div>
-
-          <h2>Worked example</h2>
-          <div className={styles.example}>{example}</div>
-
-          {extra}
-
-          {faqs.length > 0 && (
-            <>
-              <h2>Frequently asked questions</h2>
-              {faqs.map((faq) => (
-                <div key={faq.q}>
-                  <h3>{faq.q}</h3>
-                  <p>{faq.a}</p>
-                </div>
-              ))}
-            </>
-          )}
-
-          {learn.length > 0 && (
-            <>
-              <h2>Learn more</h2>
-              <ul className={styles.learn}>
-                {learn.map((link) => (
-                  <li key={link.to}>
-                    <Link to={link.to}>{link.label} →</Link>
-                  </li>
+          <div className={styles.article}>
+            <Accordion title="What does this mean?">{meaning}</Accordion>
+            <Accordion title="The formula">
+              <div className={styles.formula}>
+                {formula.map((line) => (
+                  <p key={line}>{line}</p>
                 ))}
-              </ul>
-            </>
-          )}
-
-          <p className={styles.disclaimer}>{DISCLAIMER}</p>
-        </div>
-
-        <section className={styles.related} aria-labelledby="related-tools">
-          <h2 id="related-tools">More free tools</h2>
-          <div className={styles.relatedGrid}>
-            {related.map((entry) => (
-              <Link className={styles.relatedCard} to={entry.path} key={entry.slug}>
-                <strong>{entry.name}</strong>
-                <span>{entry.summary}</span>
-              </Link>
+              </div>
+            </Accordion>
+            <Accordion title="Worked example">
+              <div className={styles.example}>{example}</div>
+            </Accordion>
+            {extra?.map((section) => (
+              <Accordion key={section.title} title={section.title}>
+                {section.content}
+              </Accordion>
             ))}
+
+            {faqs.length > 0 && (
+              <>
+                <p className={styles.faqHeading}>Frequently asked questions</p>
+                <div className={styles.faqList}>
+                  {faqs.map((faq) => (
+                    <Accordion key={faq.q} title={faq.q} variant="faq">
+                      <p>{faq.a}</p>
+                    </Accordion>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {learn.length > 0 && (
+              <>
+                <p className={styles.learnHeading}>Learn more</p>
+                <ul className={styles.learn}>
+                  {learn.map((link) => (
+                    <li key={link.to}>
+                      <Link to={link.to}>{link.label} →</Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            <p className={styles.disclaimer}>{DISCLAIMER}</p>
           </div>
-        </section>
+
+          <section className={styles.related} aria-labelledby="related-tools">
+            <h2 id="related-tools">Keep going</h2>
+            <div className={styles.relatedList}>
+              {related.map((entry) => (
+                <Link className={styles.relatedItem} to={entry.path} key={entry.slug} style={relatedVars(groupTone[entry.group])}>
+                  <strong>{entry.name}</strong>
+                  <span>{entry.summary}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </div>
       </main>
     </Layout>
   );

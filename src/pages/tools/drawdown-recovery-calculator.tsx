@@ -24,15 +24,17 @@ export default function Page(): ReactNode {
           gain) just to break even.
         </p>
       }
-      extra={
-        <>
-          <h2>Why this matters for risk per trade</h2>
-          <p>
-            Risking 1% per trade, ten losses in a row leave you about 9.6% down and needing about a 10.6% gain to recover. Risking 10% per trade, the same ten losses leave you about 65% down and needing roughly a 187% gain. Small
-            risk keeps recovery realistic.
-          </p>
-        </>
-      }
+      extra={[
+        {
+          title: 'Why this matters for risk per trade',
+          content: (
+            <p>
+              Risking 1% per trade, ten losses in a row leave you about 9.6% down and needing about a 10.6% gain to recover. Risking 10% per trade, the same ten losses leave you about 65% down and needing roughly a 187% gain. Small
+              risk keeps recovery realistic.
+            </p>
+          ),
+        },
+      ]}
       faqs={[
         {q: 'How do I calculate the gain needed to recover from a loss?', a: 'Divide 1 by the fraction of your balance you have left, then subtract 1. If you have 80% left, 1 ÷ 0.8 − 1 = 25%.'},
         {q: 'Why is recovery bigger than the loss?', a: 'Because the percentage gain is applied to a smaller balance. A 50% loss leaves half your money, so you need to double what is left.'},

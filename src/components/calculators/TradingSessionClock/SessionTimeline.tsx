@@ -3,10 +3,10 @@ import {minutesToClock, type Timeline} from '../../../utils/calculators/sessions
 import {useElementWidth} from '../hooks/useElementWidth';
 
 const COLORS: Record<string, string> = {
-  sydney: 'var(--accent-c)',
-  tokyo: 'var(--warn)',
-  london: 'var(--accent-b)',
-  newyork: 'var(--accent)',
+  sydney: 'var(--cyan)',
+  tokyo: 'var(--amber)',
+  london: 'var(--lime)',
+  newyork: 'var(--violet)',
 };
 
 const ROW_H = 30;

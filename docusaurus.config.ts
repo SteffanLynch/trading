@@ -58,14 +58,15 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'TRADING / NOTES',
+      title: 'Trading Notes',
+      logo: {alt: 'Trading Notes logo', src: 'img/logo.svg', width: 32, height: 32},
       hideOnScroll: false,
       items: [
         {to: '/', label: 'Overview', position: 'left', exact: true},
         {to: '/library/', label: 'Library', position: 'left'},
         {to: '/library/strategy/rules', label: 'Rules', position: 'left'},
         {to: '/library/manifesto', label: 'Manifesto', position: 'left'},
-        {to: '/tools', label: 'Tools', position: 'left', activeBaseRegex: '^/tools'},
+        {to: '/tools', label: 'Free tools', position: 'left', activeBaseRegex: '^/tools', className: 'navbar-tools-link'},
         {
           type: 'html',
           position: 'right',
@@ -104,7 +105,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Personal notes · Last built ${new Date().getFullYear()} · Not financial advice`,
+      copyright: `<div class="footer-mark" aria-hidden="true">Trading Notes</div><div class="footer-fine">Personal notes · ${new Date().getFullYear()} · Not financial advice · Enough is better than everything.</div>`,
     },
     docs: {
       sidebar: {

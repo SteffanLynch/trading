@@ -1,0 +1,145 @@
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.candle {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: grow 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+.zones {
+  animation: fadeUp 0.8s ease 1.9s both;
+}
+
+.zoneLabel {
+  font: 700 11px 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+}
+
+@keyframes grow {
+  from {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- the live ticket ---------- */
+
+.ticket {
+  width: min(20rem, 100%);
+  padding: 1.3rem 1.4rem 1.2rem;
+  border: 1px solid rgba(200, 255, 77, 0.4);
+  border-radius: 1.6rem;
+  background: linear-gradient(160deg, #10172d, #0a0e1c);
+  color: #f4f1ea;
+  box-shadow: 0 34px 70px -24px rgba(0, 0, 0, 0.65), 0 0 0 7px rgba(200, 255, 77, 0.07);
+}
+
+.ticketLabel {
+  margin: 0 0 0.9rem;
+  color: #c8ff4d;
+  font: 500 0.6rem 'DM Mono', monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.ticketRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font: 600 0.82rem 'Manrope', sans-serif;
+  color: #c9cee0;
+}
+
+.ticketRow b {
+  color: #f4f1ea;
+  font: 700 1rem 'DM Mono', monospace;
+}
+
+.ticketRange {
+  width: 100%;
+  margin: 0.5rem 0 0.2rem;
+  accent-color: #c8ff4d;
+  cursor: pointer;
+}
+
+.ticketMeta {
+  margin: 0 0 0.6rem;
+  color: #8a94b0;
+  font: 500 0.66rem 'DM Mono', monospace;
+}
+
+.ticketBig {
+  margin: 0;
+  font: 800 4.1rem/1 'Bricolage Grotesque', 'Manrope', sans-serif;
+  letter-spacing: -0.05em;
+  color: #c8ff4d;
+}
+
+.ticketBig small {
+  margin-left: 0.4rem;
+  font: 600 1rem 'Manrope', sans-serif;
+  letter-spacing: 0;
+  color: #c9cee0;
+}
+
+.ticketOutcome {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.5rem;
+  margin: 0.8rem 0 1rem;
+  font: 700 0.95rem 'DM Mono', monospace;
+}
+
+.lose {
+  color: #ff7482;
+}
+
+.win {
+  color: #62e690;
+}
+
+.sep {
+  color: #8a94b0;
+  font: 500 0.7rem 'Manrope', sans-serif;
+}
+
+.ticketLink {
+  display: inline-flex;
+  gap: 0.4rem;
+  color: #f4f1ea;
+  font: 700 0.82rem 'Manrope', sans-serif;
+  border-bottom: 1.5px solid #c8ff4d;
+}
+
+.ticketLink:hover {
+  color: #c8ff4d;
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .candle,
+  .zones {
+    animation: none;
+  }
+}
