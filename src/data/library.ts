@@ -1,8 +1,10 @@
+import {tools} from './tools';
+
 export type LibraryItem = {
   title: string;
   description: string;
   href: string;
-  section: 'Orientation' | 'Fundamentals' | 'Strategy' | 'Reference';
+  section: 'Orientation' | 'Fundamentals' | 'Strategy' | 'Reference' | 'Tools';
   number?: string;
   keywords: string;
 };
@@ -31,3 +33,6 @@ export const library: LibraryItem[] = [
   {title: 'Double Top Trend Reversal Example', description: 'A break and retest entry off a double top reversal.', href: '/library/strategy/break-and-retest/examples/double-top-trend-reversal-example', section: 'Strategy', keywords: 'double top reversal example chart'},
   {title: 'Glossary', description: 'A quick reference for the language of trading.', href: '/library/glossary', section: 'Reference', keywords: 'definitions terms reference pips liquidity leverage'},
 ];
+
+// Every free tool is searchable from the command palette and the index page.
+library.push(...tools.map((tool) => ({title: tool.heading, description: tool.summary, href: tool.path, section: 'Tools' as const, keywords: tool.keywords})));

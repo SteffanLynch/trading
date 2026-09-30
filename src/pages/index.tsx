@@ -2,6 +2,7 @@ import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import {library} from '../data/library';
+import {tools} from '../data/tools';
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
@@ -23,6 +24,7 @@ const ICONS = {
   book: 'M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15ZM4 20.5A2.5 2.5 0 0 1 6.5 18H20',
   chart: 'M4 20V10m6 10V4m6 16v-7m6 7V8',
   bookmark: 'M6 3h12v18l-6-4-6 4V3Z',
+  calculator: 'M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 5h10M8.5 12.5h.01M12 12.5h.01M15.5 12.5h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01',
 };
 
 const quickLinks = [
@@ -30,6 +32,7 @@ const quickLinks = [
   {icon: ICONS.target, title: 'Strategy', copy: 'How I actually find and take a trade.', href: '/library/strategy/what-is-a-trading-plan'},
   {icon: ICONS.shield, title: 'Rules', copy: 'The checks I’m not allowed to skip.', href: '/library/strategy/rules'},
   {icon: ICONS.quote, title: 'Manifesto', copy: 'The mindset behind all of it.', href: '/library/manifesto'},
+  {icon: ICONS.calculator, title: 'Free tools', copy: 'Calculators that do the maths for me.', href: '/tools'},
 ];
 
 const sections: {label: string; accent: string; icon: string; items: typeof library}[] = [
@@ -56,6 +59,24 @@ export default function Home(): ReactNode {
               </Link>
             ))}
           </div>
+        </section>
+
+        <section className="hub-section accent-b">
+          <div className="hub-section-head">
+            <span className="hub-section-icon"><Icon d={ICONS.calculator} /></span>
+            <h2>Free tools</h2>
+          </div>
+          <div className="hub-grid">
+            {tools.slice(0, 4).map((tool, index) => (
+              <Link to={tool.path} className="hub-card" key={tool.slug}>
+                <span className="hub-card-index">{String(index + 1).padStart(2, '0')}</span>
+                <h3>{tool.name}</h3>
+                <p>{tool.summary}</p>
+                <span className="hub-card-arrow"><Arrow /></span>
+              </Link>
+            ))}
+          </div>
+          <p style={{marginTop: '1.4rem'}}><Link className="text-link" to="/tools">All {tools.length} tools <span>→</span></Link></p>
         </section>
 
         {sections.map((section) => (

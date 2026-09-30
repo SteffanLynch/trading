@@ -26,11 +26,17 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Type check
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm test
       - name: Build Docusaurus
         run: npm run build
         env:
           DOCUSAURUS_SITE_URL: https://steffanlynch.github.io
           DOCUSAURUS_BASE_URL: /trading/
+      - name: Check the built tool pages (SEO, sitemap, structured data)
+        run: npm run check:build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build

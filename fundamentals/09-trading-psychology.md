@@ -19,7 +19,7 @@ But that's fundamentally flawed thinking. Your job isn't to predict individual t
 
 We get disappointed and feel betrayed when we assign some sort of certainty to our trades. We only take trades that we believe will be successful. But it's not our job to believe in any one individual trade. It's our responsibility to believe in a series of trades, over probability, over a long time horizon.
 
-> This concept is explored in depth in [Understanding Probability: The Core Truth of Trading](01-what-is-trading.md#understanding-probability-the-core-truth-of-trading).
+> This concept is explored in depth in [Understanding Probability: The Core Truth of Trading](01-what-is-trading.mdx#understanding-probability-the-core-truth-of-trading).
 
 ---
 

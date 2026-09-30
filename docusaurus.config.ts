@@ -29,8 +29,8 @@ const config: Config = {
             'README.md',
             'manifesto.md',
             'glossary.md',
-            'fundamentals/**/*.md',
-            'strategy/**/*.md',
+            'fundamentals/**/*.{md,mdx}',
+            'strategy/**/*.{md,mdx}',
           ],
           exclude: [
             '**/node_modules/**',
@@ -65,6 +65,7 @@ const config: Config = {
         {to: '/library/', label: 'Library', position: 'left'},
         {to: '/library/strategy/rules', label: 'Rules', position: 'left'},
         {to: '/library/manifesto', label: 'Manifesto', position: 'left'},
+        {to: '/tools', label: 'Tools', position: 'left', activeBaseRegex: '^/tools'},
         {
           type: 'html',
           position: 'right',
@@ -82,6 +83,16 @@ const config: Config = {
             {label: 'Start here', to: '/library/'},
             {label: 'Fundamentals', to: '/library/fundamentals/what-is-trading'},
             {label: 'Strategy', to: '/library/strategy/what-is-a-trading-plan'},
+          ],
+        },
+        {
+          title: 'Tools',
+          items: [
+            {label: 'Trade planner', to: '/tools/trade-planner'},
+            {label: 'Position size', to: '/tools/position-size-calculator'},
+            {label: 'Pip value', to: '/tools/pip-value-calculator'},
+            {label: 'Risk : reward', to: '/tools/risk-reward-calculator'},
+            {label: 'All tools', to: '/tools'},
           ],
         },
         {

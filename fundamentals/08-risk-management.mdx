@@ -1,3 +1,8 @@
+import RiskRewardCalculator from '@site/src/components/calculators/RiskRewardCalculator';
+import BreakEvenWinRateCalculator from '@site/src/components/calculators/BreakEvenWinRateCalculator';
+import PipValueCalculator from '@site/src/components/calculators/PipValueCalculator';
+import MarginLeverageCalculator from '@site/src/components/calculators/MarginLeverageCalculator';
+import PositionSizeCalculator from '@site/src/components/calculators/PositionSizeCalculator';
 
 # What is Risk Management
 
@@ -40,11 +45,15 @@ With a 1:3 R:R, you only need to win 1 out of every 4 trades to break even. Win 
 
 You can have a low win rate and still make money if your winners are bigger than your losers.
 
+<BreakEvenWinRateCalculator embedded />
+
 ### The Minimum Standard
 
 **The minimum risk to reward ratio you should take is 1:2, ideally 1:3.**
 
 Anything less than 1:2 means you need to win more than half your trades just to break even - and that's hard to do consistently.
+
+<RiskRewardCalculator embedded />
 
 ---
 
@@ -121,6 +130,8 @@ Example (GBPUSD on most brokers):
 - Reference money-per-pip at 1.00 lot = **£10**
 
 This is the **constant**.
+
+<PipValueCalculator embedded />
 
 ## Contracts
 
@@ -345,6 +356,8 @@ It is the maximum pool your losses are taken from while the trade is open.
 Money still available to absorb losses / open new trades
 Free Margin = Equity − Margin
 
+<MarginLeverageCalculator embedded />
+
 ## Position Sizes
 
 This is important psychologically.
@@ -431,6 +444,8 @@ Money I am willing to lose
 ```
 
 If your stop loss gets hit, you lose exactly $100 (1% of your account). No more, no less.
+
+<PositionSizeCalculator embedded />
 
 ---
 

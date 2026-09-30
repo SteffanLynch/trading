@@ -19,10 +19,13 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Validate a Production Build
 
 ```bash
+npm run test
 npm run typecheck
 npm run build
 npm run serve
 ```
+
+`npm run test` runs the Vitest unit tests for the calculator maths in `src/utils/calculators/`. After a build, `npm run check:build` verifies every tools page has a title, meta description, canonical URL, one `<h1>`, valid JSON-LD and a sitemap entry. CI (`.github/workflows/ci.yml`, and the deploy workflow) runs typecheck → tests → build → check.
 
 The static production site is generated in `build/`.
 
@@ -58,3 +61,54 @@ Each push to the connected branch triggers a new Railway deployment. A custom do
 ## Deploy on GitHub Pages
 
 The workflow in `.github/workflows/deploy.yml` builds and publishes the site when `main` is pushed. In the repository settings, choose **Pages → Source → GitHub Actions**. The expected project URL is `https://steffanlynch.github.io/trading/`.
+
+## Free tools
+
+Twelve free calculators live under `/tools` (hub at `/tools`). The site's principle: never make a visitor calculate something the website could calculate for them, and never put a sign-up in the way.
+
+### How it is organised
+
+| Layer | Where | Rule |
+| --- | --- | --- |
+| Calculation engine | `src/utils/calculators/` | Pure TypeScript, no React, fully unit tested. Every function returns a `Calc` (`incomplete` / `invalid` / `needs-rate` / `ok`). |
+| State hooks | `src/components/calculators/hooks/` | `useToolState` (inputs as strings so an empty box is never `0`; shareable URL; remembered preferences), `useTrackCalculation` (analytics). |
+| Design system | `src/components/calculators/ui/` | Shared fields, results, charts and the card. Uses the site's own colour tokens. |
+| Calculators | `src/components/calculators/<Name>/` | One component per tool. Each accepts `embedded`. |
+| Pages | `src/pages/tools/*.tsx` | A thin wrapper around `ToolPage` (teaching content, FAQs, JSON-LD). |
+| Registry | `src/data/tools.ts` | One entry per tool: drives the hub, navigation, search, related links and SEO metadata. |
+
+### Adding a tool
+
+1. Put the maths in `src/utils/calculators/` with a test next to it.
+2. Build the component in `src/components/calculators/<Name>/index.tsx` from the shared `ui` kit.
+3. Add an entry to `src/data/tools.ts` (keep the meta title under about 70 characters and the description under 165; `check:build` enforces this).
+4. Add `src/pages/tools/<slug>.tsx` using `ToolPage`.
+5. Run `npm run test && npm run typecheck && npm run build && npm run check:build`.
+
+### Rules these tools follow
+
+- **No LaTeX in `.tsx`.** The math renderer only runs on `.mdx`, so formulas are plain-text blocks.
+- **Empty fields pause, never error.** Errors appear only when every field is filled in and the combination is impossible.
+- **Currency is handled, not assumed.** Profit and loss are converted into the account currency. When the base or quote currency is the account currency the site works it out itself; otherwise it asks for an exchange rate. The site uses no live market data.
+- **Code splitting.** Calculators are not registered in `src/theme/MDXComponents.js`; import them explicitly where needed so each page only ships what it uses.
+
+### Embedding a calculator in an article
+
+Rename the article to `.mdx` (the docs plugin includes `.md` and `.mdx` under `fundamentals/` and `strategy/`), then import the calculator explicitly:
+
+```mdx
+import PositionSizeCalculator from '@site/src/components/calculators/PositionSizeCalculator';
+
+<PositionSizeCalculator embedded />
+```
+
+Embedded widgets are compact, start from the article's worked example (not a visitor's saved preferences) and don't touch the address bar. When renaming an article, update any Markdown links that point at its old `.md` file name.
+
+### Shareable links and saved preferences
+
+Every full-page calculator writes its inputs to the address bar (only values that differ from the defaults), and **Copy link** shares them, for example `/tools/position-size-calculator?balance=25000&risk=0.5&pair=USDJPY&currency=GBP`. Unknown or unsafe parameters are ignored. Account currency, risk and balance are remembered in the visitor's own browser (`localStorage`); nothing is sent to a server for this.
+
+### Analytics
+
+Calculators send a debounced `calculator_calculated` event to `window.posthog` **only after the visitor has changed an input and the result is valid**, containing every input and every computed output (plus `calculator_name` and `placement`: `page` or `embedded`). A `calculator_link_copied` event is sent when a link is copied. If PostHog is not installed the calls do nothing. PostHog itself is not installed by this repository: add its snippet (and a consent banner if your audience needs one), and note that the event payload includes the account balance a visitor typed.
+

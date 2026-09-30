@@ -30,7 +30,7 @@ Before touching a chart, you must understand the nature of the environment.
 
 | # | File | Core Lesson |
 |---|------|-------------|
-| 1 | [What is Trading?](fundamentals/01-what-is-trading.md) | Trading is a game of probability and positive expectancy, not prediction. |
+| 1 | [What is Trading?](fundamentals/01-what-is-trading.mdx) | Trading is a game of probability and positive expectancy, not prediction. |
 | 2 | [Market Fundamentals](fundamentals/02-market-fundamentals.md) | Price moves because of the matching engine, order book priority, and the interaction between Market and Limit orders. |
 | 3 | [Market Nature](fundamentals/03-market-nature.md) | Markets are fractal and cyclical; they move between expansion and contraction while hunting for liquidity. |
 
@@ -59,7 +59,7 @@ The final technical layer and the rules for survival.
 | # | File | Core Lesson |
 |---|------|-------------|
 | 7 | [Candlesticks](fundamentals/07-candlesticks.md) | Anatomy of agreement vs. rejection. Using Pinbars, Dojis, and Engulfing patterns to confirm a story already told by structure and levels. |
-| 8 | [Risk Management](fundamentals/08-risk-management.md) | The 1-2% risk rule, position sizing, and the non-negotiable nature of stop losses. |
+| 8 | [Risk Management](fundamentals/08-risk-management.mdx) | The 1-2% risk rule, position sizing, and the non-negotiable nature of stop losses. |
 | 9 | [Trading Psychology](fundamentals/09-trading-psychology.md) | Managing the "Big Four" emotions (Fear, Greed, Hope, Frustration) and prioritizing process over outcome. |
 
 **Goal:** Execute with precision, protect the capital, and master the mind.

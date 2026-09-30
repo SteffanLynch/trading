@@ -240,6 +240,6 @@ Price hits support twice, fails to break through both times, then rises.
 
 ---
 
-**Next:** [Risk Management](08-risk-management.md)
+**Next:** [Risk Management](08-risk-management.mdx)
 
 *You can read the story, but reading isn't enough - you need a math-based plan to ensure you don't go bust while learning.*
