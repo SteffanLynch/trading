@@ -1,23 +1,47 @@
-name: Deploy trading notes to GitHub Pages
+name: Deploy to Cloud Run
+
+# Pushes to `staging` deploy the `trading-web-staging` Cloud Run service; pushes
+# to `main` deploy the `trading-web` (production) service. Nothing else deploys:
+# the same pairing applies to a manual run, whose "Use workflow from" branch
+# decides the environment.
+#
+#   staging -> trading-web-staging
+#   main    -> trading-web
+#
+# `verify` runs the same checks as ci.yml (type-check, unit tests, build, built
+# page checks) first, because ci.yml does not run on pushes to main. The image is
+# then built from the Dockerfile (Docusaurus build, served by server.mjs) with
+# DOCUSAURUS_SITE_URL / DOCUSAURUS_BASE_URL baked in, since they are read at
+# build time and end up in canonical URLs, the sitemap and structured data.
+#
+# No GitHub secrets or variables are needed. Every value below is a plain,
+# non-sensitive GCP identifier; auth is Workload Identity Federation.
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   workflow_dispatch:
+
+# One deploy per environment at a time; a newer push supersedes a queued one but
+# never cancels a deploy that is already running.
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
-  build:
+  verify:
+    name: Type check, test and build
     runs-on: ubuntu-latest
     steps:
+      - name: Only main and staging deploy
+        if: github.ref_name != 'main' && github.ref_name != 'staging'
+        run: |
+          echo "::error::Deploys only run from the 'main' (production) or 'staging' branch, not '${{ github.ref_name }}'. Set 'Use workflow from' to one of them."
+          exit 1
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -32,22 +56,88 @@ jobs:
         run: npm test
       - name: Build Docusaurus
         run: npm run build
-        env:
-          DOCUSAURUS_SITE_URL: https://steffanlynch.github.io
-          DOCUSAURUS_BASE_URL: /trading/
       - name: Check the built tool pages (SEO, sitemap, structured data)
         run: npm run check:build
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: build
 
   deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    name: Deploy ${{ github.ref_name == 'main' && 'trading-web (production)' || 'trading-web-staging' }}
+    needs: [verify]
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    permissions:
+      contents: read
+      id-token: write # required for Workload Identity Federation
+    env:
+      GCP_PROJECT_ID: misppelled
+      GCP_REGION: europe-west2
+      GCP_WORKLOAD_IDENTITY_PROVIDER: projects/699962388958/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+      GCP_DEPLOYER_SA: gha-deployer@misppelled.iam.gserviceaccount.com
+      ARTIFACT_REPO: misppelled
+      # Cloud Run's stable per-service URL is https://<service>-<project number>.<region>.run.app.
+      # Replace these with the custom domains once they are mapped to the services.
+      PROD_SITE_URL: https://trading-web-699962388958.europe-west2.run.app
+      STAGING_SITE_URL: https://trading-web-staging-699962388958.europe-west2.run.app
+      # Served from the domain root, so no sub-path.
+      DOCUSAURUS_BASE_URL: /
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v4
+
+      # The branch alone picks the environment: main -> production, staging -> staging.
+      - name: Pick the environment from the branch
+        id: env
+        run: |
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            SERVICE=trading-web
+            SITE_URL="$PROD_SITE_URL"
+          else
+            SERVICE=trading-web-staging
+            SITE_URL="$STAGING_SITE_URL"
+          fi
+          {
+            echo "service=$SERVICE"
+            echo "site_url=$SITE_URL"
+            echo "image=$GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$ARTIFACT_REPO/$SERVICE:$GITHUB_SHA"
+          } >> "$GITHUB_OUTPUT"
+          echo "Deploying \`$GITHUB_SHA\` from \`$GITHUB_REF_NAME\` to \`$SERVICE\` ($SITE_URL)." >> "$GITHUB_STEP_SUMMARY"
+
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ env.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.GCP_DEPLOYER_SA }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - run: gcloud auth configure-docker "${{ env.GCP_REGION }}-docker.pkg.dev" --quiet
+
+      - name: Build image
+        run: |
+          docker build \
+            --build-arg DOCUSAURUS_SITE_URL="${{ steps.env.outputs.site_url }}" \
+            --build-arg DOCUSAURUS_BASE_URL="${{ env.DOCUSAURUS_BASE_URL }}" \
+            --tag "${{ steps.env.outputs.image }}" \
+            .
+
+      - name: Push image
+        run: docker push "${{ steps.env.outputs.image }}"
+
+      # A static site: no secrets and no runtime config. server.mjs listens on
+      # $PORT and the Dockerfile defaults it to 3000.
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy "${{ steps.env.outputs.service }}" \
+            --image="${{ steps.env.outputs.image }}" \
+            --region="${{ env.GCP_REGION }}" \
+            --project="${{ env.GCP_PROJECT_ID }}" \
+            --platform=managed \
+            --port=3000 \
+            --allow-unauthenticated \
+            --quiet
+
+      - name: Smoke test
+        run: |
+          URL=$(gcloud run services describe "${{ steps.env.outputs.service }}" \
+            --region="${{ env.GCP_REGION }}" --project="${{ env.GCP_PROJECT_ID }}" \
+            --format='value(status.url)')
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 --retry-all-errors "$URL/health"

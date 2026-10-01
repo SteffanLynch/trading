@@ -43,26 +43,20 @@ The container exposes:
 - Website: [http://localhost:3000](http://localhost:3000)
 - Health check: [http://localhost:3000/health](http://localhost:3000/health)
 
-## Deploy on Railway
+## Deploy on Google Cloud Run
 
-Railway can host this as a static site without Docker, but the included `Dockerfile` gives the deployment a consistent production server and health check.
+`.github/workflows/deploy.yml` deploys on every push, using the root `Dockerfile` (Docusaurus build, served by `server.mjs`):
 
-1. Push this repository to GitHub.
-2. In Railway, select **New Project → Deploy from GitHub repo**.
-3. Choose this repository. Railway automatically detects the root `Dockerfile`.
-4. In the service settings, set the health-check path to `/health`.
-5. Under **Networking**, select **Generate Domain**.
-6. Set `DOCUSAURUS_SITE_URL` to the generated public URL, including `https://`, then redeploy. Keep `DOCUSAURUS_BASE_URL` as `/` unless the site is hosted below a URL subpath.
+| Branch | Cloud Run service | `DOCUSAURUS_SITE_URL` |
+| --- | --- | --- |
+| `main` | `trading-web` | `https://trading-web-699962388958.europe-west2.run.app` |
+| `staging` | `trading-web-staging` | `https://trading-web-staging-699962388958.europe-west2.run.app` |
 
-Each push to the connected branch (`main`) triggers a new Railway deployment. A custom domain can be added under **Settings → Networking**.
+`DOCUSAURUS_BASE_URL` is `/` for both. The workflow runs typecheck, tests, build and `check:build` first, then builds and pushes the image to Artifact Registry and deploys it. When a custom domain is mapped to a service, change `PROD_SITE_URL` / `STAGING_SITE_URL` in the workflow so canonical URLs, the sitemap and JSON-LD use it.
 
-> **Railway is the live host.** The site is built by the `Dockerfile` (`npm ci` then `npm run build`) and served by `server.mjs`.
+It authenticates to the `misppelled` GCP project through Workload Identity Federation (no GitHub secrets). That provider only trusts the repositories named in its attribute condition, so `SteffanLynch/trading` must be allowed there before the workflow can deploy.
 
-> **Privacy:** This site has no authentication. A Railway public domain or GitHub Pages deployment makes the rendered collection accessible to anyone who has the URL. Keep the service private or place it behind an access-control proxy if the collection should remain private.
-
-## Deploy on GitHub Pages (not used)
-
-The workflow in `.github/workflows/deploy.yml` can publish to GitHub Pages, but this site is **not** deployed that way; Railway is the live host. The workflow is kept only as an option and can be deleted.
+> **Privacy:** This site has no authentication. A public Cloud Run URL makes the site accessible to anyone who has it.
 
 ## Free tools
 
