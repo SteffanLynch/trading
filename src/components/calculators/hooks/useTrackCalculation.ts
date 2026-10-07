@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import {consentAllows} from '../../consent/store';
 
 type PostHogLike = {capture: (event: string, properties?: Record<string, unknown>) => void};
 
@@ -7,9 +8,13 @@ function tidy(value: unknown): unknown {
   return typeof value === 'number' && Number.isFinite(value) ? Number(value.toFixed(6)) : value;
 }
 
-/** Sends an event to PostHog if it has been installed on the page. Silent no-op otherwise. */
+/**
+ * Sends an event to PostHog if it has been installed on the page. Silent no-op otherwise, and always a no-op unless
+ * the visitor has allowed analytics in the cookie banner.
+ */
 export function trackEvent(event: string, properties: Record<string, unknown>): void {
   if (typeof window === 'undefined') return;
+  if (!consentAllows('analytics')) return;
   const posthog = (window as unknown as {posthog?: PostHogLike}).posthog;
   posthog?.capture(event, properties);
 }

@@ -205,6 +205,9 @@ kbd {
   font-size: clamp(3.5rem, 15vw, 12rem); line-height: 0.85; color: transparent;
   -webkit-text-stroke: 1.5px rgba(244, 241, 234, 0.22); user-select: none;
 }
+.footer-link-button { padding: 0; border: 0; background: none; color: #c9cee0; font: inherit; font-size: 0.9rem; cursor: pointer; transition: color 0.15s ease, padding 0.15s ease; }
+.footer-link-button:hover { color: #c8ff4d; padding-left: 0.35rem; }
+.footer-link-button:focus-visible { outline: 2px solid #c8ff4d; outline-offset: 3px; border-radius: 3px; }
 .footer-legal { max-width: 52rem; margin-top: 1rem; }
 .footer-legal p { margin: 0 0 0.45rem; color: #8a93ad; font-size: 0.78rem; line-height: 1.65; }
 .footer-legal .footer-company { color: #d6dbee; font-size: 0.92rem; }
@@ -294,4 +297,14 @@ kbd {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+
+/* Printing (the media kit is meant to be saved as a PDF): page content only. */
+@media print {
+  nav.navbar,
+  footer.footer,
+  [data-consent-banner],
+  .reading-progress {
+    display: none !important;
+  }
 }

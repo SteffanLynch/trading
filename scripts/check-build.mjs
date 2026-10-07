@@ -27,6 +27,10 @@ const pages = [
   {name: 'tools', file: 'tools.html', path: '/tools', tool: false},
   {name: 'disclaimer', file: 'disclaimer.html', path: '/disclaimer', tool: false, mustMention: ['Misppelled Ltd', 'not financial advice']},
   {name: 'how-this-site-is-funded', file: 'how-this-site-is-funded.html', path: '/how-this-site-is-funded', tool: false, mustMention: ['Misppelled Ltd', 'affiliate']},
+  {name: 'privacy', file: 'privacy.html', path: '/privacy', tool: false, mustMention: ['Misppelled Ltd', 'cookie', 'Information Commissioner']},
+  {name: 'partners', file: 'partners.html', path: '/partners', tool: false, mustMention: ['affiliate', 'not financial advice', 'FCA Register']},
+  {name: 'resources', file: 'resources.html', path: '/resources', tool: false, mustMention: ['No one pays', 'not financial advice']},
+  {name: 'media-kit', file: 'media-kit.html', path: '/media-kit', tool: false, mustMention: ['Misppelled Ltd', 'Sponsored', 'Not accepted']},
   ...slugs.map((slug) => ({name: slug, file: `tools/${slug}.html`, path: `/tools/${slug}`, tool: true})),
 ];
 
@@ -68,9 +72,28 @@ for (const page of pages) {
   if (page.tool && !/How was this calculated|What does this mean/.test(html)) fail(page.name, 'teaching content is missing from the prerendered HTML');
 }
 
+// Commercial labelling, on every built page: a link marked rel="sponsored" must sit on a page that says so in words.
+const allPages = [...pages.map((page) => page.file), ...['library/fundamentals/candlesticks.html', 'library/fundamentals/trading-psychology.html', 'library/fundamentals/market-structure.html']];
+const moneySource = readFileSync(resolve(root, 'src/data/monetisation.ts'), 'utf8');
+const adsOff = /ADSENSE_CLIENT:\s*string\s*\|\s*null\s*=\s*null/.test(moneySource);
+for (const file of allPages) {
+  const path = resolve(build, file);
+  if (!existsSync(path)) {
+    fail(file, 'was not built');
+    continue;
+  }
+  const html = readFileSync(path, 'utf8');
+  if (/rel="[^"]*\bsponsored\b/.test(html) && !/Affiliate link|Sponsored/.test(html)) fail(file, 'has a rel="sponsored" link but no visible "Affiliate link" or "Sponsored" label');
+  if (adsOff && /googlesyndication|adsbygoogle/.test(html)) fail(file, 'loads an ad network although ADSENSE_CLIENT is not set');
+}
+for (const file of ['library/fundamentals/candlesticks.html', 'library/fundamentals/trading-psychology.html']) {
+  const path = resolve(build, file);
+  if (existsSync(path) && !/Keep learning elsewhere/.test(readFileSync(path, 'utf8'))) fail(file, 'lesson is missing its further-learning block');
+}
+
 if (problems.length) {
   console.error(`\n✖ ${problems.length} problem${problems.length === 1 ? '' : 's'} in the built tools pages:\n`);
   for (const problem of problems) console.error(`  - ${problem}`);
   process.exit(1);
 }
-console.log(`✔ ${pages.length} pages verified (${slugs.length} tools, hub, disclaimer, funding page): titles, descriptions, canonicals, H1, JSON-LD, sitemap.`);
+console.log(`✔ ${pages.length} pages verified (${slugs.length} tools, hub, disclaimer, privacy, funding, partners, resources, media kit) plus labelling checks: titles, descriptions, canonicals, H1, JSON-LD, sitemap.`);

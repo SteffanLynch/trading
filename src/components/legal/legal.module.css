@@ -178,6 +178,7 @@
 
 .article {
   max-width: 46rem;
+  min-width: 0;
 }
 
 .section {
@@ -215,6 +216,56 @@
 
 .body strong {
   color: var(--ink);
+}
+
+.body a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.tableWrap {
+  margin: 1.2rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.body table {
+  width: 100%;
+  min-width: 36rem;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.body th,
+.body td {
+  padding: 0.7rem 0.9rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  text-align: left;
+  vertical-align: top;
+}
+
+.body tr:last-child td {
+  border-bottom: 0;
+}
+
+.body th {
+  background: var(--surface-2);
+  color: var(--muted);
+  font: 500 0.64rem 'DM Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.body code {
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.35rem;
+  background: var(--surface-2);
+  font-size: 0.82em;
 }
 
 .companyBox {
@@ -260,7 +311,7 @@
 
 @media (max-width: 900px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .toc {

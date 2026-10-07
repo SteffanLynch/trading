@@ -108,6 +108,19 @@
   margin-top: 3.5rem;
 }
 
+/* partner and book blocks directly under the calculator */
+.partners {
+  display: grid;
+  gap: 1rem;
+  max-width: 820px;
+  margin-top: 2rem;
+}
+
+.adSlot {
+  max-width: 820px;
+  margin-top: 3rem;
+}
+
 /* ---------- accordions ---------- */
 
 .acc {

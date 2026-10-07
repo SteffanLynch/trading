@@ -97,13 +97,13 @@ export default function HowFundedPage(): ReactNode {
                 <span className={styles.tag}>Income 01</span>
                 <h3>Affiliate commissions</h3>
                 <p>Some links on the site lead to products and services from partners, such as brokers, trading platforms, data tools, books or courses. If a visitor follows one of those links and then signs up or buys, {SITE_NAME} may earn a commission.</p>
-                <p>Following the link costs the visitor nothing extra. The commission comes from the partner, not from the visitor.</p>
+                <p>Following the link costs the visitor nothing extra. The commission comes from the partner, not from the visitor. Every partner is listed on the <Link to="/partners">partners and disclosures</Link> page.</p>
               </div>
               <div className={`${styles.panel} ${styles.panelB}`}>
                 <span className={styles.tag}>Income 02</span>
                 <h3>Advertising</h3>
                 <p>The site may show advertisements from third-party networks and advertisers. {SITE_NAME} is paid when advertisements are shown or clicked.</p>
-                <p>Advertisements are separate from the content: they never change a calculation or the reasoning of a lesson, and paid placements are labelled as such.</p>
+                <p>Advertisements are separate from the content: they never change a calculation or the reasoning of a lesson, and paid placements are labelled as such. Ads load only for visitors who have allowed them in the <Link to="/privacy#cookies">cookie settings</Link>. Businesses can read the <Link to="/media-kit">media kit</Link>.</p>
               </div>
             </div>
           </div>

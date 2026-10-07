@@ -2,6 +2,7 @@
  * Pure helpers behind the calculators' shareable links and remembered preferences.
  * Kept free of React and the DOM so they can be unit tested.
  */
+import {CONSENT_STORAGE_KEY, allows, parseConsent} from '../consent';
 
 export interface FieldSpec {
   /** Value the field starts with. */
@@ -66,6 +67,19 @@ export function buildQuery<K extends string>(specs: FieldSpecs<K>, values: Field
 
 const PREFS_KEY = 'tn-tools-prefs-v1';
 
+/**
+ * Remembered values are saved only after the visitor has allowed the "preferences" category in the cookie banner
+ * (see `components/consent/store.ts`, which also clears this key when the choice is withdrawn).
+ */
+function preferencesAllowed(): boolean {
+  try {
+    if (typeof window === 'undefined') return false;
+    return allows(parseConsent(window.localStorage.getItem(CONSENT_STORAGE_KEY)), 'preferences');
+  } catch {
+    return false;
+  }
+}
+
 function storage(): Storage | null {
   try {
     return typeof window !== 'undefined' ? window.localStorage : null;
@@ -76,6 +90,7 @@ function storage(): Storage | null {
 
 /** Preferences saved on this device. Returns an empty object when storage is unavailable. */
 export function loadPrefs(): Record<string, string> {
+  if (!preferencesAllowed()) return {};
   try {
     const raw = storage()?.getItem(PREFS_KEY);
     if (!raw) return {};
@@ -90,6 +105,7 @@ export function loadPrefs(): Record<string, string> {
 }
 
 export function savePref(key: string, value: string): void {
+  if (!preferencesAllowed()) return;
   try {
     const store = storage();
     if (!store) return;

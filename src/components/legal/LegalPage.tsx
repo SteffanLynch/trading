@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import {LEGAL_ENTITY_NAME, LEGAL_LAST_UPDATED, SITE_NAME} from '../../data/legal';
+import useAnchors from '../../utils/useAnchors';
 import CompanyDetails from './CompanyDetails';
 import styles from './legal.module.css';
 
@@ -28,6 +29,7 @@ interface Props {
 /** Shared layout for long-form legal pages: short version first, a contents list, numbered sections and the company details. */
 export default function LegalPage({path, metaTitle, metaDescription, kicker, title, lede, keyPoints, sections}: Props) {
   const url = useBaseUrl(path, {absolute: true});
+  useAnchors([...sections.map((section) => section.id), 'company-details']);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -97,3 +99,5 @@ export default function LegalPage({path, metaTitle, metaDescription, kicker, tit
     </Layout>
   );
 }
+
+export {styles as legalStyles};

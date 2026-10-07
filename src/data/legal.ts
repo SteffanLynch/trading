@@ -25,13 +25,13 @@ export const LEGAL_REGISTERED_OFFICE_ADDRESS = {
 } as const;
 
 /**
- * A public contact address for legal and compliance enquiries. Left empty on purpose: set it to a monitored mailbox
- * and it appears automatically on the disclaimer page and in structured data.
+ * A public contact address for legal and compliance enquiries. It appears on the disclaimer and privacy pages and in
+ * the structured data. Set to null to fall back to the registered-office postal address.
  */
-export const LEGAL_CONTACT_EMAIL: string | null = null;
+export const LEGAL_CONTACT_EMAIL: string | null = 'legal@misppelled.com';
 
 /** When the legal pages were last revised. Update whenever their wording changes. */
-export const LEGAL_LAST_UPDATED = '30 September 2026';
+export const LEGAL_LAST_UPDATED = '7 October 2026';
 
 /** Single-sentence trading disclosure used by the footer and the legal pages. */
 export function legalDisclosureLine(): string {

@@ -2,6 +2,8 @@ import {useEffect, useState, type ReactNode} from 'react';
 import {useLocation} from '@docusaurus/router';
 import Link from '@docusaurus/Link';
 import {library} from '../data/library';
+import ConsentBanner from '../components/consent/ConsentBanner';
+import {openCookieSettings} from '../components/consent/store';
 
 export default function Root({children}: {children: ReactNode}) {
   const location = useLocation();
@@ -30,6 +32,7 @@ export default function Root({children}: {children: ReactNode}) {
     const onClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       if (target.closest('.search-trigger')) setSearchOpen(true);
+      if (target.closest('[data-open-cookie-settings]')) openCookieSettings();
       const selectedImage = target.closest('.theme-doc-markdown img') as HTMLImageElement | null;
       if (selectedImage) setImage({src: selectedImage.src, alt: selectedImage.alt});
     };
@@ -63,6 +66,7 @@ export default function Root({children}: {children: ReactNode}) {
     <>
       {location.pathname.startsWith('/library/') && <div className="reading-progress" style={{width: `${progress}%`}} />}
       {children}
+      <ConsentBanner />
       {searchOpen && (
         <div className="command-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setSearchOpen(false)}>
           <section className="command-palette" role="dialog" aria-modal="true" aria-label="Search the trading library">

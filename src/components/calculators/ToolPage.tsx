@@ -4,6 +4,11 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import {getTool, groupTone, type Tone} from '../../data/tools';
+import {placementForTool} from '../../data/placements';
+import AdSlot from '../monetisation/AdSlot';
+import BookShelf from '../monetisation/BookShelf';
+import PartnerCallout from '../monetisation/PartnerCallout';
+import SponsorBanner from '../monetisation/SponsorBanner';
 import Accordion from './Accordion';
 import styles from './ToolPage.module.css';
 
@@ -76,6 +81,8 @@ export default function ToolPage({slug, lead, children, meaning, formula, exampl
   };
 
   const related = tool.related.map(getTool);
+  const placement = placementForTool(slug);
+  const where = `tool:${slug}`;
   const tone = groupTone[tool.group];
   const relatedVars = (entryTone: Tone) =>
     ({'--c': `var(--${entryTone})`, '--ct': `var(--${entryTone}-t)`}) as CSSProperties;
@@ -102,7 +109,16 @@ export default function ToolPage({slug, lead, children, meaning, formula, exampl
             <p className={styles.lead}>{lead}</p>
           </header>
 
+          <SponsorBanner placements={[where, 'all-tools']} />
+
           {children}
+
+          {(placement.partners || placement.books) && (
+            <div className={styles.partners}>
+              {placement.partners && <PartnerCallout ids={placement.partners} placement={where} />}
+              {placement.books && <BookShelf topics={placement.books} limit={2} placement={where} title="Further reading" />}
+            </div>
+          )}
 
           <div className={styles.article}>
             <Accordion title="What does this mean?">{meaning}</Accordion>
@@ -150,6 +166,8 @@ export default function ToolPage({slug, lead, children, meaning, formula, exampl
 
             <p className={styles.disclaimer}>{DISCLAIMER}</p>
           </div>
+
+          <AdSlot slot="tool" className={styles.adSlot} />
 
           <section className={styles.related} aria-labelledby="related-tools">
             <h2 id="related-tools">Keep going</h2>

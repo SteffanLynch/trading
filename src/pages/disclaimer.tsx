@@ -201,7 +201,7 @@ const sections: LegalSection[] = [
           <strong>The website is free to use and is funded by affiliate commissions and advertising.</strong> Some links on the website may be affiliate links, meaning the Company may earn a commission if a user follows the link and then signs up for, or buys, a product or service. The website may also display advertisements, for which the Company is paid.
         </p>
         <p>
-          This is a material connection and it may create an incentive to feature, mention or link to certain products. It does not make any product a recommendation, and it does not change the calculations or the educational content. Paid placements and affiliate links are intended to be identified as such. The full explanation is on the <Link to="/how-this-site-is-funded">how this site is funded</Link> page.
+          This is a material connection and it may create an incentive to feature, mention or link to certain products. It does not make any product a recommendation, and it does not change the calculations or the educational content. Paid placements and affiliate links are intended to be identified as such. The full explanation is on the <Link to="/how-this-site-is-funded">how this site is funded</Link> page, and the partners involved are listed on the <Link to="/partners">partners and disclosures</Link> page.
         </p>
         <p>Advertisements are created and controlled by advertisers and advertising networks. The Company does not verify every claim in them, and a user relies on any advertisement at their own risk.</p>
       </>
@@ -263,7 +263,9 @@ const sections: LegalSection[] = [
         <p>
           The tools work in the user's browser. Preferences such as the account currency, risk level or time zone may be remembered in the browser's own storage on the user's device. The website may also collect usage analytics, which may include the values entered into a tool, to understand and improve the website. Advertising and affiliate partners may use cookies or similar technologies. Users should avoid entering information they do not wish to be recorded, and should never enter passwords, account numbers or other sensitive personal or financial identifiers into any tool.
         </p>
-        <p>Any privacy policy or cookie notice published on the website describes how personal data is handled and forms part of how the website operates alongside this disclaimer.</p>
+        <p>
+          The <Link to="/privacy">privacy and cookie policy</Link> describes how personal data is handled and which cookies and similar technologies are used, and it forms part of how the website operates alongside this disclaimer. Optional cookies run only after the user has allowed them, and the choice can be changed at any time from the “Cookie settings” link in the footer.
+        </p>
       </>
     ),
   },

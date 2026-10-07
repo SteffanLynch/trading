@@ -143,13 +143,18 @@ const config: Config = {
             {label: 'Trading rules', to: '/library/strategy/rules'},
             {label: 'Glossary', to: '/library/glossary'},
             {label: 'Manifesto', to: '/library/manifesto'},
+            {label: 'Recommended resources', to: '/resources'},
           ],
         },
         {
           title: 'Legal & trust',
           items: [
             {label: 'Disclaimer', to: '/disclaimer'},
+            {label: 'Privacy & cookies', to: '/privacy'},
+            {html: '<button type="button" class="footer-link-button" data-open-cookie-settings>Cookie settings</button>'},
             {label: 'How this site is funded', to: '/how-this-site-is-funded'},
+            {label: 'Partners & disclosures', to: '/partners'},
+            {label: 'Media kit', to: '/media-kit'},
           ],
         },
       ],

@@ -123,5 +123,51 @@ The simulators and visualisers reuse the same engine pattern and add a few piece
 - **Disclaimer:** `/disclaimer` (`src/pages/disclaimer.tsx`, layout in `src/components/legal/`). Covers not-financial-advice, risk warning, hypothetical/illustrative material, calculator accuracy, limitation of liability, affiliate links and advertising, regulatory status, data and cookies, and governing law (England and Wales).
 - **How this site is funded:** `/how-this-site-is-funded` (`src/pages/how-this-site-is-funded.tsx`). States that everything is free, that no feature ever asks for an email address or payment, and that affiliate commissions and advertising pay for the site. Linked from the footer and from the homepage "Free. Really." section.
 - **Voice:** lessons, tools and pages speak impersonally. The first person ("I", "my") is not used; "we/us" appears only as the company voice on the legal and funding pages.
-- **Needs an owner's decision before relying on it:** set `LEGAL_CONTACT_EMAIL` in `src/data/legal.ts` (it is `null` on purpose so no address is invented), have the legal text reviewed by a solicitor, and add a privacy policy and cookie consent before installing analytics, advertising or affiliate tracking.
+- **Needs an owner's decision before relying on it:** `LEGAL_CONTACT_EMAIL` in `src/data/legal.ts` is `legal@misppelled.com` (set it to `null` to show the postal address instead), and have the legal text, including the privacy policy and cookie wording, reviewed by a solicitor before installing analytics, advertising or affiliate tracking.
 
+
+## Monetisation, consent and disclosure
+
+Everything that earns money ships **switched off**. A fresh checkout shows no ads, no affiliate links and no sponsor. Each feature turns on when a value is filled in, always behind the visitor's cookie choice and always labelled.
+
+| What | Switch | Where it appears |
+| --- | --- | --- |
+| Display ads (AdSense) | `ADSENSE_CLIENT` and `AD_SLOT_IDS` in `src/data/monetisation.ts` | A fixed-height, labelled slot under every lesson and tool page |
+| Amazon book links | `AMAZON_ASSOCIATE_TAG` in `src/data/monetisation.ts` | Book shelves on lessons, tools and `/resources`. Untagged links go to Amazon search and are unlabelled |
+| TradingView, Pepperstone, Vantage | `affiliateUrl` per partner in `src/data/partners.ts` | `/partners` and short callouts beside relevant lessons and tools |
+| Direct sponsor | An entry in `src/data/sponsors.ts` | A "Sponsored / Presented by" line on the chosen tool, lesson or group, between its dates |
+| Enquiry address | `SPONSORSHIP_CONTACT_EMAIL` (falls back to `LEGAL_CONTACT_EMAIL`) | The media kit. Both null means the postal address is shown instead |
+
+### Consent
+
+`src/components/consent/` holds the banner and store; the rules are in `src/utils/consent.ts` (tested). Three optional categories, all off until chosen: **preferences** (remembered calculator values), **analytics** and **advertising**. "Reject all" and "Accept all" are equally prominent, the choice lasts 12 months, and it can be changed from the footer "Cookie settings" button or the privacy page. The gates:
+
+- `trackEvent` (analytics) does nothing unless analytics is allowed.
+- `loadPrefs`/`savePref` (remembered calculator values) do nothing unless preferences is allowed, and withdrawing the choice deletes what was stored.
+- `AdSlot` renders nothing, and the ad script is never requested, unless an AdSense ID is set **and** advertising is allowed.
+- YouTube videos are click-to-load (`youtube-nocookie.com`), so nothing is requested from YouTube until play is pressed.
+
+When a new cookie, tracker or provider is added: add it to the cookie table and the "what is collected" table in `src/pages/privacy.tsx`, and add or reuse a consent category. Changing the categories means bumping `CONSENT_VERSION` so everyone is asked again.
+
+### Labelling is automatic
+
+- Every outbound partner link goes through `AffiliateLink`. If it can earn a commission (a valid https `affiliateUrl`, or a tagged Amazon link) it gets `rel="sponsored noopener noreferrer"` and a visible "Affiliate link" tag; otherwise it is a plain link.
+- Blocks containing an affiliate link show the disclosure sentence; Amazon blocks add Amazon's required Associates statement (`AMAZON_ASSOCIATES_STATEMENT`; confirm the wording against your current Associates agreement).
+- Ads carry an "Ad" tag and "Advertisement" heading; sponsors carry "Sponsored".
+- `npm run check:build` fails if a page has a `rel="sponsored"` link without a visible label, if any page loads an ad network while `ADSENSE_CLIENT` is null, or if a lesson loses its further-learning block.
+
+### Turning things on
+
+1. **Ads:** apply to AdSense, set `ADSENSE_CLIENT` and the slot IDs, and publish `static/ads.txt` with the line AdSense gives you. Ads then appear only for visitors who allow advertising.
+2. **Amazon:** join Amazon Associates (UK), set `AMAZON_ASSOCIATE_TAG`. Do not show prices or shorten the links.
+3. **TradingView:** join its affiliate programme and paste the tracking link into `affiliateUrl`.
+4. **Brokers (Pepperstone, Vantage):** a broker is **hidden until all three exist**: `affiliateUrl`, `promotionApproval` (who approved it and when) and `riskWarning` (the broker's exact, current wording including the percentage of retail accounts that lose money). Promoting forex and CFDs is an FCA financial promotion, so get the broker's compliance team to approve the placements first. `src/utils/monetisation.ts` enforces this and has tests for it.
+5. **Sponsor:** add an entry to `src/data/sponsors.ts`. Dates are inclusive and the placement strings are listed in that file.
+
+### Recommended resources
+
+`/resources` is driven by `src/data/resources.ts` (channels, podcasts, free courses, regulators) and `src/data/books.ts`. Add a resource with its own official URL and the date it was checked; creators who also sell products must carry a note (a test enforces it). To add a video, put its 11-character YouTube ID in `videos`; the "Watch" section appears once there is one. Which blocks appear under which lesson or tool is set in `src/data/placements.ts` (lessons are matched by URL path, so no lesson file needs editing).
+
+### Media kit
+
+`/media-kit` is driven by `src/data/mediaKit.ts`. It contains no invented numbers: add real analytics figures to `AUDIENCE_STATS` when they exist and they appear automatically. Visitors can print or save the page as a PDF (navigation and the cookie banner are hidden when printing).
