@@ -53,6 +53,26 @@ export function amazonSearchLink(query: string, tag: string | null): ResolvedLin
   return {href: url.toString(), affiliate: false, rel: PLAIN_EXTERNAL_REL};
 }
 
+/** ASINs are 10 letters and digits (ISBN-10 books use the ISBN, which can end in X). */
+export function isAsin(value: string | null | undefined): value is string {
+  return typeof value === 'string' && /^[A-Z0-9]{10}$/.test(value);
+}
+
+/** A direct Amazon.co.uk product link for an ASIN, tagged as an affiliate link only when a store ID is configured. */
+export function amazonProductLink(asin: string, tag: string | null): ResolvedLink {
+  const url = new URL(`https://www.amazon.co.uk/dp/${asin}`);
+  if (tag?.trim()) {
+    url.searchParams.set('tag', tag.trim());
+    return {href: url.toString(), affiliate: true, rel: AFFILIATE_REL};
+  }
+  return {href: url.toString(), affiliate: false, rel: PLAIN_EXTERNAL_REL};
+}
+
+/** The best link for a book: the exact product when it has a valid ASIN, otherwise a search for it. */
+export function amazonBookLink(book: {title: string; author: string; asin?: string}, tag: string | null): ResolvedLink {
+  return isAsin(book.asin) ? amazonProductLink(book.asin, tag) : amazonSearchLink(`${book.title} ${book.author}`, tag);
+}
+
 /** A YouTube search link: always valid, used when a creator's official channel link is not published on their own site. */
 export function youtubeSearchLink(query: string): string {
   const url = new URL('https://www.youtube.com/results');

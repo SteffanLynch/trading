@@ -164,6 +164,10 @@ When a new cookie, tracker or provider is added: add it to the cookie table and 
 4. **Brokers (Pepperstone, Vantage):** a broker is **hidden until all three exist**: `affiliateUrl`, `promotionApproval` (who approved it and when) and `riskWarning` (the broker's exact, current wording including the percentage of retail accounts that lose money). Promoting forex and CFDs is an FCA financial promotion, so get the broker's compliance team to approve the placements first. `src/utils/monetisation.ts` enforces this and has tests for it.
 5. **Sponsor:** add an entry to `src/data/sponsors.ts`. Dates are inclusive and the placement strings are listed in that file.
 
+### Amazon book links
+
+Books are links built from `src/data/books.ts`; no URLs are stored. Each book links to an Amazon.co.uk **search** for its title and author. To send a book to one exact edition instead, add its `asin` (the 10-character code after `/dp/` on the product page, found under "Product information"); the code then links to `amazon.co.uk/dp/<ASIN>` with the store ID added. Always take the ASIN from the edition you mean, and never paste a tagged URL into the data. The tag only earns when the link is tracked and the purchase qualifies under Amazon's Associates rules.
+
 ### Recommended resources
 
 `/resources` is driven by `src/data/resources.ts` (channels, podcasts, free courses, regulators) and `src/data/books.ts`. Add a resource with its own official URL and the date it was checked; creators who also sell products must carry a note (a test enforces it). To add a video, put its 11-character YouTube ID in `videos`; the "Watch" section appears once there is one. Which blocks appear under which lesson or tool is set in `src/data/placements.ts` (lessons are matched by URL path, so no lesson file needs editing).

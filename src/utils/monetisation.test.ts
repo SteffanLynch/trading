@@ -5,7 +5,7 @@ import {lessonPlacements, normalisePath, placementForLesson, placementForTool, t
 import {resources, resourceTopics, videos} from '../data/resources';
 import {sponsors, type Sponsor} from '../data/sponsors';
 import {tools} from '../data/tools';
-import {AFFILIATE_REL, PLAIN_EXTERNAL_REL, activeSponsors, amazonSearchLink, isAdsenseClientId, isAdsenseSlotId, isPartnerLive, isSafeHttpsUrl, isYouTubeId, resolvePartnerLink, youtubeSearchLink} from './monetisation';
+import {AFFILIATE_REL, PLAIN_EXTERNAL_REL, activeSponsors, amazonBookLink, amazonProductLink, amazonSearchLink, isAsin, isAdsenseClientId, isAdsenseSlotId, isPartnerLive, isSafeHttpsUrl, isYouTubeId, resolvePartnerLink, youtubeSearchLink} from './monetisation';
 
 const broker: Partner = {...partners.pepperstone};
 
@@ -81,6 +81,33 @@ describe('amazon links', () => {
   });
 });
 
+describe('amazon product links', () => {
+  it('recognises well-formed ASINs only', () => {
+    expect(isAsin('B0123456789'.slice(0, 10))).toBe(true);
+    expect(isAsin('080133773X')).toBe(true);
+    expect(isAsin('b012345678')).toBe(false);
+    expect(isAsin('B01234567')).toBe(false);
+    expect(isAsin('B01234567890')).toBe(false);
+    expect(isAsin('../evil/..')).toBe(false);
+    expect(isAsin(undefined)).toBe(false);
+  });
+
+  it('builds the product link with the store tag and labels it', () => {
+    const link = amazonProductLink('080133773X', 'misppelled-21');
+    expect(link.href).toBe('https://www.amazon.co.uk/dp/080133773X?tag=misppelled-21');
+    expect(link.affiliate).toBe(true);
+    expect(link.rel).toBe(AFFILIATE_REL);
+    expect(amazonProductLink('080133773X', null)).toMatchObject({href: 'https://www.amazon.co.uk/dp/080133773X', affiliate: false});
+  });
+
+  it('prefers the exact product and falls back to search', () => {
+    const book = {title: 'Market Wizards', author: 'Jack D. Schwager'};
+    expect(amazonBookLink({...book, asin: '080133773X'}, 't-21').href).toContain('/dp/080133773X');
+    expect(amazonBookLink(book, 't-21').href).toContain('/s?k=');
+    expect(amazonBookLink({...book, asin: 'not-an-asin'}, 't-21').href).toContain('/s?k=');
+  });
+});
+
 describe('sponsors', () => {
   const sponsor: Sponsor = {id: 's', name: 'Acme', url: 'https://acme.example/', tagline: 'x', placements: ['tool:position-size-calculator', 'all-lessons'], starts: '2026-11-01', ends: '2026-11-30'};
 
@@ -151,6 +178,15 @@ describe('placements and data', () => {
     const url = new URL(youtubeSearchLink('Rayner Teo & co'));
     expect(url.origin).toBe('https://www.youtube.com');
     expect(url.searchParams.get('search_query')).toBe('Rayner Teo & co');
+  });
+
+  it('only lists valid ASINs, once each', () => {
+    const seen = new Set<string>();
+    for (const book of books.filter((b) => b.asin)) {
+      expect(isAsin(book.asin), book.title).toBe(true);
+      expect(seen.has(book.asin as string), `duplicate ${book.asin}`).toBe(false);
+      seen.add(book.asin as string);
+    }
   });
 
   it('has a clear reason for every book', () => {

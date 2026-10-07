@@ -1,6 +1,6 @@
 import {AMAZON_ASSOCIATES_STATEMENT, AMAZON_ASSOCIATE_TAG} from '../../data/monetisation';
 import {books as allBooks, type BookTopic} from '../../data/books';
-import {amazonSearchLink} from '../../utils/monetisation';
+import {amazonBookLink} from '../../utils/monetisation';
 import AffiliateLink from './AffiliateLink';
 import {AffiliateDisclosure} from './Disclosure';
 import {accentVars} from './PartnerCallout';
@@ -35,7 +35,7 @@ export default function BookShelf({topics, limit, primaryOnly = false, placement
               <span className={styles.by}>{book.author}</span>
               <span className={styles.why}>{book.why}</span>
             </div>
-            <AffiliateLink link={amazonSearchLink(`${book.title} ${book.author}`, AMAZON_ASSOCIATE_TAG)} name="amazon-book" placement={placement} className={styles.textLink}>
+            <AffiliateLink link={amazonBookLink(book, AMAZON_ASSOCIATE_TAG)} name="amazon-book" placement={placement} className={styles.textLink}>
               Find on Amazon
             </AffiliateLink>
           </li>
