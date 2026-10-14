@@ -34,8 +34,8 @@ The static production site is generated in `build/`.
 The Docker image builds the Docusaurus site, then serves only the generated static files through a small read-only Node.js server.
 
 ```bash
-docker build -t trading-notes .
-docker run --rm -p 3000:3000 -e PORT=3000 trading-notes
+docker build -t trading-spelled-out .
+docker run --rm -p 3000:3000 -e PORT=3000 trading-spelled-out
 ```
 
 The container exposes:
@@ -175,3 +175,7 @@ Books are links built from `src/data/books.ts`; no URLs are stored. Each book li
 ### Media kit
 
 `/media-kit` is driven by `src/data/mediaKit.ts`. It contains no invented numbers: add real analytics figures to `AUDIENCE_STATS` when they exist and they appear automatically. Visitors can print or save the page as a PDF (navigation and the cookie banner are hidden when printing).
+
+## Brand assets
+
+The logo, favicon, Apple icon and social card are in `static/img/`; how they are made and how to regenerate them is in `scripts/brand/README.md`.

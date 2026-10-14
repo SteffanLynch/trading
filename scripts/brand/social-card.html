@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@500;600;700;800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{position:relative;background:#080b13;color:#f4f1ea;font-family:'Manrope',sans-serif}
+  .glow1{position:absolute;left:-180px;top:-220px;width:760px;height:620px;border-radius:50%;background:radial-gradient(closest-side,rgba(149,125,255,.55),transparent)}
+  .glow2{position:absolute;right:-120px;bottom:-260px;width:760px;height:620px;border-radius:50%;background:radial-gradient(closest-side,rgba(200,255,77,.28),transparent)}
+  .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:linear-gradient(90deg,transparent 30%,#000 90%)}
+  .brand{position:absolute;left:84px;top:70px;display:flex;align-items:center;gap:18px;font:500 22px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#98a2bb}
+  .brand img{width:64px;height:64px}
+  h1{position:absolute;left:84px;top:158px;font:800 124px/0.92 'Bricolage Grotesque',sans-serif;letter-spacing:-.055em}
+  h1 span{display:block}
+  .mark{display:inline-block;margin-top:10px;padding:0 .16em .06em .12em;border-radius:.13em;background:#c8ff4d;color:#0a0d14;transform:rotate(-1.8deg);box-shadow:.05em .07em 0 0 rgba(122,92,255,.85)}
+  p.tag{position:absolute;left:88px;bottom:62px;max-width:760px;font:600 28px/1.4 'Manrope',sans-serif;color:#c9cee0}
+  p.tag b{color:#fff;font-weight:800}
+  .url{position:absolute;right:84px;bottom:68px;font:500 22px 'DM Mono',monospace;letter-spacing:.1em;color:#c8ff4d}
+  svg.chart{position:absolute;right:70px;top:80px;width:360px;height:400px}
+</style></head>
+<body>
+<div class="glow1"></div><div class="glow2"></div><div class="grid"></div>
+<div class="brand"><img src="../../static/img/logo.svg" alt="">Free · No sign-up</div>
+<h1><span>Trading</span><span class="mark">Spelled out.</span></h1>
+<p class="tag">Free trading lessons and calculators in plain English.<br><b>No email. No payment.</b></p>
+<div class="url">tradingspelledout.com</div>
+<svg class="chart" viewBox="0 0 360 400" fill="none" stroke-linecap="round">
+  <g stroke="#c8ff4d" fill="#c8ff4d"><path d="M40 300v70" stroke-width="4"/><rect x="26" y="318" width="28" height="36" rx="6"/></g>
+  <g stroke="#ff6273" fill="#ff6273"><path d="M110 250v90" stroke-width="4"/><rect x="96" y="268" width="28" height="48" rx="6"/></g>
+  <g stroke="#c8ff4d" fill="#c8ff4d"><path d="M180 180v110" stroke-width="4"/><rect x="166" y="196" width="28" height="74" rx="6"/></g>
+  <g stroke="#c8ff4d" fill="#c8ff4d"><path d="M250 110v120" stroke-width="4"/><rect x="236" y="126" width="28" height="84" rx="6"/></g>
+  <g stroke="#ff6273" fill="#ff6273"><path d="M320 40v110" stroke-width="4"/><rect x="306" y="60" width="28" height="56" rx="6"/></g>
+</svg>
+</body></html>

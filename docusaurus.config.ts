@@ -40,12 +40,15 @@ const websiteSchema = {
 };
 
 const config: Config = {
-  title: 'Trading Notes',
-  tagline: 'A free field guide to trading with clarity and discipline.',
+  title: 'Trading Spelled Out',
+  tagline: 'Free trading lessons and calculators, spelled out.',
   favicon: 'img/favicon.svg',
   url: SITE_URL,
   baseUrl: BASE_URL,
   headTags: [
+    // The SVG favicon above covers modern browsers; these cover older ones and iOS home screens.
+    {tagName: 'link', attributes: {rel: 'alternate icon', type: 'image/x-icon', href: `${BASE_URL.replace(/\/$/, '')}/img/favicon.ico`, sizes: '16x16 32x32 48x48'}},
+    {tagName: 'link', attributes: {rel: 'apple-touch-icon', href: `${BASE_URL.replace(/\/$/, '')}/img/apple-touch-icon.png`}},
     {tagName: 'script', attributes: {type: 'application/ld+json'}, innerHTML: JSON.stringify(organizationSchema)},
     {tagName: 'script', attributes: {type: 'application/ld+json'}, innerHTML: JSON.stringify(websiteSchema)},
   ],
@@ -99,8 +102,8 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Trading Notes',
-      logo: {alt: 'Trading Notes logo', src: 'img/logo.svg', width: 32, height: 32},
+      title: 'Trading Spelled Out',
+      logo: {alt: 'Trading Spelled Out logo', src: 'img/logo.svg', width: 32, height: 32},
       hideOnScroll: false,
       items: [
         {to: '/', label: 'Overview', position: 'left', exact: true},
@@ -158,7 +161,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `<div class="footer-mark" aria-hidden="true">Trading Notes</div><div class="footer-legal"><p class="footer-company">${SITE_NAME} is a product of <strong>${LEGAL_ENTITY_NAME}</strong>.</p><p>${legalDisclosureLine()}</p><p>Free for everyone: no email or payment is ever required. Funded by affiliate commissions and advertising. Educational content only, not financial advice. Trading carries a high risk of loss.</p></div><div class="footer-fine">© ${new Date().getFullYear()} ${LEGAL_ENTITY_NAME}. All rights reserved.</div>`,
+      copyright: `<div class="footer-mark" aria-hidden="true">Trading Spelled Out</div><div class="footer-legal"><p class="footer-company">${SITE_NAME} is a product of <strong>${LEGAL_ENTITY_NAME}</strong>.</p><p>${legalDisclosureLine()}</p><p>Free for everyone: no email or payment is ever required. Funded by affiliate commissions and advertising. Educational content only, not financial advice. Trading carries a high risk of loss.</p></div><div class="footer-fine">© ${new Date().getFullYear()} ${LEGAL_ENTITY_NAME}. All rights reserved.</div>`,
     },
     docs: {
       sidebar: {

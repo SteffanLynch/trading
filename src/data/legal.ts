@@ -1,14 +1,14 @@
 /**
- * The legal operator of Trading Notes.
+ * The legal operator of Trading Spelled Out.
  *
- * Trading Notes is a trading name, not a legal person. Misppelled Ltd is the company that owns and operates the
+ * Trading Spelled Out is a trading name, not a legal person. Misppelled Ltd is the company that owns and operates the
  * website, so every disclosure, footer line and legal page resolves to these constants rather than to the site name.
  * The same details are used by the sister website Sermon Registry (also operated by Misppelled Ltd).
  *
  * UK trading-disclosure rules (Companies Act 2006, Part 41, and the Companies (Trading Disclosures) Regulations)
  * require the registered name, company number and place of registration to be available on the website.
  */
-export const SITE_NAME = 'Trading Notes';
+export const SITE_NAME = 'Trading Spelled Out';
 export const LEGAL_ENTITY_NAME = 'Misppelled Ltd';
 export const LEGAL_COMPANY_NUMBER = '17447906';
 export const LEGAL_JURISDICTION = 'England and Wales';

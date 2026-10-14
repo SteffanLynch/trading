@@ -306,8 +306,8 @@ export default function PrivacyPage(): ReactNode {
   return (
     <LegalPage
       path="/privacy"
-      metaTitle="Privacy & Cookie Policy — How Trading Notes Handles Data"
-      metaDescription="What Trading Notes collects, why, and how to control it. No accounts or sign-up, optional cookies only with consent, and a plain-English cookie table."
+      metaTitle="Privacy & Cookie Policy — How Data Is Handled"
+      metaDescription="What Trading Spelled Out collects, why, and how to control it. No accounts or sign-up, optional cookies only with consent, and a plain-English cookie table."
       kicker="Legal"
       title="Privacy & cookies"
       lede={

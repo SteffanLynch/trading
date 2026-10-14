@@ -22,7 +22,7 @@ export default function MediaKitPage(): ReactNode {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Trading Notes media kit',
+    name: 'Trading Spelled Out media kit',
     url,
     isPartOf: {'@type': 'WebSite', name: SITE_NAME},
     publisher: {'@type': 'Organization', name: LEGAL_ENTITY_NAME},
@@ -30,8 +30,8 @@ export default function MediaKitPage(): ReactNode {
 
   return (
     <Layout
-      title="Media Kit — Sponsor or Advertise on Trading Notes"
-      description="Sponsorship and advertising on Trading Notes: formats, standards, how it works and who to contact. Everything paid is labelled, and the site stays free for everyone.">
+      title="Media Kit — Sponsor or Advertise Here"
+      description="Sponsorship and advertising: formats, standards, how it works and who to contact. Everything paid is labelled, and the site stays free for everyone.">
       <Head>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Head>

@@ -76,7 +76,7 @@ export default function ConsentBanner() {
         {settings ? 'Cookie and storage settings' : 'Cookies and similar storage'}
       </h2>
       <p id="consent-desc" className={styles.text}>
-        Trading Notes works without any optional cookies. With permission it can also remember calculator settings, measure which tools are used, and show advertising. <strong>Nothing optional switches on until a choice is made.</strong> See{' '}
+        Trading Spelled Out works without any optional cookies. With permission it can also remember calculator settings, measure which tools are used, and show advertising. <strong>Nothing optional switches on until a choice is made.</strong> See{' '}
         <Link to="/privacy#cookies">how cookies and storage are used</Link>.
       </p>
 

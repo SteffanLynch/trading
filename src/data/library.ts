@@ -10,7 +10,7 @@ export type LibraryItem = {
 };
 
 export const library: LibraryItem[] = [
-  {title: 'Trading Notes', description: 'Philosophy, curriculum and how to use this library.', href: '/library/', section: 'Orientation', keywords: 'start curriculum philosophy probability'},
+  {title: 'Trading Spelled Out', description: 'Philosophy, curriculum and how to use this library.', href: '/library/', section: 'Orientation', keywords: 'start curriculum philosophy probability'},
   {title: 'Trading Manifesto', description: 'The principles to read before every trading session.', href: '/library/manifesto', section: 'Orientation', keywords: 'discipline process emotions risk commitment'},
   {title: 'What is Trading?', description: 'Probability, expectancy and the real nature of the game.', href: '/library/fundamentals/what-is-trading', section: 'Fundamentals', number: '01', keywords: 'probability edge expectancy prediction'},
   {title: 'Market Fundamentals', description: 'How orders, liquidity and the matching engine move price.', href: '/library/fundamentals/market-fundamentals', section: 'Fundamentals', number: '02', keywords: 'order book market limit liquidity'},

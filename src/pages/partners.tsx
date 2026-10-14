@@ -57,8 +57,8 @@ export default function PartnersPage(): ReactNode {
 
   return (
     <Layout
-      title="Partners & Disclosures — How Trading Notes Earns"
-      description="Every commercial partner behind Trading Notes, how links are labelled, and what the money never changes. Charting, brokers and books, fully disclosed.">
+      title="Partners & Disclosures — How the Site Earns"
+      description="Every commercial partner behind this site, how links are labelled, and what the money never changes. Charting, brokers and books, fully disclosed.">
       <Head>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Head>

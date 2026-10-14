@@ -66,8 +66,8 @@ describe('amazon links', () => {
   });
 
   it('adds the associate tag and the affiliate label together', () => {
-    const link = amazonSearchLink('Market Wizards', 'tradingnotes-21');
-    expect(new URL(link.href).searchParams.get('tag')).toBe('tradingnotes-21');
+    const link = amazonSearchLink('Market Wizards', 'tradingspelledout-21');
+    expect(new URL(link.href).searchParams.get('tag')).toBe('tradingspelledout-21');
     expect(link.affiliate).toBe(true);
     expect(link.rel).toBe(AFFILIATE_REL);
     expect(amazonSearchLink('x', '  ').affiliate).toBe(false);

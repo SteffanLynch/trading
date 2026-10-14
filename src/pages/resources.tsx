@@ -42,7 +42,7 @@ export default function ResourcesPage(): ReactNode {
 
   return (
     <Layout
-      title="Recommended Trading Resources — Channels, Podcasts & Books"
+      title="Recommended Trading Resources — Channels & Books"
       description="Hand-picked, independent trading education beyond this site: free courses, creators, podcasts, books and the regulators worth knowing. None paid to be listed.">
       <Head>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>

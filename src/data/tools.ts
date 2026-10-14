@@ -148,7 +148,7 @@ export const tools: ToolMeta[] = [
   tool('expectancy-calculator', {
     name: 'Expectancy',
     heading: 'Trade Expectancy Calculator',
-    metaTitle: 'Trade Expectancy Calculator — Average Result Per Trade',
+    metaTitle: 'Trade Expectancy Calculator — Result Per Trade',
     description:
       'Calculate trading expectancy from your win rate, average win and average loss, in R or money. Free calculator with profit factor and break-even win rate.',
     summary: 'Win rate, average win and average loss → what a typical trade has been worth.',
@@ -202,7 +202,7 @@ export const tools: ToolMeta[] = [
   tool('leverage-sandbox', {
     name: 'Leverage Sandbox',
     heading: 'Leverage Sandbox',
-    metaTitle: 'Leverage Sandbox — See What Leverage Does to an Account',
+    metaTitle: 'Leverage Sandbox — What Leverage Does to an Account',
     description: 'Try leverage safely: change leverage and market movement on a practice account and see how it magnifies profit and loss. Free interactive leverage simulator.',
     summary: 'A practice account where leverage goes from 1× to 30×. Move the market and watch the balance.',
     group: 'Leverage & growth',
@@ -213,7 +213,7 @@ export const tools: ToolMeta[] = [
   tool('strategy-statistics-calculator', {
     name: 'Strategy Statistics',
     heading: 'Trading Strategy Statistics Calculator',
-    metaTitle: 'Strategy Statistics Calculator — Win Rate & Expectancy',
+    metaTitle: 'Strategy Stats Calculator — Win Rate & Expectancy',
     description: 'Enter winners, losers and averages to see win rate, expectancy, profit factor and break-even win rate. A free trading strategy statistics calculator.',
     summary: 'Is a strategy actually working? Win rate, expectancy, profit factor and more from a few numbers.',
     group: 'Edge & statistics',
@@ -223,7 +223,7 @@ export const tools: ToolMeta[] = [
   tool('order-type-simulator', {
     name: 'Order Type Simulator',
     heading: 'Order Type Simulator',
-    metaTitle: 'Order Type Simulator — Market, Limit, Stop & Stop-Limit',
+    metaTitle: 'Order Type Simulator — Market, Limit & Stop Orders',
     description: 'Practise placing market, limit, stop and stop-limit orders on a fake market and watch exactly when each one fills. Free interactive trading order simulator.',
     summary: 'Place market, limit, stop and stop-limit orders on a practice market and watch what fills, and when.',
     group: 'Markets & charts',

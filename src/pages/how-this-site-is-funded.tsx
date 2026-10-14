@@ -11,8 +11,8 @@ import styles from './funded.module.css';
 const vars = (fill: string, text: string) => ({'--c': fill, '--ct': text}) as CSSProperties;
 
 const FAQS: {q: string; a: string}[] = [
-  {q: 'Is anything on Trading Notes behind a paywall?', a: 'No. Every lesson, calculator, simulator and tool is free, and no feature is held back for paying visitors. There is no premium tier, no free trial and no upgrade.'},
-  {q: 'Will an email address ever be required?', a: 'No. Trading Notes will never ask for an email address for any feature. There is no sign-up, no account and no “enter your email to see the result”.'},
+  {q: 'Is anything on Trading Spelled Out behind a paywall?', a: 'No. Every lesson, calculator, simulator and tool is free, and no feature is held back for paying visitors. There is no premium tier, no free trial and no upgrade.'},
+  {q: 'Will an email address ever be required?', a: 'No. Trading Spelled Out will never ask for an email address for any feature. There is no sign-up, no account and no “enter your email to see the result”.'},
   {q: 'If it is all free, how does the site pay for itself?', a: 'Through affiliate commissions and advertising. Hosting, design, development and the time spent building and checking the tools and lessons all cost money, and those two income streams cover it without charging visitors.'},
   {q: 'Do affiliate links cost more?', a: 'No. Following an affiliate link does not add anything to the price a visitor pays. The partner pays the commission from its own revenue if the visitor signs up or buys.'},
   {q: 'Does the money change what the lessons and calculators say?', a: 'No. The calculators work only from the numbers entered into them and contain no broker or advertiser data. The lessons are written to explain trading, not to sell products. Commercial relationships are labelled so they can be told apart from the content.'},
@@ -26,15 +26,15 @@ export default function HowFundedPage(): ReactNode {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
-      {'@type': 'WebPage', name: 'Free for everyone: how Trading Notes is funded', url, isPartOf: {'@type': 'WebSite', name: SITE_NAME}, publisher: {'@type': 'Organization', name: LEGAL_ENTITY_NAME}},
+      {'@type': 'WebPage', name: 'Free for everyone: how Trading Spelled Out is funded', url, isPartOf: {'@type': 'WebSite', name: SITE_NAME}, publisher: {'@type': 'Organization', name: LEGAL_ENTITY_NAME}},
       {'@type': 'FAQPage', mainEntity: FAQS.map((faq) => ({'@type': 'Question', name: faq.q, acceptedAnswer: {'@type': 'Answer', text: faq.a}}))},
     ],
   };
 
   return (
     <Layout
-      title="Free for Everyone — How Trading Notes Is Funded"
-      description="Everything on Trading Notes is free. No email, no payment, no paywalls, ever. The site is funded by affiliate commissions and advertising: here is exactly how.">
+      title="Free for Everyone — How Trading Spelled Out Is Funded"
+      description="Everything on Trading Spelled Out is free. No email, no payment, no paywalls, ever. The site is funded by affiliate commissions and advertising: here is exactly how.">
       <Head>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Head>

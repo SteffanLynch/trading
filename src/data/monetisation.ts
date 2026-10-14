@@ -19,7 +19,7 @@ export const AD_SLOT_IDS: Record<AdSlotName, string | null> = {
 };
 
 /**
- * Amazon Associates store ID for amazon.co.uk, for example 'tradingnotes-21'. While null, book links go to Amazon
+ * Amazon Associates store ID for amazon.co.uk, for example 'tradingspelledout-21'. While null, book links go to Amazon
  * search results with no tag and are not labelled as affiliate links (because they are not).
  */
 export const AMAZON_ASSOCIATE_TAG: string | null = 'misppelled-21';

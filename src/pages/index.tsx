@@ -88,7 +88,7 @@ export default function Home(): ReactNode {
   const sizes = ['xl', 'm', 'l', 's', 'm', 'xl', 's', 'l', 'm', 's', 'l', 'm', 'l', 's', 'm', 'xl', 's', 'm', 'l', 's', 'm', 'l'];
 
   return (
-    <Layout title="Trading Notes" description={`A free trading field guide: plain-English lessons, strict rules and ${tools.length} calculators and simulators that do the maths. No email, no payment, no paywalls.`}>
+    <Layout title="Trading Spelled Out" description={`A free trading field guide: plain-English lessons, strict rules and ${tools.length} calculators and simulators that do the maths. No email, no payment, no paywalls.`}>
       <main className={styles.home}>
         {/* ---------------------------------------------------------------- hero */}
         <section className={styles.hero}>
@@ -230,7 +230,7 @@ export default function Home(): ReactNode {
                 Free. <span>Really.</span>
               </h2>
               <p className={styles.freeLede}>
-                Every lesson and every tool on this site is free, for everyone. There is no account, no paywall and no catch. <strong>Trading Notes will never ask for an email address or a payment for any feature.</strong>
+                Every lesson and every tool on this site is free, for everyone. There is no account, no paywall and no catch. <strong>Trading Spelled Out will never ask for an email address or a payment for any feature.</strong>
               </p>
               <ul className={styles.nevers}>
                 <li><s>Email address</s></li>

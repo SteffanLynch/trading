@@ -101,7 +101,7 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`Trading Notes is listening on http://${host}:${port}`);
+  console.log(`Trading Spelled Out is listening on http://${host}:${port}`);
 });
 
 function shutdown() {

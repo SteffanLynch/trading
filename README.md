@@ -2,7 +2,7 @@
 sidebar_class_name: sidebar-hidden-item
 ---
 
-# Trading Notes
+# Trading Spelled Out
 
 A free, plain-English trading library with calculators and interactive tools.
 

@@ -19,7 +19,7 @@ export function DisclosureTag({kind}: {kind: DisclosureKind}) {
 export function AffiliateDisclosure({children}: {children?: ReactNode}) {
   return (
     <p className={styles.disclosure}>
-      {children ?? 'Links marked “Affiliate link” are affiliate links: Trading Notes may earn a commission if something is bought or an account is opened through them, at no extra cost. '}
+      {children ?? 'Links marked “Affiliate link” are affiliate links: Trading Spelled Out may earn a commission if something is bought or an account is opened through them, at no extra cost. '}
       <Link to="/how-this-site-is-funded">How this site is funded</Link>.
     </p>
   );

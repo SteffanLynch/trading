@@ -345,11 +345,11 @@ export default function DisclaimerPage(): ReactNode {
   return (
     <LegalPage
       path="/disclaimer"
-      metaTitle="Disclaimer — Not Financial Advice, Risk Warning & Liability"
-      metaDescription="Trading Notes is educational only and not financial advice. Read the full risk warning, liability limits, affiliate and advertising disclosure and company details."
+      metaTitle="Disclaimer — Not Financial Advice & Risk Warning"
+      metaDescription="Educational only and not financial advice. Read the full risk warning, liability limits, affiliate and advertising disclosure, and company details."
       kicker="Legal"
       title="Disclaimer"
-      lede="Trading Notes teaches how markets and trading work. It does not give financial advice, and trading involves real risk. This page sets out exactly what that means, including the limits of the Company's responsibility."
+      lede="Trading Spelled Out teaches how markets and trading work. It does not give financial advice, and trading involves real risk. This page sets out exactly what that means, including the limits of the Company's responsibility."
       keyPoints={keyPoints}
       sections={sections}
     />

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap');
 
 /* =========================================================
-   Trading Notes: "trading floor at night"
+   Trading Spelled Out: "trading floor at night"
    Deep midnight, vivid signal colours, expressive display type.
    ========================================================= */
 
@@ -202,10 +202,10 @@ kbd {
 .footer__copyright { color: #7d86a0; text-align: left; margin-top: 2rem; }
 .footer-mark {
   margin: 1rem 0 0.5rem; font-family: var(--font-display); font-weight: 800; letter-spacing: -0.06em;
-  font-size: clamp(3.5rem, 15vw, 12rem); line-height: 0.85; color: transparent;
+  font-size: clamp(2rem, 11vw, 9rem); line-height: 0.9; color: transparent; white-space: nowrap; overflow: hidden;
   -webkit-text-stroke: 1.5px rgba(244, 241, 234, 0.22); user-select: none;
 }
-.footer-link-button { padding: 0; border: 0; background: none; color: #c9cee0; font: inherit; font-size: 0.9rem; cursor: pointer; transition: color 0.15s ease, padding 0.15s ease; }
+.footer-link-button { padding: 0; border: 0; background: none; color: #c9cee0; font: inherit; font-size: 0.9rem; line-height: var(--ifm-line-height-base); cursor: pointer; transition: color 0.15s ease, padding 0.15s ease; }
 .footer-link-button:hover { color: #c8ff4d; padding-left: 0.35rem; }
 .footer-link-button:focus-visible { outline: 2px solid #c8ff4d; outline-offset: 3px; border-radius: 3px; }
 .footer-legal { max-width: 52rem; margin-top: 1rem; }
