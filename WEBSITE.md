@@ -49,10 +49,10 @@ The container exposes:
 
 | Branch | Cloud Run service | `DOCUSAURUS_SITE_URL` |
 | --- | --- | --- |
-| `main` | `trading-web` | `https://trading-web-699962388958.europe-west2.run.app` |
+| `main` | `trading-web` | `https://tradingspelledout.com` (custom domain, via the shared load balancer) |
 | `staging` | `trading-web-staging` | `https://trading-web-staging-699962388958.europe-west2.run.app` |
 
-`DOCUSAURUS_BASE_URL` is `/` for both. The workflow runs typecheck, tests, build and `check:build` first, then builds and pushes the image to Artifact Registry and deploys it. When a custom domain is mapped to a service, change `PROD_SITE_URL` / `STAGING_SITE_URL` in the workflow so canonical URLs, the sitemap and JSON-LD use it.
+`DOCUSAURUS_BASE_URL` is `/` for both. The workflow runs typecheck, tests, build and `check:build` first, then builds and pushes the image to Artifact Registry and deploys it. Production's `PROD_SITE_URL` is the custom domain; if staging ever gets one too, change `STAGING_SITE_URL` the same way so canonical URLs, the sitemap and JSON-LD use it.
 
 It authenticates to the `misppelled` GCP project through Workload Identity Federation (no GitHub secrets). That provider only trusts the repositories named in its attribute condition, so `SteffanLynch/trading` must be allowed there before the workflow can deploy.
 

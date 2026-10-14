@@ -73,9 +73,9 @@ jobs:
       GCP_WORKLOAD_IDENTITY_PROVIDER: projects/699962388958/locations/global/workloadIdentityPools/github-pool/providers/github-provider
       GCP_DEPLOYER_SA: gha-deployer@misppelled.iam.gserviceaccount.com
       ARTIFACT_REPO: misppelled
-      # Cloud Run's stable per-service URL is https://<service>-<project number>.<region>.run.app.
-      # Replace these with the custom domains once they are mapped to the services.
-      PROD_SITE_URL: https://trading-web-699962388958.europe-west2.run.app
+      # Production is served from its custom domain, through the shared load balancer. Staging has no custom
+      # domain and uses Cloud Run's stable per-service URL: https://<service>-<project number>.<region>.run.app.
+      PROD_SITE_URL: https://tradingspelledout.com
       STAGING_SITE_URL: https://trading-web-staging-699962388958.europe-west2.run.app
       # Served from the domain root, so no sub-path.
       DOCUSAURUS_BASE_URL: /
@@ -135,9 +135,20 @@ jobs:
             --allow-unauthenticated \
             --quiet
 
+      # Checks the service's own run.app URL. Once production's ingress is restricted to the load balancer
+      # (internal-and-cloud-load-balancing) that URL answers 403, so production then falls back to its custom domain.
       - name: Smoke test
         run: |
           URL=$(gcloud run services describe "${{ steps.env.outputs.service }}" \
             --region="${{ env.GCP_REGION }}" --project="${{ env.GCP_PROJECT_ID }}" \
             --format='value(status.url)')
-          curl --fail --silent --show-error --retry 5 --retry-delay 3 --retry-all-errors "$URL/health"
+          CHECK="curl --fail --silent --show-error --retry 5 --retry-delay 3 --retry-all-errors"
+          if $CHECK "$URL/health"; then
+            exit 0
+          fi
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            echo "run.app URL not reachable (ingress may be restricted); checking $PROD_SITE_URL instead."
+            $CHECK "$PROD_SITE_URL/health"
+          else
+            exit 1
+          fi
