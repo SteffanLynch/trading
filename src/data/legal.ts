@@ -31,7 +31,7 @@ export const LEGAL_REGISTERED_OFFICE_ADDRESS = {
 export const LEGAL_CONTACT_EMAIL: string | null = 'legal@misppelled.com';
 
 /** When the legal pages were last revised. Update whenever their wording changes. */
-export const LEGAL_LAST_UPDATED = '7 October 2026';
+export const LEGAL_LAST_UPDATED = '17 October 2026';
 
 /** Single-sentence trading disclosure used by the footer and the legal pages. */
 export function legalDisclosureLine(): string {

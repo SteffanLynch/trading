@@ -4,7 +4,7 @@ import {formatPrice, formatNumber, parseNumber} from '../../../utils/calculators
 import {orderGuide, positionPips, validateOrder, type OrderKind, type OrderSpec, type Side} from '../../../utils/calculators/orders';
 import {DEFAULT_CONFIG, initialSim, simReducer} from '../../../utils/calculators/orderSim';
 import type {CalculatorProps} from '../common';
-import {trackEvent} from '../hooks/useTrackCalculation';
+import {track} from '../../../analytics';
 import {Callout, Note, NumberField, Segmented, ToolCard} from '../ui';
 import styles from '../ui/ui.module.css';
 import {MarketChart} from './MarketChart';
@@ -91,7 +91,7 @@ export default function OrderTypeSimulator({embedded = false}: CalculatorProps) 
     dispatch({type: 'place', spec});
     if (!reported.current) {
       reported.current = true;
-      trackEvent('calculator_calculated', {calculator_name: 'order_type_simulator', placement: embedded ? 'embedded' : 'page', order_type: kind, side});
+      track('calculator_calculated', {calculator_name: 'order_type_simulator', placement: embedded ? 'embedded' : 'page', order_type: kind, side});
     }
   }
 

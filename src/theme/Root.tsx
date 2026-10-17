@@ -1,9 +1,11 @@
-import {useEffect, useState, type ReactNode} from 'react';
+import {useEffect, useRef, useState, type ReactNode} from 'react';
 import {useLocation} from '@docusaurus/router';
 import Link from '@docusaurus/Link';
 import {library} from '../data/library';
 import ConsentBanner from '../components/consent/ConsentBanner';
 import {openCookieSettings} from '../components/consent/store';
+import {pathOf, track} from '../analytics';
+import {useTrackSearch} from '../analytics/useTrackSearch';
 
 export default function Root({children}: {children: ReactNode}) {
   const location = useLocation();
@@ -11,6 +13,7 @@ export default function Root({children}: {children: ReactNode}) {
   const [query, setQuery] = useState('');
   const [image, setImage] = useState<{src: string; alt: string} | null>(null);
   const [progress, setProgress] = useState(0);
+  const openMethod = useRef<'shortcut' | 'button'>('button');
 
   useEffect(() => {
     setSearchOpen(false);
@@ -22,6 +25,7 @@ export default function Root({children}: {children: ReactNode}) {
     const onKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
+        openMethod.current = 'shortcut';
         setSearchOpen((open) => !open);
       }
       if (event.key === 'Escape') {
@@ -31,10 +35,16 @@ export default function Root({children}: {children: ReactNode}) {
     };
     const onClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (target.closest('.search-trigger')) setSearchOpen(true);
+      if (target.closest('.search-trigger')) {
+        openMethod.current = 'button';
+        setSearchOpen(true);
+      }
       if (target.closest('[data-open-cookie-settings]')) openCookieSettings();
       const selectedImage = target.closest('.theme-doc-markdown img') as HTMLImageElement | null;
-      if (selectedImage) setImage({src: selectedImage.src, alt: selectedImage.alt});
+      if (selectedImage) {
+        setImage({src: selectedImage.src, alt: selectedImage.alt});
+        track('image_expanded', {});
+      }
     };
     window.addEventListener('keydown', onKeyDown);
     document.addEventListener('click', onClick);
@@ -62,6 +72,11 @@ export default function Root({children}: {children: ReactNode}) {
   const value = query.trim().toLowerCase();
   const results = library.filter((item) => !value || `${item.title} ${item.description} ${item.keywords}`.toLowerCase().includes(value)).slice(0, 7);
 
+  useEffect(() => {
+    if (searchOpen) track('search_opened', {surface: 'palette', method: openMethod.current});
+  }, [searchOpen]);
+  useTrackSearch('palette', query, results.length, searchOpen);
+
   return (
     <>
       {location.pathname.startsWith('/library/') && <div className="reading-progress" style={{width: `${progress}%`}} />}
@@ -72,8 +87,8 @@ export default function Root({children}: {children: ReactNode}) {
           <section className="command-palette" role="dialog" aria-modal="true" aria-label="Search the trading library">
             <label><span aria-hidden="true">⌕</span><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search notes, ideas and terms…" /><kbd>ESC</kbd></label>
             <div className="command-results">
-              {results.map((item) => (
-                <Link to={item.href} key={item.href}>
+              {results.map((item, index) => (
+                <Link to={item.href} key={item.href} onClick={() => track('search_result_clicked', {surface: 'palette', position: index + 1, destination_path: pathOf(item.href) ?? ''})}>
                   <span className="command-number">{item.number ?? '—'}</span>
                   <span><small>{item.section}</small><strong>{item.title}</strong></span>
                   <span aria-hidden="true">↗</span>

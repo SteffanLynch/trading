@@ -16,7 +16,7 @@ export default function LessonExtras({permalink}: {permalink: string}) {
   return (
     <div className={styles.extras}>
       <SponsorBanner placements={[where, 'all-lessons']} />
-      {placement.resources && <FurtherLearning topics={placement.resources} />}
+      {placement.resources && <FurtherLearning topics={placement.resources} placement={where} />}
       {placement.books && <BookShelf topics={placement.books} limit={3} placement={where} />}
       {placement.partners && <PartnerCallout ids={placement.partners} placement={where} />}
       <AdSlot slot="lesson" />

@@ -24,6 +24,7 @@ WORKDIR /app
 
 COPY --from=build --chown=node:node /app/build ./build
 COPY --chown=node:node server.mjs ./server.mjs
+COPY --chown=node:node server/relay.mjs ./server/relay.mjs
 
 USER node
 EXPOSE 3000

@@ -55,6 +55,8 @@ const config: Config = {
   organizationName: 'SteffanLynch',
   projectName: 'trading',
   trailingSlash: false,
+  // Analytics (Google Analytics 4 and PostHog): inert until a visitor allows it in the cookie banner. See docs/analytics.md.
+  clientModules: ['./src/analytics/clientModule.ts'],
   onBrokenLinks: 'throw',
   markdown: {
     hooks: {

@@ -10,13 +10,15 @@
     "clear": "docusaurus clear",
     "typecheck": "tsc",
     "test": "vitest run",
-    "check:build": "node scripts/check-build.mjs"
+    "check:build": "node scripts/check-build.mjs",
+    "posthog:provision": "node scripts/provision-posthog.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",
     "@docusaurus/preset-classic": "3.10.2",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.1.1",
+    "posthog-js": "^1.438.12",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

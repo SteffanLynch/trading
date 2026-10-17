@@ -1,6 +1,6 @@
 import {sponsors} from '../../data/sponsors';
 import {PLAIN_EXTERNAL_REL, activeSponsors} from '../../utils/monetisation';
-import {trackEvent} from '../calculators/hooks/useTrackCalculation';
+import {track} from '../../analytics';
 import {DisclosureTag} from './Disclosure';
 import styles from './monetisation.module.css';
 
@@ -16,7 +16,7 @@ export default function SponsorBanner({placements}: {placements: string[]}) {
       <DisclosureTag kind="sponsored" />
       <p>
         Presented by{' '}
-        <a href={sponsor.url} rel={`sponsored ${PLAIN_EXTERNAL_REL}`} target="_blank" onClick={() => trackEvent('sponsor_link_clicked', {sponsor: sponsor.id})}>
+        <a href={sponsor.url} rel={`sponsored ${PLAIN_EXTERNAL_REL}`} target="_blank" data-tracked onClick={() => track('sponsor_link_clicked', {sponsor: sponsor.id})}>
           {sponsor.name}
         </a>
         . {sponsor.tagline}

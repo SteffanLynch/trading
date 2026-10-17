@@ -157,7 +157,9 @@ export default function ToolPage({slug, lead, children, meaning, formula, exampl
                 <ul className={styles.learn}>
                   {learn.map((link) => (
                     <li key={link.to}>
-                      <Link to={link.to}>{link.label} →</Link>
+                      <Link to={link.to} data-cta="tool-learn-more">
+                        {link.label} →
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -173,7 +175,7 @@ export default function ToolPage({slug, lead, children, meaning, formula, exampl
             <h2 id="related-tools">Keep going</h2>
             <div className={styles.relatedList}>
               {related.map((entry) => (
-                <Link className={styles.relatedItem} to={entry.path} key={entry.slug} style={relatedVars(groupTone[entry.group])}>
+                <Link className={styles.relatedItem} to={entry.path} key={entry.slug} style={relatedVars(groupTone[entry.group])} data-cta="tool-related">
                   <strong>{entry.name}</strong>
                   <span>{entry.summary}</span>
                 </Link>

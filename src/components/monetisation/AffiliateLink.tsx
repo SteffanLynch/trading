@@ -1,5 +1,5 @@
 import type {ReactNode} from 'react';
-import {trackEvent} from '../calculators/hooks/useTrackCalculation';
+import {track} from '../../analytics';
 import {DisclosureTag} from './Disclosure';
 import styles from './monetisation.module.css';
 import type {ResolvedLink} from '../../utils/monetisation';
@@ -24,8 +24,9 @@ export default function AffiliateLink({link, name, placement, className, childre
       href={link.href}
       rel={link.rel}
       target="_blank"
+      data-tracked
       className={className ?? styles.button}
-      onClick={() => trackEvent('partner_link_clicked', {partner: name, placement, affiliate: link.affiliate})}>
+      onClick={() => track('partner_link_clicked', {partner: name, placement, affiliate: link.affiliate})}>
       <span>
         {children}
         <span className={styles.sr}> (opens in a new tab)</span>

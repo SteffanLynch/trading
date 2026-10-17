@@ -64,7 +64,7 @@ export default function ToolsHub(): ReactNode {
               <ul className={styles.list}>
                 {items.map((tool) => (
                   <li key={tool.slug}>
-                    <Link to={tool.path} className={styles.row}>
+                    <Link to={tool.path} className={styles.row} data-cta="tools-hub-row">
                       <span className={styles.rowNum}>{String(tools.indexOf(tool) + 1).padStart(2, '0')}</span>
                       <span className={styles.rowBody}>
                         <strong>

@@ -27,7 +27,7 @@ const pages = [
   {name: 'tools', file: 'tools.html', path: '/tools', tool: false},
   {name: 'disclaimer', file: 'disclaimer.html', path: '/disclaimer', tool: false, mustMention: ['Misppelled Ltd', 'not financial advice']},
   {name: 'how-this-site-is-funded', file: 'how-this-site-is-funded.html', path: '/how-this-site-is-funded', tool: false, mustMention: ['Misppelled Ltd', 'affiliate']},
-  {name: 'privacy', file: 'privacy.html', path: '/privacy', tool: false, mustMention: ['Misppelled Ltd', 'cookie', 'Information Commissioner']},
+  {name: 'privacy', file: 'privacy.html', path: '/privacy', tool: false, mustMention: ['Misppelled Ltd', 'cookie', 'Information Commissioner', 'Google Analytics', 'PostHog']},
   {name: 'partners', file: 'partners.html', path: '/partners', tool: false, mustMention: ['affiliate', 'not financial advice', 'FCA Register']},
   {name: 'resources', file: 'resources.html', path: '/resources', tool: false, mustMention: ['No one pays', 'not financial advice']},
   {name: 'media-kit', file: 'media-kit.html', path: '/media-kit', tool: false, mustMention: ['Misppelled Ltd', 'Sponsored', 'Not accepted']},
@@ -86,6 +86,25 @@ for (const file of allPages) {
   if (/rel="[^"]*\bsponsored\b/.test(html) && !/Affiliate link|Sponsored/.test(html)) fail(file, 'has a rel="sponsored" link but no visible "Affiliate link" or "Sponsored" label');
   if (adsOff && /googlesyndication|adsbygoogle/.test(html)) fail(file, 'loads an ad network although ADSENSE_CLIENT is not set');
 }
+
+// Analytics must never be in the page itself: it is loaded by the browser, after consent, from the client bundle.
+// A tag in the prerendered HTML would run before the visitor has chosen. Also check the configured IDs are well formed,
+// because a malformed one switches that tool off silently.
+const analyticsSource = readFileSync(resolve(root, 'src/data/analytics.ts'), 'utf8');
+const gaId = /GA_MEASUREMENT_ID:\s*string\s*\|\s*null\s*=\s*(null|'([^']*)')/.exec(analyticsSource);
+if (!gaId) fail('src/data/analytics.ts', 'GA_MEASUREMENT_ID not found');
+else if (gaId[2] !== undefined && !/^G-[A-Z0-9]{6,14}$/.test(gaId[2])) fail('src/data/analytics.ts', `GA_MEASUREMENT_ID "${gaId[2]}" is not a valid GA4 ID (G-XXXXXXXXXX)`);
+const phToken = /POSTHOG_PROJECT_TOKEN:\s*string\s*\|\s*null\s*=\s*(null|'([^']*)')/.exec(analyticsSource);
+if (!phToken) fail('src/data/analytics.ts', 'POSTHOG_PROJECT_TOKEN not found');
+else if (phToken[2] !== undefined && !/^phc_[A-Za-z0-9]{20,}$/.test(phToken[2])) fail('src/data/analytics.ts', 'POSTHOG_PROJECT_TOKEN must be a project token starting with phc_ (never a personal API key)');
+for (const file of allPages) {
+  const path = resolve(build, file);
+  if (!existsSync(path)) continue;
+  const html = readFileSync(path, 'utf8');
+  if (/<script[^>]+src="[^"]*(googletagmanager|google-analytics|posthog)/i.test(html)) fail(file, 'loads an analytics script directly in the page; it must only load from the client bundle after consent');
+  if (/gtag\(|dataLayer/.test(html)) fail(file, 'contains an inline Google Analytics snippet; it must only run after consent');
+}
+
 for (const file of ['library/fundamentals/candlesticks.html', 'library/fundamentals/trading-psychology.html']) {
   const path = resolve(build, file);
   if (existsSync(path) && !/Keep learning elsewhere/.test(readFileSync(path, 'utf8'))) fail(file, 'lesson is missing its further-learning block');

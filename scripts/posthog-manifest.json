@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "tag": "managed:trading-spelled-out",
+  "events": [
+    ["$pageview", "Consent-gated page view. The URL is the path only (never a query string or hash); page_type, content_section, content_slug and tool_slug describe the page."],
+    ["$pageleave", "Consent-gated page leave, with time on page and scroll depth of the page left."],
+    ["lesson_scroll_depth", "A visitor scrolled a lesson's text to 25, 50, 75 or 100 percent (depth_percent), after engaged_seconds in view."],
+    ["lesson_nav_clicked", "The previous or next lesson link at the foot of a lesson was followed."],
+    ["image_expanded", "A lesson image was opened full size."],
+    ["calculator_calculated", "A calculator produced a valid result after the visitor changed an input. Carries every input and output as flat properties, plus calculator_name and placement (page or embedded)."],
+    ["calculator_link_copied", "A calculator's shareable link was copied."],
+    ["calculator_reset", "A calculator was reset to its defaults."],
+    ["tool_section_opened", "A tool page accordion (what it means, formula, example, FAQ) was opened."],
+    ["search_opened", "The site search was opened, from the palette (shortcut or button) or the search page."],
+    ["search_performed", "A search was typed and settled: search_term (tidied, never an email or link) and result_count."],
+    ["search_result_clicked", "A search result was followed, with its position."],
+    ["partner_link_clicked", "A partner link (TradingView, brokers, Amazon books) was clicked: partner, placement, and whether it is an affiliate link."],
+    ["sponsor_link_clicked", "A direct sponsor's link was clicked."],
+    ["resource_link_clicked", "A recommended-resource link was clicked."],
+    ["video_played", "A resources-page video was played."],
+    ["outbound_link_clicked", "Any other link to another site was clicked: destination_domain and link_area only."],
+    ["contact_email_clicked", "An email link was clicked; contact_purpose says why (sponsorship, legal, general). The address is never sent."],
+    ["nav_link_clicked", "A navbar or footer link was followed."],
+    ["cta_clicked", "A marked call-to-action link was followed (home page, tools hub, related tools)."],
+    ["page_not_found", "A visitor landed on the 404 page; requested_path is the path they asked for."]
+  ],
+  "properties": [
+    ["schema_version", "Numeric analytics schema version."],
+    ["page_type", "home, lesson, library_index, tool, tools_hub, search, legal, partners, resources, media_kit, funding, not_found or other."],
+    ["route_name", "The route as a pattern, for example /tools/[tool]."],
+    ["content_section", "Lessons: fundamentals, strategy or reference."],
+    ["content_slug", "Lessons: the lesson slug."],
+    ["tool_slug", "Tool pages: the tool slug."],
+    ["tool_group", "Tool pages: the tool's group, for example Plan a trade."],
+    ["color_mode", "dark or light."],
+    ["deployment_environment", "production on the live site."],
+    ["calculator_name", "Stable calculator name, for example position_size."],
+    ["placement", "calculator_calculated: page or embedded. Link events: where the link sat."],
+    ["depth_percent", "lesson_scroll_depth: 25, 50, 75 or 100."],
+    ["engaged_seconds", "lesson_scroll_depth: seconds the page had been in view."],
+    ["search_term", "search_performed: the tidied search words."],
+    ["result_count", "search_performed: how many notes matched."],
+    ["partner", "partner_link_clicked: partner id."],
+    ["affiliate", "partner_link_clicked: whether the link can earn a commission."],
+    ["destination_domain", "outbound_link_clicked: the other site's domain."],
+    ["link_area", "outbound_link_clicked: where on the site the link sat."],
+    ["cta_id", "cta_clicked: which call-to-action."],
+    ["requested_path", "page_not_found: the missing path."]
+  ],
+  "dashboards": [
+    {
+      "name": "TSO · Traffic and content",
+      "description": "Consented production traffic, what is read and where visitors come from.",
+      "insights": [
+        ["Pageviews", "trend", ["$pageview"]],
+        ["Pageviews by page type", "trend", ["$pageview"], {"breakdown": "page_type"}],
+        ["Pageviews by lesson section", "trend", ["$pageview"], {"breakdown": "content_section", "filters": [{"key": "page_type", "value": ["lesson"], "operator": "exact", "type": "event"}]}],
+        ["Most read lessons", "trend", ["$pageview"], {"breakdown": "content_slug", "display": "ActionsBarValue", "filters": [{"key": "page_type", "value": ["lesson"], "operator": "exact", "type": "event"}]}],
+        ["Lesson read depth", "trend", ["lesson_scroll_depth"], {"breakdown": "depth_percent", "display": "ActionsBarValue"}],
+        ["Next-lesson clicks", "trend", ["lesson_nav_clicked"]],
+        ["Where visitors come from", "trend", ["$pageview"], {"breakdown": "$referring_domain", "display": "ActionsBarValue"}],
+        ["Missing pages", "trend", ["page_not_found"], {"breakdown": "requested_path", "display": "ActionsBarValue"}],
+        ["Visit to calculation", "funnel", ["$pageview", "calculator_calculated"]]
+      ]
+    },
+    {
+      "name": "TSO · Tools and calculators",
+      "description": "Which calculators are used, how, and what people do after.",
+      "insights": [
+        ["Calculations", "trend", ["calculator_calculated"]],
+        ["Calculations by calculator", "trend", ["calculator_calculated"], {"breakdown": "calculator_name", "display": "ActionsBarValue"}],
+        ["Embedded or full page", "trend", ["calculator_calculated"], {"breakdown": "placement"}],
+        ["Tool pages viewed", "trend", ["$pageview"], {"breakdown": "tool_slug", "display": "ActionsBarValue", "filters": [{"key": "page_type", "value": ["tool"], "operator": "exact", "type": "event"}]}],
+        ["Tool groups", "trend", ["$pageview"], {"breakdown": "tool_group", "display": "ActionsBarValue", "filters": [{"key": "page_type", "value": ["tool"], "operator": "exact", "type": "event"}]}],
+        ["Sharing and resetting", "trend", ["calculator_link_copied", "calculator_reset"]],
+        ["Tool page sections opened", "trend", ["tool_section_opened"], {"breakdown": "section_title", "display": "ActionsBarValue"}],
+        ["Position size: stop-distance mode", "trend", ["calculator_calculated"], {"breakdown": "stop_mode", "filters": [{"key": "calculator_name", "value": ["position_size"], "operator": "exact", "type": "event"}]}],
+        ["Visit, calculate, share", "funnel", ["$pageview", "calculator_calculated", "calculator_link_copied"]]
+      ]
+    },
+    {
+      "name": "TSO · Search and navigation",
+      "description": "What people look for and how they move around.",
+      "insights": [
+        ["Search activity", "trend", ["search_opened", "search_performed", "search_result_clicked"]],
+        ["Searches by surface", "trend", ["search_performed"], {"breakdown": "surface"}],
+        ["What people search for", "trend", ["search_performed"], {"breakdown": "search_term", "display": "ActionsBarValue"}],
+        ["Searches with no result", "trend", ["search_performed"], {"breakdown": "result_count", "display": "ActionsBarValue"}],
+        ["Search results opened", "trend", ["search_result_clicked"], {"breakdown": "destination_path", "display": "ActionsBarValue"}],
+        ["Search funnel", "funnel", ["search_opened", "search_performed", "search_result_clicked"]],
+        ["Calls to action", "trend", ["cta_clicked"], {"breakdown": "cta_id", "display": "ActionsBarValue"}],
+        ["Navbar and footer links", "trend", ["nav_link_clicked"], {"breakdown": "destination_path", "display": "ActionsBarValue"}]
+      ]
+    },
+    {
+      "name": "TSO · Monetisation and outbound",
+      "description": "Partner, sponsor and resource clicks, and enquiries. Commissions are reported by the partners, not here.",
+      "insights": [
+        ["Money and outbound clicks", "trend", ["partner_link_clicked", "sponsor_link_clicked", "resource_link_clicked", "outbound_link_clicked", "contact_email_clicked"]],
+        ["Partner clicks by partner", "trend", ["partner_link_clicked"], {"breakdown": "partner", "display": "ActionsBarValue"}],
+        ["Partner clicks by placement", "trend", ["partner_link_clicked"], {"breakdown": "placement", "display": "ActionsBarValue"}],
+        ["Affiliate or plain", "trend", ["partner_link_clicked"], {"breakdown": "affiliate"}],
+        ["Resource clicks", "trend", ["resource_link_clicked"], {"breakdown": "resource_id", "display": "ActionsBarValue"}],
+        ["Other sites visitors leave for", "trend", ["outbound_link_clicked"], {"breakdown": "destination_domain", "display": "ActionsBarValue"}],
+        ["Enquiry emails", "trend", ["contact_email_clicked"], {"breakdown": "contact_purpose"}],
+        ["Video plays", "trend", ["video_played"], {"breakdown": "video_id", "display": "ActionsBarValue"}],
+        ["Visit to partner click", "funnel", ["$pageview", "partner_link_clicked"]]
+      ]
+    }
+  ]
+}

@@ -1,16 +1,17 @@
 import Link from '@docusaurus/Link';
 import {resources, type Resource, type ResourceTopic} from '../../data/resources';
 import {youtubeSearchLink} from '../../utils/monetisation';
+import {track} from '../../analytics';
 import {accentVars} from '../monetisation/PartnerCallout';
 import styles from '../monetisation/monetisation.module.css';
 
 /** One recommended resource. Plain outbound links: these are editorial picks, not paid placements. */
-export function ResourceItem({resource}: {resource: Resource}) {
+export function ResourceItem({resource, placement}: {resource: Resource; placement: string}) {
   return (
     <li className={styles.resItem}>
       <div>
         <p className={styles.resHead}>
-          <a href={resource.url} rel="noopener noreferrer" target="_blank">
+          <a href={resource.url} rel="noopener noreferrer" target="_blank" data-tracked onClick={() => track('resource_link_clicked', {resource_id: resource.id, placement})}>
             {resource.name}
             <span className={styles.sr}> (opens in a new tab)</span>
           </a>
@@ -35,7 +36,7 @@ export function ResourceItem({resource}: {resource: Resource}) {
 }
 
 /** A short list of recommended resources for the topics a lesson touches. Renders nothing if there are none. */
-export default function FurtherLearning({topics, limit = 3}: {topics: ResourceTopic[]; limit?: number}) {
+export default function FurtherLearning({topics, limit = 3, placement = 'further-learning'}: {topics: ResourceTopic[]; limit?: number; placement?: string}) {
   const matches = resources.filter((resource) => resource.topics.some((topic) => topics.includes(topic))).slice(0, limit);
   if (matches.length === 0) return null;
   return (
@@ -43,7 +44,7 @@ export default function FurtherLearning({topics, limit = 3}: {topics: ResourceTo
       <p className={styles.eyebrow}>Keep learning elsewhere</p>
       <ul className={styles.resList}>
         {matches.map((resource) => (
-          <ResourceItem key={resource.id} resource={resource} />
+          <ResourceItem key={resource.id} resource={resource} placement={placement} />
         ))}
       </ul>
       <p className={styles.fine}>

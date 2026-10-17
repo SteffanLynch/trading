@@ -1,7 +1,9 @@
-import {useMemo, useState, type ReactNode} from 'react';
+import {useEffect, useMemo, useState, type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import {library} from '../data/library';
+import {pathOf, track} from '../analytics';
+import {useTrackSearch} from '../analytics/useTrackSearch';
 
 export default function SearchPage(): ReactNode {
   const [query, setQuery] = useState('');
@@ -10,6 +12,11 @@ export default function SearchPage(): ReactNode {
     if (!value) return library;
     return library.filter((item) => `${item.title} ${item.description} ${item.section} ${item.keywords}`.toLowerCase().includes(value));
   }, [query]);
+
+  useEffect(() => {
+    track('search_opened', {surface: 'page', method: 'page_load'});
+  }, []);
+  useTrackSearch('page', query, results.length);
 
   return (
     <Layout title="Search" description="Search every note in the trading library.">
@@ -22,8 +29,8 @@ export default function SearchPage(): ReactNode {
         </label>
         <p className="result-count">{results.length} {results.length === 1 ? 'result' : 'results'}</p>
         <div className="search-results">
-          {results.map((item) => (
-            <Link className="search-result" to={item.href} key={item.href}>
+          {results.map((item, index) => (
+            <Link className="search-result" to={item.href} key={item.href} onClick={() => query.trim() && track('search_result_clicked', {surface: 'page', position: index + 1, destination_path: pathOf(item.href) ?? ''})}>
               <span>{item.number ?? '—'}</span>
               <div><small>{item.section}</small><h2>{item.title}</h2><p>{item.description}</p></div>
               <b aria-hidden="true">↗</b>

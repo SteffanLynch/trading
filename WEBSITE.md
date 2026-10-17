@@ -42,6 +42,7 @@ The container exposes:
 
 - Website: [http://localhost:3000](http://localhost:3000)
 - Health check: [http://localhost:3000/health](http://localhost:3000/health)
+- PostHog relay: `/ingest/*` (POST allowed here only), forwarded to PostHog EU Cloud by `server/relay.mjs`. See [docs/analytics.md](docs/analytics.md).
 
 ## Deploy on Google Cloud Run
 
@@ -106,7 +107,12 @@ Every full-page calculator writes its inputs to the address bar (only values tha
 
 ### Analytics
 
-Calculators send a debounced `calculator_calculated` event to `window.posthog` **only after the visitor has changed an input and the result is valid**, containing every input and every computed output (plus `calculator_name` and `placement`: `page` or `embedded`). A `calculator_link_copied` event is sent when a link is copied. If PostHog is not installed the calls do nothing. PostHog itself is not installed by this repository: add its snippet (and a consent banner if your audience needs one), and note that the event payload includes the account balance a visitor typed.
+Google Analytics 4 (`G-HEMWFRWN96`) and PostHog are both built in, behind the cookie banner, and run only on the live hostnames in `src/data/analytics.ts`. Everything is in [docs/analytics.md](docs/analytics.md): what is sent, the one-time GA4 and PostHog setup, how to check it, and how to add an event. In short:
+
+- `track(event, props)` from `src/analytics` sends a typed event to PostHog and, for a short list, to Google Analytics. It does nothing unless the visitor has allowed analytics.
+- Calculators send a debounced `calculator_calculated` event **only after the visitor has changed an input and the result is valid**, via `useTrackCalculation`. PostHog gets every input and every computed output (plus `calculator_name` and `placement`: `page` or `embedded`); Google gets only the calculator's name. A `calculator_link_copied` event is sent when a link is copied.
+- Page addresses are rebuilt from the path, so the numbers in a shared calculator link never reach either tool as part of a URL.
+- PostHog stays off until a project token is pasted into `POSTHOG_PROJECT_TOKEN`.
 
 ### Interactive tools
 
@@ -142,7 +148,7 @@ Everything that earns money ships **switched off**. A fresh checkout shows no ad
 
 `src/components/consent/` holds the banner and store; the rules are in `src/utils/consent.ts` (tested). Three optional categories, all off until chosen: **preferences** (remembered calculator values), **analytics** and **advertising**. "Reject all" and "Accept all" are equally prominent, the choice lasts 12 months, and it can be changed from the footer "Cookie settings" button or the privacy page. The gates:
 
-- `trackEvent` (analytics) does nothing unless analytics is allowed.
+- `track()` and the Google Analytics and PostHog loaders (`src/analytics`) do nothing unless analytics is allowed, and withdrawing the choice stops them and removes the `_ga*` cookies and PostHog's local storage.
 - `loadPrefs`/`savePref` (remembered calculator values) do nothing unless preferences is allowed, and withdrawing the choice deletes what was stored.
 - `AdSlot` renders nothing, and the ad script is never requested, unless an AdSense ID is set **and** advertising is allowed.
 - YouTube videos are click-to-load (`youtube-nocookie.com`), so nothing is requested from YouTube until play is pressed.

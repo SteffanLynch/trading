@@ -14,7 +14,7 @@ interface Props {
 export default function Accordion({title, children, variant = 'section', defaultOpen = false}: Props) {
   const Heading = variant === 'faq' ? 'h3' : 'h2';
   return (
-    <details className={variant === 'faq' ? `${styles.acc} ${styles.accFaq}` : styles.acc} open={defaultOpen || undefined}>
+    <details className={variant === 'faq' ? `${styles.acc} ${styles.accFaq}` : styles.acc} open={defaultOpen || undefined} data-accordion={variant}>
       <summary>
         <Heading>{title}</Heading>
         <span className={styles.accIcon} aria-hidden="true" />

@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState, type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
-import {trackEvent} from '../hooks/useTrackCalculation';
+import {track} from '../../../analytics';
 import styles from './ui.module.css';
 
 interface ToolCardProps {
@@ -32,7 +32,7 @@ export function ToolCard({title, name, inputs, results, embedded = false, href, 
     } catch {
       window.prompt('Copy this link', url);
     }
-    trackEvent('calculator_link_copied', {calculator_name: name});
+    track('calculator_link_copied', {calculator_name: name});
     setCopied(true);
     window.clearTimeout(timer.current);
     timer.current = window.setTimeout(() => setCopied(false), 2000);
@@ -44,7 +44,10 @@ export function ToolCard({title, name, inputs, results, embedded = false, href, 
         <p className={styles.cardTitle}>{embedded ? `Try it · ${title}` : title}</p>
         <div className={styles.cardActions}>
           {!embedded && dirty && onReset && (
-            <button type="button" className={styles.ghostButton} onClick={onReset}>
+            <button type="button" className={styles.ghostButton} onClick={() => {
+                track('calculator_reset', {calculator_name: name});
+                onReset();
+              }}>
               Reset
             </button>
           )}

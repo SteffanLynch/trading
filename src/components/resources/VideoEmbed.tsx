@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {isYouTubeId} from '../../utils/monetisation';
+import {track} from '../../analytics';
 import styles from '../monetisation/monetisation.module.css';
 
 /**
@@ -22,7 +23,10 @@ export default function VideoEmbed({id, title, by}: {id: string; title: string; 
             allowFullScreen
           />
         ) : (
-          <button type="button" className={styles.videoPlay} onClick={() => setPlaying(true)} aria-label={`Play video: ${title}`}>
+          <button type="button" className={styles.videoPlay} onClick={() => {
+              setPlaying(true);
+              track('video_played', {video_id: id, placement: 'resources-page'});
+            }} aria-label={`Play video: ${title}`}>
             <span aria-hidden="true" className={styles.videoIcon}>
               ▶
             </span>

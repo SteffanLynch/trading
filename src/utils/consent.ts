@@ -6,8 +6,11 @@
  */
 export const CONSENT_STORAGE_KEY = 'tn-consent-v1';
 
-/** Bump when the categories change so everyone is asked again. */
-export const CONSENT_VERSION = 1;
+/**
+ * Bump when the categories change so everyone is asked again. Version 2: "analytics" now means Google Analytics and
+ * PostHog by name (it was an unnamed provider that had never been installed), so earlier choices are not carried over.
+ */
+export const CONSENT_VERSION = 2;
 
 /** A saved choice expires after a year and the banner returns. */
 export const CONSENT_MAX_AGE_DAYS = 365;
@@ -39,7 +42,7 @@ export const CONSENT_CATEGORIES: ConsentCategoryInfo[] = [
   {
     id: 'analytics',
     label: 'Anonymous usage analytics',
-    description: 'Helps work out which lessons and tools are used and which are confusing. Can include the numbers typed into a calculator and the result, never a name or email address.',
+    description: 'Helps work out which lessons and tools are used and which are confusing, using Google Analytics and PostHog. PostHog can also receive the numbers typed into a calculator and the result. Never a name or email address.',
   },
   {
     id: 'advertising',

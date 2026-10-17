@@ -74,9 +74,9 @@ const sections: LegalSection[] = [
               </tr>
               <tr>
                 <td>
-                  <strong>Usage analytics</strong>, if switched on and allowed: pages viewed, approximate location (country or region from the IP address), device type, referrer, and the values typed into a calculator together with its result. No name or email address.
+                  <strong>Usage analytics</strong>, only if allowed, from two providers: <strong>Google Analytics</strong> and <strong>PostHog</strong>. Both receive the pages viewed (the path only, never anything after a “?”), approximate location (country or region worked out from the IP address, which is not stored by Google Analytics), device and browser type, the site the visitor came from, any campaign tag on the link they arrived by, how far down a lesson they scrolled and for how long it was open, and clicks on partner, sponsor, resource and outbound links. PostHog also receives what was typed into the site search and the values typed into a calculator together with its result. Neither receives a name or email address.
                 </td>
-                <td>Understanding which lessons and tools are used, and which are confusing, so that they can be improved.</td>
+                <td>Understanding which lessons and tools are used, which are confusing and which links are followed, so that they can be improved.</td>
                 <td>Consent (the “Anonymous usage analytics” choice).</td>
               </tr>
               <tr>
@@ -97,7 +97,7 @@ const sections: LegalSection[] = [
           </table>
         </div>
         <p>
-          <strong>Calculator values.</strong> The numbers typed into a calculator are processed in the browser to give the result. They are sent to the analytics provider only if analytics has been allowed. Anyone who does not want a figure recorded should reject analytics, or avoid entering real balances. A calculator link that is copied and shared contains the values in its address, so it should be shared with that in mind.
+          <strong>Calculator values.</strong> The numbers typed into a calculator are processed in the browser to give the result. They are sent to PostHog (not to Google Analytics) only if analytics has been allowed. Anyone who does not want a figure recorded should reject analytics, or avoid entering real balances. A calculator link that is copied and shared contains the values in its address, so it should be shared with that in mind. The address of the page is never sent to either provider with those values: only the page path is.
         </p>
         <p>No automated decision-making or profiling that has legal or similarly significant effects on anyone is carried out.</p>
       </>
@@ -147,10 +147,20 @@ const sections: LegalSection[] = [
                 <td>Until cleared or withdrawn.</td>
               </tr>
               <tr>
-                <td>Analytics provider cookies or storage</td>
+                <td>
+                  <code>_ga</code> and <code>_ga_*</code> (cookies, Google Analytics)
+                </td>
                 <td>Analytics (optional)</td>
-                <td>Counts visits and events so that usage can be understood. Only used if analytics is switched on and allowed.</td>
-                <td>Set by the provider, typically up to 12 months.</td>
+                <td>Tells one visitor from another and links their page views into a visit, so visits and events can be counted. Set only after analytics is allowed; removed if the choice is withdrawn.</td>
+                <td>12 months.</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>ph_*_posthog</code> (local storage, PostHog)
+                </td>
+                <td>Analytics (optional)</td>
+                <td>Holds a random identifier and the current visit, so events from the same browser can be grouped. It is not linked to a name, email address or account. Set only after analytics is allowed; removed if the choice is withdrawn.</td>
+                <td>Until cleared or withdrawn.</td>
               </tr>
               <tr>
                 <td>Advertising networks (for example Google AdSense)</td>
@@ -204,7 +214,7 @@ const sections: LegalSection[] = [
             <strong>The hosting provider</strong>, which runs the servers that deliver the website and creates the server logs.
           </li>
           <li>
-            <strong>An analytics provider</strong>, only if analytics is switched on and allowed.
+            <strong>Google Analytics</strong> (Google) and <strong>PostHog</strong> (PostHog Inc., EU Cloud, with data stored in the European Union), only if analytics has been allowed. PostHog events reach it through this website's own server, which passes them on and does not keep them. What each provider receives is listed in section 2.
           </li>
           <li>
             <strong>Advertising networks</strong>, only if ads are switched on and allowed. These networks decide for themselves how they use the data they collect and are separate controllers.
@@ -221,7 +231,7 @@ const sections: LegalSection[] = [
     title: 'Transfers outside the United Kingdom',
     body: (
       <p>
-        Some providers, including hosting, analytics and advertising providers, process data on servers outside the United Kingdom. Where that happens, it is done only where the destination is covered by UK adequacy regulations or the provider has put an approved safeguard in place, such as the UK International Data Transfer Agreement or the UK Addendum to the EU standard contractual clauses.
+        Some providers, including hosting, analytics and advertising providers, process data on servers outside the United Kingdom. Google Analytics may process data in the United States; PostHog's EU Cloud stores data in the European Union. Where that happens, it is done only where the destination is covered by UK adequacy regulations or the provider has put an approved safeguard in place, such as the UK International Data Transfer Agreement or the UK Addendum to the EU standard contractual clauses.
       </p>
     ),
   },
@@ -231,7 +241,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Personal data is kept no longer than is needed for the purposes in section 2. In practice: server logs are kept by the hosting provider for a limited period for security and fault-finding; analytics data is kept only for as long as it is useful for improving the website; correspondence is kept for as long as it takes to deal with the enquiry and for a reasonable period afterwards in case of follow-up or a dispute; and the browser storage described above stays on the visitor's own device until it is cleared or withdrawn.
+          Personal data is kept no longer than is needed for the purposes in section 2. In practice: server logs are kept by the hosting provider for a limited period for security and fault-finding; analytics data is kept for 14 months in Google Analytics and 12 months in PostHog, then deleted by the provider; correspondence is kept for as long as it takes to deal with the enquiry and for a reasonable period afterwards in case of follow-up or a dispute; and the browser storage described above stays on the visitor's own device until it is cleared or withdrawn.
         </p>
       </>
     ),
@@ -320,7 +330,7 @@ export default function PrivacyPage(): ReactNode {
         <>
           <strong>Optional cookies are off until a choice is made.</strong> Reject all and accept all are equally easy, and the choice can be changed from “Cookie settings” in the footer at any time.
         </>,
-        <>The numbers typed into a calculator reach an analytics provider only if analytics has been allowed.</>,
+        <>Analytics (Google Analytics and PostHog) runs only if allowed. The numbers typed into a calculator reach PostHog, never Google, and only if analytics has been allowed.</>,
         <>
           Affiliate links are labelled. Following one means the partner sets its own cookies on its own site: see <Link to="/partners">partners and disclosures</Link>.
         </>,

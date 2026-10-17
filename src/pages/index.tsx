@@ -110,10 +110,10 @@ export default function Home(): ReactNode {
                 A plain-English trading field guide: clear lessons, strict rules, and {tools.length} calculators and simulators that do the maths so the thinking can stay on the trade. Not a course. Not advice. <strong>Free for everyone, always.</strong>
               </p>
               <div className={styles.actions}>
-                <Link className="button button--primary" to="/tools/trade-planner">
+                <Link className="button button--primary" to="/tools/trade-planner" data-cta="home-hero-trade-planner">
                   Open the Trade Planner <span aria-hidden="true">↗</span>
                 </Link>
-                <Link className="button button--outline" to="/library/">
+                <Link className="button button--outline" to="/library/" data-cta="home-hero-library">
                   Read the library
                 </Link>
               </div>
@@ -174,7 +174,7 @@ export default function Home(): ReactNode {
                   <li>Draggable stop and target</li>
                   <li>Share the plan as a link</li>
                 </ul>
-                <Link className="button button--primary" to="/tools/trade-planner">
+                <Link className="button button--primary" to="/tools/trade-planner" data-cta="home-spotlight-trade-planner">
                   Plan a trade <span aria-hidden="true">↗</span>
                 </Link>
               </div>
@@ -188,6 +188,7 @@ export default function Home(): ReactNode {
                 <Link
                   key={tool.slug}
                   to={tool.path}
+                  data-cta="home-tool-cloud"
                   className={styles.pill}
                   data-size={sizes[index % sizes.length]}
                   style={toneVars(groupTone[tool.group])}
@@ -210,7 +211,7 @@ export default function Home(): ReactNode {
               )}
             </p>
             <p className={styles.seeAll}>
-              <Link className="text-link" to="/tools">
+              <Link className="text-link" to="/tools" data-cta="home-all-tools">
                 See all the tools <span>→</span>
               </Link>
             </p>
@@ -243,7 +244,7 @@ export default function Home(): ReactNode {
               <p className={styles.freeHow}>
                 How is that possible? The site is funded by <strong>affiliate commissions</strong> and <strong>advertising</strong>, nothing else. Both are labelled, and neither changes a calculation or a lesson.
               </p>
-              <Link className={styles.freeButton} to="/how-this-site-is-funded">
+              <Link className={styles.freeButton} to="/how-this-site-is-funded" data-cta="home-how-funded">
                 See exactly how it is funded <span aria-hidden="true">↗</span>
               </Link>
             </div>
@@ -265,7 +266,7 @@ export default function Home(): ReactNode {
                 </span>
               ))}
             </div>
-            <Link className="button button--primary" to="/library/manifesto">
+            <Link className="button button--primary" to="/library/manifesto" data-cta="home-manifesto">
               Read the manifesto <span aria-hidden="true">↗</span>
             </Link>
           </div>
@@ -285,7 +286,7 @@ export default function Home(): ReactNode {
                 const tone = PATH_TONES[index % PATH_TONES.length];
                 return (
                   <li key={item.href} className={styles.step} style={toneVars(tone)}>
-                    <Link to={item.href}>
+                    <Link to={item.href} data-cta="home-fundamentals-path">
                       <span className={styles.stepNum} aria-hidden="true">
                         {item.number ?? String(index + 1).padStart(2, '0')}
                       </span>
@@ -310,7 +311,7 @@ export default function Home(): ReactNode {
                 <ul>
                   {strategy.map((item) => (
                     <li key={item.href}>
-                      <Link to={item.href}>
+                      <Link to={item.href} data-cta="home-strategy-list">
                         <strong>{item.title}</strong>
                         <span>{item.description}</span>
                         <i aria-hidden="true">↗</i>
@@ -323,10 +324,10 @@ export default function Home(): ReactNode {
                 <p className={styles.panelTag}>Reference</p>
                 <h2>Words, defined.</h2>
                 <p className={styles.panelLede}>Pips, lots, leverage, liquidity: the vocabulary in plain English.</p>
-                <Link className={styles.bigLink} to="/library/glossary">
+                <Link className={styles.bigLink} to="/library/glossary" data-cta="home-glossary">
                   Open the glossary <span aria-hidden="true">↗</span>
                 </Link>
-                <Link className={styles.bigLinkAlt} to="/search">
+                <Link className={styles.bigLinkAlt} to="/search" data-cta="home-search">
                   Search everything <span aria-hidden="true">⌕</span>
                 </Link>
               </div>
@@ -342,10 +343,10 @@ export default function Home(): ReactNode {
             <h2>Stop guessing your size.</h2>
             <p>Put in your account, your stop and your risk. Get the exact position in a second.</p>
             <div className={styles.actions}>
-              <Link className="button button--primary" to="/tools/position-size-calculator">
+              <Link className="button button--primary" to="/tools/position-size-calculator" data-cta="home-closing-position-size">
                 Calculate position size <span aria-hidden="true">↗</span>
               </Link>
-              <Link className={`button ${styles.ghostOnDark}`} to="/tools">
+              <Link className={`button ${styles.ghostOnDark}`} to="/tools" data-cta="home-closing-all-tools">
                 Browse all tools
               </Link>
             </div>

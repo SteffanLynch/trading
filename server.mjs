@@ -3,10 +3,13 @@ import {access, stat} from 'node:fs/promises';
 import {createServer} from 'node:http';
 import {extname, resolve, sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {isRelayPath, relay} from './server/relay.mjs';
 
 const root = resolve(fileURLToPath(new URL('./build', import.meta.url)));
 const port = Number.parseInt(process.env.PORT ?? '3000', 10);
 const host = process.env.HOST ?? '0.0.0.0';
+// Where /ingest is forwarded. PostHog EU Cloud unless overridden (for example to US Cloud or a self-hosted instance).
+const relayHosts = {apiHost: process.env.POSTHOG_API_HOST || undefined, assetsHost: process.env.POSTHOG_ASSETS_HOST || undefined};
 
 const contentTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -54,13 +57,32 @@ async function resolveRequest(pathname) {
 }
 
 const server = createServer(async (request, response) => {
-  if (!request.url || !['GET', 'HEAD'].includes(request.method ?? 'GET')) {
+  if (!request.url) {
+    response.writeHead(400, {'content-type': 'text/plain; charset=utf-8'});
+    response.end('Bad request');
+    return;
+  }
+
+  let url;
+  try {
+    url = new URL(request.url, `http://${request.headers.host ?? 'localhost'}`);
+  } catch {
+    response.writeHead(400, {'content-type': 'text/plain; charset=utf-8'});
+    response.end('Bad request');
+    return;
+  }
+
+  // The analytics relay accepts POST; the static site below is read-only.
+  if (isRelayPath(url.pathname)) {
+    await relay(request, response, url, relayHosts);
+    return;
+  }
+
+  if (!['GET', 'HEAD'].includes(request.method ?? 'GET')) {
     response.writeHead(405, {'content-type': 'text/plain; charset=utf-8'});
     response.end('Method not allowed');
     return;
   }
-
-  const url = new URL(request.url, `http://${request.headers.host ?? 'localhost'}`);
 
   if (url.pathname === '/health') {
     response.writeHead(200, {

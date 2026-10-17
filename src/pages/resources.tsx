@@ -109,7 +109,7 @@ export default function ResourcesPage(): ReactNode {
                   <div className={m.block} style={vars(ACCENTS[index % ACCENTS.length])}>
                     <ul className={m.resList}>
                       {items.map((resource) => (
-                        <ResourceItem key={resource.id} resource={resource} />
+                        <ResourceItem key={resource.id} resource={resource} placement="resources-page" />
                       ))}
                     </ul>
                   </div>
